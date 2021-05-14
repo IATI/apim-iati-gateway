@@ -1,0 +1,134 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "The IATI Registry is the place to register your organisation and IATI datasets.",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": false,
+        "displayName": "IATI Registry",
+        "serviceUrl": "https://iatiregistry.org/api/3",
+        "path": "registry",
+        "protocols": [
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "Return the details of a publisher. When the authorisation header and include_datasets parameter are provided, the call also returns private datasets.",
+        "request": {
+          "queryParameters": [
+            {
+              "name": "id",
+              "description": "the id or name of the publisher",
+              "type": "string",
+              "required": true,
+              "values": []
+            }
+          ],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Publisher Details",
+        "method": "GET",
+        "urlTemplate": "/action/organization_show"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry/publisher-details')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-registry')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "Return a list of the names of IATI publishers. When the authorisation header is provided and the user has sysadmin privileges, the call also returns publishers with a Pending status.",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "",
+            "headers": [],
+            "representations": []
+          }
+        ],
+        "displayName": "Publisher List",
+        "method": "GET",
+        "urlTemplate": "/action/organization_list"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry/organisation-list')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-registry')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "organisation"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry/organisation-list/organisation')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-registry', 'organisation-list')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "publish"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry/publish')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-registry')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "registry"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-registry/registry')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-registry')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/no-authentication/iati-registry')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-registry')]"
+      ]
+    }
+  ]
+}

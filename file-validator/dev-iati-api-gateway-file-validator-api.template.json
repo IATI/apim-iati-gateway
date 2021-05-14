@@ -1,0 +1,639 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "The IATI Validator Public API is a tool for checking if data aligns with the rules and guidance of IATI Standard. It allows users to check and improve the quality of IATI data to ensure it is accessible and useful to anyone working with data on development and humanitarian resources and results.",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": true,
+        "displayName": "IATI Validator",
+        "path": "validator",
+        "protocols": [
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/file-validator')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "contentType": "application/vnd.oai.openapi.components+json",
+        "document": {
+          "components": {
+            "schemas": {
+              "valid IATI organisations file validation report": {
+                "type": "object",
+                "properties": {
+                  "schemaVersion": {
+                    "type": "string"
+                  },
+                  "iatiVersion": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "object",
+                    "properties": {
+                      "critical": {
+                        "type": "integer"
+                      },
+                      "danger": {
+                        "type": "integer"
+                      },
+                      "warning": {
+                        "type": "integer"
+                      },
+                      "info": {
+                        "type": "integer"
+                      },
+                      "success": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "filetype": {
+                    "type": "string"
+                  },
+                  "validation": {
+                    "type": "string"
+                  },
+                  "feedback": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "messages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "rulesets": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "src": {
+                                      "type": "string"
+                                    },
+                                    "severity": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "src",
+                                    "severity"
+                                  ]
+                                }
+                              },
+                              "context": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "text"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "text",
+                              "rulesets",
+                              "context"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "category",
+                        "label",
+                        "messages"
+                      ]
+                    }
+                  },
+                  "organisations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "publisher": {
+                          "type": "string"
+                        },
+                        "feedback": {
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "identifier",
+                        "publisher",
+                        "feedback"
+                      ]
+                    }
+                  }
+                }
+              },
+              "valid IATI activities file validation report": {
+                "type": "object",
+                "properties": {
+                  "schemaVersion": {
+                    "type": "string"
+                  },
+                  "iatiVersion": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "object",
+                    "properties": {
+                      "critical": {
+                        "type": "integer"
+                      },
+                      "danger": {
+                        "type": "integer"
+                      },
+                      "warning": {
+                        "type": "integer"
+                      },
+                      "info": {
+                        "type": "integer"
+                      },
+                      "success": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "filetype": {
+                    "type": "string"
+                  },
+                  "validation": {
+                    "type": "string"
+                  },
+                  "feedback": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "messages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "rulesets": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "src": {
+                                      "type": "string"
+                                    },
+                                    "severity": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "src",
+                                    "severity"
+                                  ]
+                                }
+                              },
+                              "context": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "text"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "text",
+                              "rulesets",
+                              "context"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "category",
+                        "label",
+                        "messages"
+                      ]
+                    }
+                  },
+                  "activities": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "publisher": {
+                          "type": "string"
+                        },
+                        "feedback": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "category": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "messages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "rulesets": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "src": {
+                                            "type": "string"
+                                          },
+                                          "severity": {
+                                            "type": "string"
+                                          },
+                                          "href": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "src",
+                                          "severity",
+                                          "href"
+                                        ]
+                                      }
+                                    },
+                                    "context": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "text": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "text"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "text",
+                                    "rulesets",
+                                    "context"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "category",
+                              "label",
+                              "messages"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "identifier",
+                        "publisher",
+                        "feedback"
+                      ]
+                    }
+                  }
+                }
+              },
+              "0.6.1 Unsupported IATI Version": {
+                "type": "object",
+                "properties": {
+                  "schemaVersion": {
+                    "type": "string"
+                  },
+                  "iatiVersion": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "object",
+                    "properties": {
+                      "critical": {
+                        "type": "integer"
+                      },
+                      "danger": {
+                        "type": "integer"
+                      },
+                      "warning": {
+                        "type": "integer"
+                      },
+                      "info": {
+                        "type": "integer"
+                      },
+                      "success": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "filetype": {
+                    "type": "string"
+                  },
+                  "validation": {
+                    "type": "string"
+                  },
+                  "feedback": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "messages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "rulesets": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "src": {
+                                      "type": "string"
+                                    },
+                                    "severity": {
+                                      "type": "string"
+                                    },
+                                    "href": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "src",
+                                    "severity",
+                                    "href"
+                                  ]
+                                }
+                              },
+                              "context": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "text"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "text",
+                              "rulesets",
+                              "context"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "category",
+                        "label",
+                        "messages"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/file-validator/1614776851404')]",
+      "type": "Microsoft.ApiManagement/service/apis/schemas",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'file-validator')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "Endpoint to send a full IATI File (either organisations or activities) and receive a JSON validation report.",
+        "request": {
+          "description": "IATI xml file",
+          "queryParameters": [],
+          "headers": [
+            {
+              "name": "Accept",
+              "description": "Indicates the type of response",
+              "type": "string",
+              "defaultValue": "application/json",
+              "required": false,
+              "values": [
+                "application/json"
+              ]
+            },
+            {
+              "name": "Content-Type",
+              "description": "Indicates the media type of the resource",
+              "type": "string",
+              "defaultValue": "application/xml",
+              "required": false,
+              "values": [
+                "application/xml"
+              ]
+            }
+          ],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 422,
+            "description": "If no body is provided or it's in the wrong format",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "sample": "{\n    \"error\": \"No body\"\n}   "
+              },
+              {
+                "contentType": "application/json",
+                "sample": "{\n    \"error\": \"Body must be a string\"\n}   "
+              }
+            ]
+          },
+          {
+            "statusCode": 200,
+            "description": "When the XML file is successfully processed by the IATI Validator it returns a JSON validation report.",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "description": "Content type of the response",
+                "type": "string",
+                "defaultValue": "application/json",
+                "required": false,
+                "values": [
+                  "application/json"
+                ]
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "sample": "{\n    \"schemaVersion\": \"1.0.1\",\n    \"iatiVersion\": \"2.02\",\n    \"summary\": {\n        \"critical\": 0,\n        \"danger\": 0,\n        \"warning\": 0,\n        \"info\": 0,\n        \"success\": 0\n    },\n    \"filetype\": \"iati-organisations\",\n    \"validation\": \"ok\",\n    \"feedback\": [\n        {\n            \"category\": \"iati\",\n            \"label\": \"IATI file\",\n            \"messages\": [\n                {\n                    \"id\": \"0.0.1\",\n                    \"text\": \"Congratulations! This IATI file has successfully passed IATI XML schema validation with no errors!\",\n                    \"rulesets\": [\n                        {\n                            \"src\": \"iati\",\n                            \"severity\": \"success\"\n                        }\n                    ],\n                    \"context\": [\n                        {\n                            \"text\": \"\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"organisations\": [\n        {\n            \"title\": \"Test Org Nepal\",\n            \"identifier\": \"NP-SWC-1234\",\n            \"publisher\": \"NP-SWC-1234\",\n            \"feedback\": []\n        }\n    ]\n}   ",
+                "schemaId": "1614776851404",
+                "typeName": "valid IATI organisations file validation report"
+              },
+              {
+                "contentType": "application/json",
+                "sample": "{\n    \"schemaVersion\": \"1.0.1\",\n    \"iatiVersion\": \"2.03\",\n    \"summary\": {\n        \"critical\": 0,\n        \"danger\": 0,\n        \"warning\": 1,\n        \"info\": 0,\n        \"success\": 0\n    },\n    \"filetype\": \"iati-activities\",\n    \"validation\": \"ok\",\n    \"feedback\": [\n        {\n            \"category\": \"iati\",\n            \"label\": \"IATI file\",\n            \"messages\": [\n                {\n                    \"id\": \"0.0.1\",\n                    \"text\": \"Congratulations! This IATI file has successfully passed IATI XML schema validation with no errors!\",\n                    \"rulesets\": [\n                        {\n                            \"src\": \"iati\",\n                            \"severity\": \"success\"\n                        }\n                    ],\n                    \"context\": [\n                        {\n                            \"text\": \"\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"activities\": [\n        {\n            \"title\": \"Activity title\",\n            \"identifier\": \"AA-AAA-123456789-ABC123\",\n            \"publisher\": \"AA-AAA-123456789\",\n            \"feedback\": [\n                {\n                    \"category\": \"identifiers\",\n                    \"label\": \"Identification\",\n                    \"messages\": [\n                        {\n                            \"id\": \"1.14.8\",\n                            \"text\": \"The reporting-org identifier must start with an approved agency code.\",\n                            \"rulesets\": [\n                                {\n                                    \"src\": \"iati\",\n                                    \"severity\": \"warning\",\n                                    \"href\": \"https://iatistandard.org/en/guidance/preparing-organisation/organisation-account/how-to-create-your-iati-organisation-identifier/\"\n                                }\n                            ],\n                            \"context\": [\n                                {\n                                    \"text\": \"In reporting-org AA-AAA-123456789\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+                "schemaId": "1614776851404",
+                "typeName": "valid IATI activities file validation report"
+              },
+              {
+                "contentType": "application/json",
+                "sample": "{\n    \"schemaVersion\": \"\",\n    \"iatiVersion\": \"\",\n    \"summary\": {\n        \"critical\": 0,\n        \"danger\": 1,\n        \"warning\": 0,\n        \"info\": 0,\n        \"success\": 0\n    },\n    \"filetype\": \"iati-activities\",\n    \"validation\": \"ok\",\n    \"feedback\": [\n        {\n            \"category\": \"documents\",\n            \"label\": \"Related documents\",\n            \"messages\": [\n                {\n                    \"id\": \"0.6.1\",\n                    \"text\": \"Version 1.03 of the IATI Standard is no longer supported. Please use version 2.\",\n                    \"rulesets\": [\n                        {\n                            \"src\": \"iati\",\n                            \"severity\": \"danger\",\n                            \"href\": \"https://iatistandard.org/en/news/notice-iati-standard-version-1-is-deprecated/\"\n                        }\n                    ],\n                    \"context\": [\n                        {\n                            \"text\": \"\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+                "schemaId": "1614776851404",
+                "typeName": "0.6.1 Unsupported IATI Version"
+              }
+            ]
+          }
+        ],
+        "displayName": "validate",
+        "method": "POST",
+        "urlTemplate": "/validate"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/file-validator/post-pub-validate-post')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'file-validator')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'file-validator', '1614776851404')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t\t<set-backend-service id=\"apim-generated-policy\" backend-id=\"dev-func-iati-validator\" />\r\n\t\t<rewrite-uri template=\"/pub/validate\" />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
+        "format": "rawxml"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/file-validator/post-pub-validate-post/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'file-validator', 'post-pub-validate-post')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "validator"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/file-validator/validator')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'file-validator')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/starter/file-validator')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'file-validator')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/file-validator')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'file-validator')]"
+      ]
+    }
+  ]
+}

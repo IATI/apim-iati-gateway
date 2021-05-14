@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "dev-func-iati-validator",
+        "resourceId": "https://management.azure.com/subscriptions/bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9/resourceGroups/dev-func-iati-validator/providers/Microsoft.Web/sites/dev-func-iati-validator",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{dev-func-iati-validator-key}}"
+            ]
+          }
+        },
+        "url": "https://dev-func-iati-validator.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/dev-func-iati-validator')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    },
+    {
+      "properties": {
+        "description": "dev-func-validator-services",
+        "resourceId": "https://management.azure.com/subscriptions/bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9/resourceGroups/dev-func-validator-services/providers/Microsoft.Web/sites/dev-func-validator-services",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{dev-func-validator-services-key}}"
+            ]
+          }
+        },
+        "url": "https://dev-func-validator-services.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/dev-func-validator-services')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    }
+  ]
+}

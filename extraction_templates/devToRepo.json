@@ -1,0 +1,7 @@
+{
+  "sourceApimName": "dev-iati-api-gateway",
+  "destinationApimName": "apim-iati-gateway",
+  "resourceGroup": "dev-iati-resources",
+  "fileFolder": "/Users/nosvalds/Projects/apim-iati-gateway/",
+  "splitAPIs": "true"
+}
