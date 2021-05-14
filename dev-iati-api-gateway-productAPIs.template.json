@@ -8,26 +8,10 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('ApimServiceName'), '/starter/echo-api')]",
-      "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2019-01-01",
-      "dependsOn": []
-    },
-    {
-      "name": "[concat(parameters('ApimServiceName'), '/unlimited/echo-api')]",
-      "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2019-01-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'starter', 'echo-api')]"
-      ]
-    },
-    {
       "name": "[concat(parameters('ApimServiceName'), '/no-authentication/iati-registry')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2019-01-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'echo-api')]"
-      ]
+      "dependsOn": []
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/starter/file-validator')]",
