@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "authorizationMethods": [
+          "GET",
+          "POST"
+        ],
+        "clientAuthenticationMethod": [
+          "Body"
+        ],
+        "tokenBodyParameters": [],
+        "tokenEndpoint": "https://login.microsoftonline.com/84eabcc3-f316-4314-8484-b22676acbe88/oauth2/v2.0/token",
+        "supportState": false,
+        "defaultScope": "Publishers.Read",
+        "bearerTokenSendingMethods": [
+          "authorizationHeader"
+        ],
+        "displayName": "validator-web",
+        "clientRegistrationEndpoint": "http://localhost",
+        "authorizationEndpoint": "https://login.microsoftonline.com/84eabcc3-f316-4314-8484-b22676acbe88/oauth2/v2.0/authorize",
+        "grantTypes": [
+          "authorizationCode"
+        ],
+        "clientId": "c624cef4-0252-4033-a0c5-b8e5370b2c3f"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/validator-web')]",
+      "type": "Microsoft.ApiManagement/service/authorizationServers",
+      "apiVersion": "2021-01-01-preview"
+    }
+  ]
+}

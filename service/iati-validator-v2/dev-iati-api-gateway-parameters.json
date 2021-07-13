@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "value": "dev-iati-api-gateway"
+    },
+    "LinkedTemplatesBaseUrl": {
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/"
+    },
+    "PolicyXMLBaseUrl": {
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/"
+    },
+    "serviceUrl": {
+      "value": {
+        "iativalidatorv2": null
+      }
+    },
+    "NamedValues": {
+      "value": {
+        "devfunciativalidatorkey": null,
+        "devfuncvalidatorserviceskey": null,
+        "funciativalidatordevkey": null
+      }
+    },
+    "ApiLoggerId": {
+      "value": {}
+    },
+    "LoggerResourceId": {
+      "value": {}
+    }
+  },
+  "resources": []
+}
