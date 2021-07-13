@@ -1,0 +1,65 @@
+name: Deploy_To_Dev_APIM_On_Push
+
+on:
+  push:
+    branches:
+      - develop 
+    paths:
+    - 'service/**'
+
+jobs:
+  validate-deploy-apim:
+    runs-on: ubuntu-latest
+
+    env:
+      resourceGroup: rg-apim-dev
+      ApimServiceName: apim-iati-dev
+      repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
+      repoBranch: ${GITHUB_REF##*/}
+      repoApimPath: service
+
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v2
+
+      - name: "Login to Azure"
+        uses: azure/login@v1.3.0
+        with:
+          creds: ${{ secrets.DEV_AZURE_CREDENTIALS }}
+
+      - name: "Validate ARM Template for Deployment"
+      - uses: azure/arm-deploy@v1
+        with:
+          resourceGroupName: $${{ env.resourceGroup }}
+          template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-apis.template.json
+          parameters: ./${{ env.repoApimPath }}/dev-iati-api-gateway-parameters.json
+          deploymentMode: Validate
+
+          # ARM deployment tasks  
+      - name: Deploy APIM Service and APIs
+        working-directory: ./service
+        env:
+          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+          deploymentName: --name GH_dev_deployment_apim
+          rg: --resource-group ${{ env.resourceGroup }}
+          apiNamePrefix: dev-iati-api-gateway
+        run: |
+            az deployment group create ${{env.deploymentName}} ${{env.rg}} --template-file ./${{env.apiNamePrefix}}-master.template.json --parameters ./${{env.apiNamePrefix}}-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }}
+
+      - name: Deploy APIs
+        working-directory: ./service
+        env:
+          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+          deploymentName: --name GH_dev_deployment_api
+          rg: --resource-group ${{ env.resourceGroup }}
+          apiNamePrefix: dev-iati-api-gateway
+        run: |
+          echo $apiNamePrefix
+          for f in *; do
+            if [[ ! -n "policies" && -d ${f} && ! -L ${f} ]]; then
+              echo "Deploying API: $f"
+              az deployment group create $deploymentName $rg --template-file ./$f/$apiNamePrefix-master.template.json --parameters ./$f/$apiNamePrefix-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f
+            fi
+          done
