@@ -28,14 +28,14 @@ jobs:
         with:
           creds: ${{ secrets.DEV_AZURE_CREDENTIALS }}
 
-      - name: "Validate ARM Template for Deployment"
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: $${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          resourceGroupName: $${{ env.resourceGroup }}
-          template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-master.template.json
-          parameters: ./${{ env.repoApimPath }}/dev-iati-api-gateway-parameters.json
-          deploymentMode: Validate
+      # - name: "Validate ARM Template for Deployment"
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #     subscriptionId: $${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #     resourceGroupName: $${{ env.resourceGroup }}
+      #     template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-master.template.json
+      #     parameters: ./${{ env.repoApimPath }}/dev-iati-api-gateway-parameters.json
+      #     deploymentMode: Validate
 
           # ARM deployment tasks  
       - name: Deploy APIM Service and APIs
