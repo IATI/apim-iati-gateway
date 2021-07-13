@@ -6,6 +6,7 @@ on:
       - develop 
     paths:
     - 'service/**'
+    - '.github/workflows/apim-develop.yml'
 
 jobs:
   validate-deploy-apim:
@@ -30,8 +31,9 @@ jobs:
       - name: "Validate ARM Template for Deployment"
         uses: azure/arm-deploy@v1
         with:
+          subscriptionId: $${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: $${{ env.resourceGroup }}
-          template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-apis.template.json
+          template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-master.template.json
           parameters: ./${{ env.repoApimPath }}/dev-iati-api-gateway-parameters.json
           deploymentMode: Validate
 
