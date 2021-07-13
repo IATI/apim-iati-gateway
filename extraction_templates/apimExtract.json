@@ -1,0 +1,13 @@
+{
+  "sourceApimName": "dev-iati-api-gateway",
+  "destinationApimName": "dev-iati-api-gateway",
+  "resourceGroup": "rg-apigateway-dev",
+  "fileFolder": "./service",
+  "linkedTemplatesBaseUrl": "tbd",
+  "policyXMLBaseUrl": "tbd",
+  "splitAPIs": "true",
+  "paramServiceUrl": "true",
+  "paramNamedValue": "true",
+  "paramApiLoggerId": "true",
+  "paramLogResourceId": "true"
+}

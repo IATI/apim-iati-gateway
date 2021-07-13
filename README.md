@@ -7,6 +7,7 @@
 - [Azure CLI](https://docs.microsoft.com/en-us/dotnet/azure/install-azure-cli)
 - [.NET 3.1.0](https://docs.microsoft.com/en-us/dotnet/core/install/)
 - [Azure/azure-api-management-devops-resource-kit](https://github.com/Azure/azure-api-management-devops-resource-kit)
+- [Example Apim Devops](https://github.com/RvLabsMSFT/rvlabs-apim-devops)
 
 ## Extracting
 
