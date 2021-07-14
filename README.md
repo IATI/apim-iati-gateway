@@ -11,8 +11,16 @@
 
 ## Extracting
 
+Install Extractor Tool as CLI
 ```bash
 git clone git@github.com:Azure/azure-api-management-devops-resource-kit.git
-cd azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate
-dotnet run extract --extractorConfig /Users/nosvalds/Projects/apim-iati-gateway/extraction_templates/devToRepo.json
+cd {path_to_folder}/src/APIM_ARMTemplate/apimtemplate 
+dotnet pack -c Release
+dotnet tool install -g --add-source .\bin\Release apimtemplate
+# follow instuctions to save in PATH
+```
+
+Run extractor w/ config
+```bash
+apim-templates extract --extractorConfig extraction_templates/apimExtract.json     
 ```

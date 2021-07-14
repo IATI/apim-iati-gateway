@@ -13,7 +13,6 @@
     },
     "serviceUrl": {
       "value": {
-        "iativalidatorprivate": null,
         "iativalidatorv2": null,
         "solr": "https://default-iati-prod-solrcloud.solr.iatistandard.org",
         "devfuncvalidatorservices": null,
@@ -21,11 +20,7 @@
       }
     },
     "NamedValues": {
-      "value": {
-        "devfunciativalidatorkey": null,
-        "devfuncvalidatorserviceskey": null,
-        "funciativalidatordevkey": null
-      }
+      "value": {}
     },
     "ApiLoggerId": {
       "value": {}

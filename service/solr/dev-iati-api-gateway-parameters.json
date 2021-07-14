@@ -17,11 +17,7 @@
       }
     },
     "NamedValues": {
-      "value": {
-        "devfunciativalidatorkey": null,
-        "devfuncvalidatorserviceskey": null,
-        "funciativalidatordevkey": null
-      }
+      "value": {}
     },
     "ApiLoggerId": {
       "value": {}
