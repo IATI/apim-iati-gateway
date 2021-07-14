@@ -20,8 +20,6 @@
                 "capacity": 1
             },
             "identity": {
-                "principalId": "b05c10c1-123f-4a94-9dff-c62b44e35f4c",
-                "tenantId": "84eabcc3-f316-4314-8484-b22676acbe88",
                 "type": "SystemAssigned"
             },
             "properties": {
