@@ -8,18 +8,10 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('ApimServiceName'), '/private-routes/iati-validator-private')]",
-      "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
-    },
-    {
       "name": "[concat(parameters('ApimServiceName'), '/api-preview-testing/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'private-routes', 'iati-validator-private')]"
-      ]
+      "dependsOn": []
     }
   ]
 }
