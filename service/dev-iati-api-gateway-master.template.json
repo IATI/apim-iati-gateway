@@ -50,6 +50,24 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/dev-iati-api-gateway-apim.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          }
+        }
+      },
+      "name": "apimTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/dev-iati-api-gateway-namedValues.template.json')]",
           "contentVersion": "1.0.0.0"
         },
@@ -68,7 +86,9 @@
       "name": "namedValuesTemplate",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
-      "dependsOn": []
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
+      ]
     },
     {
       "properties": {
@@ -90,7 +110,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -113,7 +134,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -136,7 +158,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -159,7 +182,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -192,7 +216,8 @@
         "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -213,7 +238,8 @@
       "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },
     {
@@ -243,7 +269,8 @@
       "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
+        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     }
   ]
