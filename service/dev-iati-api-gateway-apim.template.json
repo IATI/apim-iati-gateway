@@ -19,9 +19,6 @@
                 "name": "Developer",
                 "capacity": 1
             },
-            "identity": {
-                "type": "SystemAssigned"
-            },
             "properties": {
                 "publisherEmail": "niko@devinit.org",
                 "publisherName": "IATI",
