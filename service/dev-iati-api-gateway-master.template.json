@@ -53,7 +53,7 @@
     "SubscriptionId": {
       "type": "string",
       "metadata": {
-        "description": "SubcriptionId for Azure"
+        "description": "SubscriptionId for Azure"
       }
     }
   },
