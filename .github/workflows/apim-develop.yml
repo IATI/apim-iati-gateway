@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      Environment: dev
       resourceGroup: rg-apim-dev
       ApimServiceName: apim-iati-dev
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
@@ -47,7 +48,14 @@ jobs:
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: dev-iati-api-gateway
         run: |
-            az deployment group create ${{env.deploymentName}} ${{env.rg}} --template-file ./${{env.apiNamePrefix}}-master.template.json --parameters ./${{env.apiNamePrefix}}-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }}
+            az deployment group create ${{env.deploymentName}} \
+              ${{env.rg}} \
+              --template-file ./${{env.apiNamePrefix}}-master.template.json \
+              --parameters ./${{env.apiNamePrefix}}-parameters.json \
+              --parameters ApimServiceName=${{ env.ApimServiceName }} \
+              --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
+              --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
+              --parameters Environment=${{ env.Environment }}
 
       - name: Deploy APIs
         working-directory: ./service
@@ -62,6 +70,13 @@ jobs:
           for f in *; do
             if [[ ! -n "policies" && -d ${f} && ! -L ${f} ]]; then
               echo "Deploying API: $f"
-              az deployment group create $deploymentName $rg --template-file ./$f/$apiNamePrefix-master.template.json --parameters ./$f/$apiNamePrefix-parameters.json --parameters ApimServiceName=${{ env.ApimServiceName }} LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f
+              az deployment group create $deploymentName \
+               $rg \
+               --template-file ./$f/$apiNamePrefix-master.template.json \
+               --parameters ./$f/$apiNamePrefix-parameters.json \
+               --parameters ApimServiceName=${{ env.ApimServiceName }} \
+               --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f \
+               --parameters Environment=${{ env.Environment }}
+
             fi
           done

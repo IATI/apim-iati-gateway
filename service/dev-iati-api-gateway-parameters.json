@@ -5,11 +5,20 @@
     "ApimServiceName": {
       "value": "dev-iati-api-gateway"
     },
+    "ApimGatewayHostname": {
+      "value": "dev-api.iatistandard.org"
+    },
+    "Environment": {
+      "value": "dev"
+    },
     "LinkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/"
     },
     "PolicyXMLBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/"
+    },
+    "SubcriptionId": {
+      "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
     },
     "serviceUrl": {
       "value": {
