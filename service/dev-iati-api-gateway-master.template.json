@@ -8,6 +8,12 @@
         "description": "Name of the API Management"
       }
     },
+    "Environment": {
+      "type": "string",
+      "metadata": {
+        "description": "Environment thats being deployed to (e.g. dev or PROD)"
+      }
+    },
     "LinkedTemplatesBaseUrl": {
       "type": "string",
       "metadata": {
@@ -175,6 +181,9 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
+          },
+          "Environment": {
+            "value": "[parameters('Environment')]"
           }
         }
       },
