@@ -23,14 +23,14 @@
         "credentials": {
           "header": {
             "x-functions-key": [
-              "[concat('{{', parameters('Environment'), '-func-validator-services-key}})]"
+              "[concat('{{', parameters('Environment'), '-func-validator-services-key}}')]"
             ]
           }
         },
         "url": "[concat( 'https://', parameters('Environment'), '-func-validator-services.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', 'parameters('Environment'), '-func-validator-services')]",
+      "name": "[concat(parameters('ApimServiceName'), '/', parameters('Environment'), '-func-validator-services')]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2021-01-01-preview"
     },
