@@ -49,6 +49,12 @@
       "metadata": {
         "description": "ResourceId for the logger"
       }
+    },
+    "SubscriptionId": {
+      "type": "string",
+      "metadata": {
+        "description": "SubcriptionId for Azure"
+      }
     }
   },
   "resources": [
@@ -184,6 +190,9 @@
           },
           "Environment": {
             "value": "[parameters('Environment')]"
+          },
+          "SubscriptionId": {
+            "value": "[parameters('SubscriptionId')]"
           }
         }
       },
