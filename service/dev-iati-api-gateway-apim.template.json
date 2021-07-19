@@ -4,6 +4,9 @@
     "parameters": {
       "ApimServiceName": {
         "type": "string"
+      },
+      "ApimSKU": {
+          "type": "string"
       }
     },
     "resources": [
@@ -16,7 +19,7 @@
                 "env": "dev"
             },
             "sku": {
-                "name": "Developer",
+                "name": "[parameters('ApimSKU')]",
                 "capacity": 1
             },
             "identity": {

@@ -55,6 +55,12 @@
       "metadata": {
         "description": "SubscriptionId for Azure"
       }
+    },
+    "ApimSKU": {
+      "type": "string",
+      "metadata": {
+        "description": "SKU of the APIM Instance"
+      }
     }
   },
   "resources": [
@@ -68,6 +74,9 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
+          },
+          "ApimSKU": {
+             "value": "[parameters('ApimSKU')]"
           }
         }
       },

@@ -17,6 +17,7 @@ jobs:
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       resourceGroup: rg-apim-dev
       ApimServiceName: apim-iati-dev
+      ApimSKU: Developer
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: service
@@ -57,7 +58,8 @@ jobs:
               --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
               --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
               --parameters Environment=${{ env.Environment }} \
-              --parameters SubscriptionId=$${{ env.SubscriptionId }}
+              --parameters SubscriptionId=$${{ env.SubscriptionId }} \
+              --parameters ApimSKU=$${{ env.ApimSKU }} \
 
       - name: Deploy APIs
         working-directory: ./service
