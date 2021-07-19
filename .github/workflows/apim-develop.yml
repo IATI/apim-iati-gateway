@@ -58,8 +58,8 @@ jobs:
               --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
               --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
               --parameters Environment=${{ env.Environment }} \
-              --parameters SubscriptionId=$${{ env.SubscriptionId }} \
-              --parameters ApimSKU=$${{ env.ApimSKU }}
+              --parameters SubscriptionId=${{ env.SubscriptionId }} \
+              --parameters ApimSKU=${{ env.ApimSKU }}
 
       - name: Deploy APIs
         working-directory: ./service
