@@ -1,7 +1,7 @@
 <policies>
 	<inbound>
 		<base />
-		<set-backend-service id="apim-generated-policy" backend-id="dev-func-validator-services" />
+		<set-backend-service id="apim-generated-policy" backend-id="{{Environment}}-func-validator-services" />
 		<rewrite-uri template="/pub/validation/existing" />
 	</inbound>
 	<backend>
