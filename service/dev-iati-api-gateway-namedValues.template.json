@@ -10,16 +10,18 @@
     },
     "NamedValues": {
       "type": "object"
+    },
+    "ApimDevPortalHostname": {
+      "type": "string"
+    },
+    "Environment": {
+      "type": "string"
     }
   },
   "resources": [
     {
       "properties": {
-        "tags": [
-          "key",
-          "function",
-          "auto"
-        ],
+        "tags": ["key", "function", "auto"],
         "secret": true,
         "displayName": "dev-func-validator-services-key",
         "keyVault": {
@@ -32,11 +34,7 @@
     },
     {
       "properties": {
-        "tags": [
-          "key",
-          "function",
-          "auto"
-        ],
+        "tags": ["key", "function", "auto"],
         "secret": true,
         "displayName": "func-iativalidator-dev-key",
         "keyVault": {
@@ -59,6 +57,34 @@
       "name": "[concat(parameters('ApimServiceName'), '/pw-solr-admin-PROD')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/ApimDevPortalHostname')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', parameters('ApimServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "ApimDevPortalHostname",
+        "value": "[parameters('ApimDevPortalHostname')]",
+        "tags": [],
+        "secret": false
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/Environment')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', parameters('ApimServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "Environment",
+        "value": "[parameters('Environment')]",
+        "tags": [],
+        "secret": false
+      }
     }
   ]
 }

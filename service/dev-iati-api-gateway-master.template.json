@@ -119,6 +119,12 @@
           },
           "NamedValues": {
             "value": "[parameters('NamedValues')]"
+          },
+          "ApimDevPortalHostname": {
+            "value": "[parameters('ApimDevPortalHostname')]"
+          },
+          "Environment": {
+            "value": "[parameters('Environment')]"
           }
         }
       },
