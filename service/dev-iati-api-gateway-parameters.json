@@ -8,6 +8,9 @@
     "ApimGatewayHostname": {
       "value": "dev-api.iatistandard.org"
     },
+    "ApimDevPortalHostname": {
+      "value": "dev-developer.iatistandard.org"
+    },
     "Environment": {
       "value": "dev"
     },

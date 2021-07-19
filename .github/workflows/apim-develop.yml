@@ -18,6 +18,7 @@ jobs:
       resourceGroup: rg-apim-dev
       ApimServiceName: apim-iati-dev
       ApimGatewayHostname: dev-api.iatistandard.org
+      ApimDevPortalHostname: dev-developer.iatistandard.org
       ApimSKU: Developer
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoBranch: ${GITHUB_REF##*/}
@@ -61,7 +62,8 @@ jobs:
               --parameters Environment=${{ env.Environment }} \
               --parameters SubscriptionId=${{ env.SubscriptionId }} \
               --parameters ApimSKU=${{ env.ApimSKU }} \
-              --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} 
+              --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
+              --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} 
 
       - name: Deploy APIs
         working-directory: ./service

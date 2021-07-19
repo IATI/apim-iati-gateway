@@ -10,6 +10,9 @@
       },
       "ApimGatewayHostname": {
           "type": "string"
+      },
+      "ApimDevPortalHostname": {
+          "type": "string"
       }
     },
     "resources": [
@@ -51,6 +54,19 @@
                             "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
                         },
                         "defaultSslBinding": true,
+                        "certificateSource": "Custom"
+                    },
+                    {
+                        "type": "DeveloperPortal",
+                        "hostName": "[parameters('ApimDevPortalHostname')]",
+                        "keyVaultId": "https://kv-iati-prod.vault.azure.net/secrets/cloudflare-origin-cert",
+                        "negotiateClientCertificate": false,
+                        "certificate": {
+                            "expiry": "2036-07-10T11:34:00+00:00",
+                            "thumbprint": "1D6107DFCB5568234EE24246CBAE5277D22A74C7",
+                            "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
+                        },
+                        "defaultSslBinding": false,
                         "certificateSource": "Custom"
                     }
                 ],

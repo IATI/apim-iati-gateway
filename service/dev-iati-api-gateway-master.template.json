@@ -14,6 +14,12 @@
         "description": "Hostname of apim gateway instance"
       }
     },
+    "ApimDevPortalHostname": {
+      "type": "string",
+      "metadata": {
+        "description": "Hostname of apim Developer Portal"
+      }
+    },
     "Environment": {
       "type": "string",
       "metadata": {
@@ -86,6 +92,9 @@
           },
           "ApimGatewayHostname": {
              "value": "[parameters('ApimGatewayHostname')]"
+          },
+          "ApimDevPortalHostname": {
+             "value": "[parameters('ApimDevPortalHostname')]"
           }
         }
       },
