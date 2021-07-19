@@ -8,6 +8,12 @@
         "description": "Name of the API Management"
       }
     },
+    "ApimGatewayHostname": {
+      "type": "string",
+      "metadata": {
+        "description": "Hostname of apim gateway instance"
+      }
+    },
     "Environment": {
       "type": "string",
       "metadata": {
@@ -77,6 +83,9 @@
           },
           "ApimSKU": {
              "value": "[parameters('ApimSKU')]"
+          },
+          "ApimGatewayHostname": {
+             "value": "[parameters('ApimGatewayHostname')]"
           }
         }
       },

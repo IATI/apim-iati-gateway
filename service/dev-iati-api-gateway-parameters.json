@@ -5,6 +5,9 @@
     "ApimServiceName": {
       "value": "dev-iati-api-gateway"
     },
+    "ApimGatewayHostname": {
+      "value": "dev-api.iatistandard.org"
+    },
     "Environment": {
       "value": "dev"
     },
