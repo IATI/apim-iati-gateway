@@ -185,9 +185,6 @@
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
           },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
           "Environment": {
             "value": "[parameters('Environment')]"
           },
