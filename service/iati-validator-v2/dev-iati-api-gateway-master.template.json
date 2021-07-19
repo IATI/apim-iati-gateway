@@ -120,6 +120,29 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/dev-iati-api-gateway-tags.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "PolicyXMLBaseUrl": {
+            "value": "[parameters('PolicyXMLBaseUrl')]"
+          }
+        }
+      },
+      "name": "tagTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/dev-iati-api-gateway-backends.template.json')]",
           "contentVersion": "1.0.0.0"
         },
@@ -168,6 +191,7 @@
         "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]"
       ]
     },
@@ -189,6 +213,36 @@
       "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/dev-iati-api-gateway-apiTags.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "PolicyXMLBaseUrl": {
+            "value": "[parameters('PolicyXMLBaseUrl')]"
+          },
+          "serviceUrl": {
+            "value": "[parameters('serviceUrl')]"
+          },
+          "ApiLoggerId": {
+            "value": "[parameters('ApiLoggerId')]"
+          }
+        }
+      },
+      "name": "apiTagsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
       ]
     }

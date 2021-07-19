@@ -16,6 +16,9 @@
     },
     "Environment": {
       "type": "string"
+    },
+    "UrlEnvPrefix": {
+      "type": "string"
     }
   },
   "resources": [
@@ -76,6 +79,17 @@
       "properties": {
         "displayName": "Environment",
         "value": "[parameters('Environment')]",
+        "tags": [],
+        "secret": false
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/UrlEnvPrefix')]",
+      "properties": {
+        "displayName": "UrlEnvPrefix",
+        "value": "[parameters('UrlEnvPrefix')]",
         "tags": [],
         "secret": false
       }

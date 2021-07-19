@@ -26,6 +26,12 @@
         "description": "Environment thats being deployed to (e.g. dev or PROD)"
       }
     },
+    "UrlEnvPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "URL Environment Prefix to prepend (e.g. dev- or '' for PROD)"
+      }
+    },
     "LinkedTemplatesBaseUrl": {
       "type": "string",
       "metadata": {
@@ -125,6 +131,9 @@
           },
           "Environment": {
             "value": "[parameters('Environment')]"
+          },
+          "UrlEnvPrefix": {
+            "value": "[parameters('UrlEnvPrefix')]"
           }
         }
       },

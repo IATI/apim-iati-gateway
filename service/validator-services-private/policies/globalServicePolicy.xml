@@ -14,7 +14,7 @@
 			<allowed-origins>
 				<origin>https://dev-iati-api-gateway.developer.azure-api.net</origin>
 				<origin>http://localhost:4200/</origin>
-				<origin>https://dev-validator.iatistandard.org/</origin>
+				<origin>https://{{ValidatorHostname}}/</origin>
 			</allowed-origins>
 			<allowed-methods preflight-result-max-age="300">
 				<method>*</method>

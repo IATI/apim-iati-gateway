@@ -14,6 +14,7 @@ jobs:
 
     env:
       Environment: dev
+      UrlEnvPrefix: dev-
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       resourceGroup: rg-apim-dev
       ApimServiceName: apim-iati-dev
@@ -60,6 +61,7 @@ jobs:
               --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
               --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
               --parameters Environment=${{ env.Environment }} \
+              --parameters UrlEnvPrefix=${{ env.UrlEnvPrefix }} \
               --parameters SubscriptionId=${{ env.SubscriptionId }} \
               --parameters ApimSKU=${{ env.ApimSKU }} \
               --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
@@ -84,7 +86,8 @@ jobs:
                --parameters ./$f/$apiNamePrefix-parameters.json \
                --parameters ApimServiceName=${{ env.ApimServiceName }} \
                --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f \
-               --parameters Environment=${{ env.Environment }}
+               --parameters Environment=${{ env.Environment }} \
+               --parameters UrlEnvPrefix=${{ env.UrlEnvPrefix }}
 
             fi
           done

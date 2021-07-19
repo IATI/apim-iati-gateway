@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
@@ -14,6 +14,9 @@
     "Environment": {
       "value": "dev"
     },
+    "UrlEnvPrefix": {
+      "value": "dev-"
+    },
     "LinkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/"
     },
@@ -27,7 +30,6 @@
       "value": {
         "iativalidatorv2": null,
         "solr": "https://default-iati-prod-solrcloud.solr.iatistandard.org",
-        "devfuncvalidatorservices": null,
         "validatorservicesprivate": null
       }
     },

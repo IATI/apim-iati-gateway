@@ -18,7 +18,7 @@
   "resources": [
     {
       "properties": {
-        "description": "Public API to Validate IATI XML",
+        "description": "IATI's public validation API. Provides routes related to the validation of IATI XML.",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
         },
@@ -353,6 +353,82 @@
     {
       "properties": {
         "templateParameters": [],
+        "description": "Get an existing validation report of a published IATI document known to the IATI Registry by passing either the id, hash or URL of the document, as available from the Registry API.",
+        "request": {
+          "queryParameters": [
+            {
+              "name": "id",
+              "description": "id of the published document for which you want a validation report, as provided by the Registry API",
+              "type": "string",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "url",
+              "description": "url of the published document for which you want a validation report, as provided by the Registry API",
+              "type": "string",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "hash",
+              "description": "hash of the published document for which you want a validation report, as provided by the Registry API",
+              "type": "string",
+              "required": false,
+              "values": []
+            }
+          ],
+          "headers": [
+            {
+              "name": "Accept",
+              "type": "string",
+              "defaultValue": "application/json",
+              "required": false,
+              "values": [
+                "application/json"
+              ]
+            }
+          ],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Existing Report",
+        "method": "GET",
+        "urlTemplate": "/report"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/iati-validator-v2-get-pub-get-report-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "validator"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/validator')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
         "description": "This route allows the user to POST an IATI document to the Validator in the body of the request, and receive a JSON validation report in the response.\n",
         "request": {
           "description": "IATI document (activities or organisations)",
@@ -441,7 +517,7 @@
             "representations": []
           }
         ],
-        "displayName": "validate",
+        "displayName": "Validate",
         "method": "POST",
         "urlTemplate": "/validate"
       },
@@ -466,7 +542,34 @@
       ]
     },
     {
+      "properties": {
+        "displayName": "validator"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post/validator')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'post-pub-validate-post')]"
+      ]
+    },
+    {
       "name": "[concat(parameters('ApimServiceName'), '/api-preview-testing/iati-validator-v2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [

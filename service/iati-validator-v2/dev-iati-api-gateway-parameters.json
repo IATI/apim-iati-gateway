@@ -17,7 +17,9 @@
       }
     },
     "NamedValues": {
-      "value": {}
+      "value": {
+        "ValidatorHostname": "dev-validator.iatistandard.org"
+      }
     },
     "ApiLoggerId": {
       "value": {}

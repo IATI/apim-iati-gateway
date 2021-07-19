@@ -59,6 +59,17 @@
       "name": "[concat(parameters('ApimServiceName'), '/pw-solr-admin-PROD')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "ValidatorHostname",
+        "value": "[parameters('NamedValues').ValidatorHostname]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/ValidatorHostname')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
     }
   ]
 }

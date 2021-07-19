@@ -13,7 +13,7 @@
     {
       "properties": {
         "description": "dev-func-validator-services",
-        "resourceId": "https://management.azure.com/subscriptions/bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9/resourceGroups/dev-func-validator-services/providers/Microsoft.Web/sites/dev-func-validator-services",
+        "resourceId": "https://management.azure.com/subscriptions/bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9/resourceGroups/rg-validator-services-dev/providers/Microsoft.Web/sites/dev-func-validator-services",
         "credentials": {
           "header": {
             "x-functions-key": [

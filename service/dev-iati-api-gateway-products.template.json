@@ -66,6 +66,73 @@
     },
     {
       "properties": {
+        "description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week. No approval is required.",
+        "subscriptionRequired": true,
+        "approvalRequired": false,
+        "subscriptionsLimit": 1,
+        "state": "notPublished",
+        "displayName": "Exploratory"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory')]",
+      "type": "Microsoft.ApiManagement/service/products",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
+        "displayName": "Administrators",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/administrators')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'exploratory')]"
+      ]
+    },
+    {
+      "properties": {
+        "description": "Developers is a built-in group. Its membership is managed by the system. Signed-in users fall into this group.",
+        "displayName": "Developers",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/developers')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'exploratory')]"
+      ]
+    },
+    {
+      "properties": {
+        "description": "Guests is a built-in group. Its membership is managed by the system. Unauthenticated users visiting the developer portal fall into this group.",
+        "displayName": "Guests",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/guests')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'exploratory')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/exploratory-productPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/policy')]",
+      "type": "Microsoft.ApiManagement/service/products/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'exploratory')]"
+      ]
+    },
+    {
+      "properties": {
         "description": "Subscribers have unlimited access to Public IATI APIs with high rate limits. \nIATI Technical Team approval is required.",
         "subscriptionRequired": true,
         "approvalRequired": true,
@@ -121,81 +188,14 @@
     },
     {
       "properties": {
-        "description": "IATI API routes that don't require any authentication",
-        "subscriptionRequired": false,
-        "state": "published",
-        "displayName": "No Authentication"
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/unlimited-productPolicy.xml')]",
+        "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/no-authentication')]",
-      "type": "Microsoft.ApiManagement/service/products",
-      "apiVersion": "2021-01-01-preview"
-    },
-    {
-      "properties": {
-        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
-        "displayName": "Administrators",
-        "type": "system",
-        "builtIn": true
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/no-authentication/administrators')]",
-      "type": "Microsoft.ApiManagement/service/products/groups",
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/policy')]",
+      "type": "Microsoft.ApiManagement/service/products/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'no-authentication')]"
-      ]
-    },
-    {
-      "properties": {
-        "description": "Developers is a built-in group. Its membership is managed by the system. Signed-in users fall into this group.",
-        "displayName": "Developers",
-        "type": "system",
-        "builtIn": true
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/no-authentication/developers')]",
-      "type": "Microsoft.ApiManagement/service/products/groups",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'no-authentication')]"
-      ]
-    },
-    {
-      "properties": {
-        "description": "Guests is a built-in group. Its membership is managed by the system. Unauthenticated users visiting the developer portal fall into this group.",
-        "displayName": "Guests",
-        "type": "system",
-        "builtIn": true
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/no-authentication/guests')]",
-      "type": "Microsoft.ApiManagement/service/products/groups",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'no-authentication')]"
-      ]
-    },
-    {
-      "properties": {
-        "description": "Private routes for internal use only by the IATI Unified Platform",
-        "subscriptionRequired": true,
-        "approvalRequired": false,
-        "state": "notPublished",
-        "displayName": "Private Routes"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/private-routes')]",
-      "type": "Microsoft.ApiManagement/service/products",
-      "apiVersion": "2021-01-01-preview"
-    },
-    {
-      "properties": {
-        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
-        "displayName": "Administrators",
-        "type": "system",
-        "builtIn": true
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/private-routes/administrators')]",
-      "type": "Microsoft.ApiManagement/service/products/groups",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'private-routes')]"
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'unlimited')]"
       ]
     }
   ]
