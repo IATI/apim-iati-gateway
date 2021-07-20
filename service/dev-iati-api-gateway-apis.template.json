@@ -10,9 +10,6 @@
     },
     "serviceUrl": {
       "type": "object"
-    },
-    "ApiLoggerId": {
-      "type": "object"
     }
   },
   "resources": [
@@ -32,9 +29,7 @@
         "displayName": "IATI Validator V2",
         "serviceUrl": "[parameters('serviceUrl').iativalidatorv2]",
         "path": "validator",
-        "protocols": [
-          "https"
-        ]
+        "protocols": ["https"]
       },
       "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/apis",
@@ -110,12 +105,7 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "id",
-                            "severity",
-                            "category",
-                            "message"
-                          ]
+                          "required": ["id", "severity", "category", "message"]
                         }
                       }
                     }
@@ -268,12 +258,7 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "id",
-                            "severity",
-                            "category",
-                            "message"
-                          ]
+                          "required": ["id", "severity", "category", "message"]
                         }
                       }
                     }
@@ -327,12 +312,7 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "id",
-                            "severity",
-                            "category",
-                            "message"
-                          ]
+                          "required": ["id", "severity", "category", "message"]
                         }
                       }
                     }
@@ -384,9 +364,7 @@
               "type": "string",
               "defaultValue": "application/json",
               "required": false,
-              "values": [
-                "application/json"
-              ]
+              "values": ["application/json"]
             }
           ],
           "representations": []
@@ -438,18 +416,14 @@
               "name": "Content-Type",
               "type": "string",
               "required": false,
-              "values": [
-                "application/xml"
-              ]
+              "values": ["application/xml"]
             },
             {
               "name": "Accept",
               "type": "string",
               "defaultValue": "application/json",
               "required": false,
-              "values": [
-                "application/json"
-              ]
+              "values": ["application/json"]
             }
           ],
           "representations": [
@@ -592,9 +566,7 @@
         "displayName": "SOLR Private",
         "serviceUrl": "[parameters('serviceUrl').solr]",
         "path": "solr",
-        "protocols": [
-          "https"
-        ]
+        "protocols": ["https"]
       },
       "name": "[concat(parameters('ApimServiceName'), '/solr')]",
       "type": "Microsoft.ApiManagement/service/apis",
@@ -669,9 +641,7 @@
         "displayName": "Validator Services Private",
         "serviceUrl": "[parameters('serviceUrl').validatorservicesprivate]",
         "path": "vs",
-        "protocols": [
-          "https"
-        ]
+        "protocols": ["https"]
       },
       "name": "[concat(parameters('ApimServiceName'), '/validator-services-private')]",
       "type": "Microsoft.ApiManagement/service/apis",

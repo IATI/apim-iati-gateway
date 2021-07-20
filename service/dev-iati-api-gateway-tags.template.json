@@ -4,9 +4,6 @@
   "parameters": {
     "ApimServiceName": {
       "type": "string"
-    },
-    "PolicyXMLBaseUrl": {
-      "type": "string"
     }
   },
   "resources": [

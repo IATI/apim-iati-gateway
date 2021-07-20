@@ -4,15 +4,6 @@
   "parameters": {
     "ApimServiceName": {
       "type": "string"
-    },
-    "PolicyXMLBaseUrl": {
-      "type": "string"
-    },
-    "serviceUrl": {
-      "type": "object"
-    },
-    "ApiLoggerId": {
-      "type": "object"
     }
   },
   "resources": [

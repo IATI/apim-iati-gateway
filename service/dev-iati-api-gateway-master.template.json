@@ -199,9 +199,6 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
           }
         }
       },
@@ -256,9 +253,6 @@
           },
           "serviceUrl": {
             "value": "[parameters('serviceUrl')]"
-          },
-          "ApiLoggerId": {
-            "value": "[parameters('ApiLoggerId')]"
           }
         }
       },
@@ -306,15 +300,6 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "serviceUrl": {
-            "value": "[parameters('serviceUrl')]"
-          },
-          "ApiLoggerId": {
-            "value": "[parameters('ApiLoggerId')]"
           }
         }
       },
