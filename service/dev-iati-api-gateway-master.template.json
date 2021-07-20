@@ -101,6 +101,9 @@
           },
           "ApimDevPortalHostname": {
              "value": "[parameters('ApimDevPortalHostname')]"
+          },
+          "Environment": {
+             "value": "[parameters('Environment')]"
           }
         }
       },
