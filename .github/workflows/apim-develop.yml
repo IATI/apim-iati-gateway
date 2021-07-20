@@ -51,7 +51,7 @@ jobs:
           PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
           deploymentName: --name GH_dev_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
-          apiNamePrefix: dev-iati-api-gateway
+          apiNamePrefix: apim-iati-dev
         run: |
           az deployment group create ${{env.deploymentName}} \
             ${{env.rg}} \

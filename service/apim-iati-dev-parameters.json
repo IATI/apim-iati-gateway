@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
-      "value": "dev-iati-api-gateway"
+      "value": "apim-iati-dev"
     },
     "ApimGatewayHostname": {
       "value": "dev-api.iatistandard.org"
