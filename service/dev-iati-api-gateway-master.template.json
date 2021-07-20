@@ -94,16 +94,16 @@
             "value": "[parameters('ApimServiceName')]"
           },
           "ApimSKU": {
-             "value": "[parameters('ApimSKU')]"
+            "value": "[parameters('ApimSKU')]"
           },
           "ApimGatewayHostname": {
-             "value": "[parameters('ApimGatewayHostname')]"
+            "value": "[parameters('ApimGatewayHostname')]"
           },
           "ApimDevPortalHostname": {
-             "value": "[parameters('ApimDevPortalHostname')]"
+            "value": "[parameters('ApimDevPortalHostname')]"
           },
           "Environment": {
-             "value": "[parameters('Environment')]"
+            "value": "[parameters('Environment')]"
           }
         }
       },
@@ -122,12 +122,6 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "NamedValues": {
-            "value": "[parameters('NamedValues')]"
           },
           "ApimDevPortalHostname": {
             "value": "[parameters('ApimDevPortalHostname')]"

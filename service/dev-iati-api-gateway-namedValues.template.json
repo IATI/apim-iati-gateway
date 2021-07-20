@@ -5,12 +5,6 @@
     "ApimServiceName": {
       "type": "string"
     },
-    "PolicyXMLBaseUrl": {
-      "type": "string"
-    },
-    "NamedValues": {
-      "type": "object"
-    },
     "ApimDevPortalHostname": {
       "type": "string"
     },
@@ -26,12 +20,12 @@
       "properties": {
         "tags": ["key", "function", "auto"],
         "secret": true,
-        "displayName": "dev-func-validator-services-key",
+        "displayName": "[concat(parameters('Environment'), '-func-validator-services-key')]",
         "keyVault": {
-          "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/host--functionKey--default"
+          "secretIdentifier": "[concat('https://kv-iati-',parameters('Environment'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/dev-func-validator-services-key')]",
+      "name": "[concat(parameters('ApimServiceName'), '/', parameters('Environment'),'-func-validator-services-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -39,18 +33,18 @@
       "properties": {
         "tags": ["key", "function", "auto"],
         "secret": true,
-        "displayName": "func-iativalidator-dev-key",
+        "displayName": "[concat('func-iativalidator-', parameters('Environment'), '-key')]",
         "keyVault": {
-          "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/host--functionKey--default"
+          "secretIdentifier": "[concat('https://kv-iati-',parameters('Environment'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-dev-key')]",
+      "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
     {
       "properties": {
-        "tags": [],
+        "tags": ["key"],
         "secret": true,
         "displayName": "pw-solr-admin-PROD",
         "keyVault": {
@@ -68,7 +62,7 @@
       "properties": {
         "displayName": "ApimDevPortalHostname",
         "value": "[parameters('ApimDevPortalHostname')]",
-        "tags": [],
+        "tags": ["policy"],
         "secret": false
       }
     },
@@ -79,7 +73,7 @@
       "properties": {
         "displayName": "Environment",
         "value": "[parameters('Environment')]",
-        "tags": [],
+        "tags": ["policy"],
         "secret": false
       }
     },
@@ -90,7 +84,7 @@
       "properties": {
         "displayName": "UrlEnvPrefix",
         "value": "[parameters('UrlEnvPrefix')]",
-        "tags": [],
+        "tags": ["policy"],
         "secret": false
       }
     }
