@@ -34,15 +34,6 @@ jobs:
         with:
           creds: ${{ secrets.DEV_AZURE_CREDENTIALS }}
 
-      # - name: "Validate ARM Template for Deployment"
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     subscriptionId: $${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      #     resourceGroupName: $${{ env.resourceGroup }}
-      #     template: ./${{ env.repoApimPath }}/dev-iati-api-gateway-master.template.json
-      #     parameters: ./${{ env.repoApimPath }}/dev-iati-api-gateway-parameters.json
-      #     deploymentMode: Validate
-
       # ARM deployment tasks
       - name: Deploy APIM Service and APIs
         working-directory: ./service
@@ -66,28 +57,3 @@ jobs:
             --parameters ApimSKU=${{ env.ApimSKU }} \
             --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
             --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }}
-
-      # - name: Deploy APIs
-      #   working-directory: ./service
-      #   env:
-      #     LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
-      #     PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
-      #     deploymentName: --name GH_dev_deployment_api
-      #     rg: --resource-group ${{ env.resourceGroup }}
-      #     apiNamePrefix: dev-iati-api-gateway
-      #   run: |
-      #     echo $apiNamePrefix
-      #     for f in *; do
-      #       if [[ ! -n "policies" && -d ${f} && ! -L ${f} ]]; then
-      #         echo "Deploying API: $f"
-      #         az deployment group create $deploymentName \
-      #          $rg \
-      #          --template-file ./$f/$apiNamePrefix-master.template.json \
-      #          --parameters ./$f/$apiNamePrefix-parameters.json \
-      #          --parameters ApimServiceName=${{ env.ApimServiceName }} \
-      #          --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }}/$f \
-      #          --parameters Environment=${{ env.Environment }} \
-      #          --parameters UrlEnvPrefix=${{ env.UrlEnvPrefix }}
-
-      #       fi
-      #     done
