@@ -17,6 +17,7 @@ jobs:
       UrlEnvPrefix: dev-
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       resourceGroup: rg-apim-dev
+      AZURE_CREDENTIALS: ${{ secrets.DEV_AZURE_CREDENTIALS }}
       ApimServiceName: apim-iati-dev
       ApimGatewayHostname: dev-api.iatistandard.org
       ApimDevPortalHostname: dev-developer.iatistandard.org
@@ -32,7 +33,7 @@ jobs:
       - name: "Login to Azure"
         uses: azure/login@v1.3.0
         with:
-          creds: ${{ secrets.DEV_AZURE_CREDENTIALS }}
+          creds: ${{ env.AZURE_CREDENTIALS }}
 
       # ARM deployment tasks
       - name: Deploy APIM Service and APIs
