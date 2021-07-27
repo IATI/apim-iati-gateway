@@ -34,7 +34,11 @@
       }
     },
     "NamedValues": {
-      "value": {}
+      "value": {
+        "ApimDevPortalHostname": "dev-developer.iatistandard.org",
+        "Environment": "dev",
+        "UrlEnvPrefix": "dev-"
+      }
     },
     "ApiLoggerId": {
       "value": {}
@@ -45,5 +49,6 @@
     "ApimSKU": {
       "value": "Developer"
     }
-  }
+  },
+  "resources": []
 }

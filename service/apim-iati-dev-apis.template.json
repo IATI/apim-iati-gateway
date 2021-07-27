@@ -428,8 +428,7 @@
           ],
           "representations": [
             {
-              "contentType": "application/xml",
-              "sample": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<iati-organisations version=\"2.02\" generated-datetime=\"2018-11-07T05:25:55+00:00\">\n    <iati-organisation last-updated-datetime=\"2018-11-07T05:25:55+00:00\" xml:lang=\"en\" default-currency=\"NPR\" xmlns:aidstream=\"http://example.org/aidstream/ns#\">\n        <organisation-identifier>NP-SWC-1234</organisation-identifier>\n        <name>\n            <narrative>Test Org Nepal</narrative>\n        </name>\n        <reporting-org type=\"24\" ref=\"NP-SWC-1234\">\n            <narrative>Test Org Nepal</narrative>\n        </reporting-org>\n    </iati-organisation>\n</iati-organisations>"
+              "contentType": "application/xml"
             }
           ]
         },
@@ -441,19 +440,19 @@
             "representations": [
               {
                 "contentType": "application/json",
-                "sample": "{\n    \"error\": \"No body\"\n}",
+                "sample": "{\r\n  \"error\": \"string\"\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "No Body Error"
               },
               {
                 "contentType": "application/json",
-                "sample": "{\n  \"error\": \"string\"\n}",
+                "sample": "{\r\n  \"error\": \"string\"\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Malformed Body Error"
               },
               {
                 "contentType": "application/json",
-                "sample": "{\n  \"valid\": false,\n  \"fileType\": \"string\",\n  \"iatiVersion\": \"string\",\n  \"summary\": {\n    \"critical\": 0,\n    \"error\": 0,\n    \"warning\": 0\n  },\n  \"errors\": {\n    \"file\": [\n      {\n        \"id\": \"string\",\n        \"severity\": \"string\",\n        \"category\": \"string\",\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+                "sample": "{\r\n  \"valid\": false,\r\n  \"fileType\": \"string\",\r\n  \"iatiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": {\r\n    \"file\": [\r\n      {\r\n        \"id\": \"string\",\r\n        \"severity\": \"string\",\r\n        \"category\": \"string\",\r\n        \"message\": \"string\"\r\n      }\r\n    ]\r\n  }\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Invalid XML Error"
               }
@@ -466,19 +465,19 @@
             "representations": [
               {
                 "contentType": "application/json",
-                "sample": "{\n  \"valid\": false,\n  \"fileType\": \"string\",\n  \"iatiVersion\": \"string\",\n  \"summary\": {\n    \"critical\": 0,\n    \"error\": 0,\n    \"warning\": 0\n  },\n  \"errors\": {\n    \"file\": [\n      {\n        \"id\": \"string\",\n        \"severity\": \"string\",\n        \"category\": \"string\",\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+                "sample": "{\r\n  \"valid\": true,\r\n  \"fileType\": \"string\",\r\n  \"iatiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": {\r\n    \"file\": [\r\n      {\r\n        \"id\": \"string\",\r\n        \"severity\": \"string\",\r\n        \"category\": \"string\",\r\n        \"message\": \"string\"\r\n      }\r\n    ]\r\n  }\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Valid XML but Not IATI"
               },
               {
                 "contentType": "application/json",
-                "sample": "{\n  \"valid\": false,\n  \"fileType\": \"string\",\n  \"iatiVersion\": \"string\",\n  \"summary\": {\n    \"critical\": 0,\n    \"error\": 0,\n    \"warning\": 0\n  },\n  \"errors\": {\n    \"file\": [\n      {\n        \"id\": \"string\",\n        \"severity\": \"string\",\n        \"category\": \"string\",\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+                "sample": "{\r\n  \"valid\": true,\r\n  \"fileType\": \"string\",\r\n  \"iatiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": {\r\n    \"file\": [\r\n      {\r\n        \"id\": \"string\",\r\n        \"severity\": \"string\",\r\n        \"category\": \"string\",\r\n        \"message\": \"string\"\r\n      }\r\n    ]\r\n  }\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Unsupported IATI Version"
               },
               {
                 "contentType": "application/json",
-                "sample": "{\n  \"valid\": false,\n  \"fileType\": \"string\",\n  \"iatiVersion\": \"string\",\n  \"summary\": {\n    \"critical\": 0,\n    \"error\": 0,\n    \"warning\": 0\n  },\n  \"errors\": {\n    \"file\": [\n      {\n        \"id\": \"string\",\n        \"category\": \"string\",\n        \"message\": \"string\",\n        \"domain\": 0,\n        \"code\": 0,\n        \"level\": 0,\n        \"column\": 0,\n        \"line\": 0,\n        \"str1\": \"string\"\n      }\n    ]\n  }\n}",
+                "sample": "{\r\n  \"valid\": true,\r\n  \"fileType\": \"string\",\r\n  \"iatiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": {\r\n    \"file\": [\r\n      {\r\n        \"id\": \"string\",\r\n        \"category\": \"string\",\r\n        \"message\": \"string\",\r\n        \"domain\": 0,\r\n        \"code\": 0,\r\n        \"level\": 0,\r\n        \"column\": 0,\r\n        \"line\": 0,\r\n        \"str1\": \"string\"\r\n      }\r\n    ]\r\n  }\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Schema Error"
               }
@@ -679,6 +678,46 @@
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator-services-private', 'get-pub-get-report')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "version",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "pvt-get-guidance-links",
+        "method": "GET",
+        "urlTemplate": "/pvt/guidance-links/{version}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/validator-services-private/get-pvt-get-guidance-links')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator-services-private')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/validator-services-private-get-pvt-get-guidance-links-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/validator-services-private/get-pvt-get-guidance-links/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator-services-private', 'get-pvt-get-guidance-links')]"
       ]
     },
     {
