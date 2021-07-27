@@ -103,8 +103,7 @@
             "value": "[parameters('ApimSKU')]"
           },
           "ApimCapacity": {
-            "value": "[parameters('ApimCapacity')]",
-            "type": "int"
+            "value": "[parameters('ApimCapacity')]"
           },
           "ApimGatewayHostname": {
             "value": "[parameters('ApimGatewayHostname')]"
