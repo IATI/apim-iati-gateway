@@ -50,8 +50,7 @@
       "value": "Developer"
     },
     "ApimCapacity": {
-      "value": 2,
-      "type": "int"
+      "value": 1
     }
   },
   "resources": []
