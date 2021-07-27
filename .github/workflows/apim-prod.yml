@@ -39,7 +39,7 @@ jobs:
         env:
           LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
           PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
-          deploymentName: --name GH_dev_deployment_apim
+          deploymentName: --name GH_PROD_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
         run: |

@@ -48,33 +48,33 @@
             "negotiateClientCertificate": false,
             "defaultSslBinding": true,
             "certificateSource": "BuiltIn"
-          },
-          {
-            "type": "Proxy",
-            "hostName": "[parameters('ApimGatewayHostname')]",
-            "keyVaultId": "https://kv-iati-prod.vault.azure.net/secrets/cloudflare-origin-cert",
-            "negotiateClientCertificate": false,
-            "certificate": {
-              "expiry": "2036-07-10T11:34:00+00:00",
-              "thumbprint": "1D6107DFCB5568234EE24246CBAE5277D22A74C7",
-              "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
-            },
-            "defaultSslBinding": true,
-            "certificateSource": "Custom"
-          },
-          {
-            "type": "DeveloperPortal",
-            "hostName": "[parameters('ApimDevPortalHostname')]",
-            "keyVaultId": "https://kv-iati-prod.vault.azure.net/secrets/cloudflare-origin-cert",
-            "negotiateClientCertificate": false,
-            "certificate": {
-              "expiry": "2036-07-10T11:34:00+00:00",
-              "thumbprint": "1D6107DFCB5568234EE24246CBAE5277D22A74C7",
-              "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
-            },
-            "defaultSslBinding": false,
-            "certificateSource": "Custom"
           }
+          //   {
+          //     "type": "Proxy",
+          //     "hostName": "[parameters('ApimGatewayHostname')]",
+          //     "keyVaultId": "https://kv-iati-prod.vault.azure.net/secrets/cloudflare-origin-cert",
+          //     "negotiateClientCertificate": false,
+          //     "certificate": {
+          //       "expiry": "2036-07-10T11:34:00+00:00",
+          //       "thumbprint": "1D6107DFCB5568234EE24246CBAE5277D22A74C7",
+          //       "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
+          //     },
+          //     "defaultSslBinding": true,
+          //     "certificateSource": "Custom"
+          //   },
+          //   {
+          //     "type": "DeveloperPortal",
+          //     "hostName": "[parameters('ApimDevPortalHostname')]",
+          //     "keyVaultId": "https://kv-iati-prod.vault.azure.net/secrets/cloudflare-origin-cert",
+          //     "negotiateClientCertificate": false,
+          //     "certificate": {
+          //       "expiry": "2036-07-10T11:34:00+00:00",
+          //       "thumbprint": "1D6107DFCB5568234EE24246CBAE5277D22A74C7",
+          //       "subject": "CN=CloudFlare Origin Certificate, OU=CloudFlare Origin CA, O=\"CloudFlare, Inc.\""
+          //     },
+          //     "defaultSslBinding": false,
+          //     "certificateSource": "Custom"
+          //   }
         ],
         "customProperties": {
           "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "false",
