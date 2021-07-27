@@ -48,6 +48,9 @@
     },
     "ApimSKU": {
       "value": "Developer"
+    },
+    "ApimCapacity": {
+      "value": 2
     }
   },
   "resources": []

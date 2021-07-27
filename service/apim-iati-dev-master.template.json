@@ -79,6 +79,12 @@
       "metadata": {
         "description": "SKU of the APIM Instance"
       }
+    },
+    "ApimCapacity": {
+      "type": "string",
+      "metadata": {
+        "description": "Capacity of the APIM Instance"
+      }
     }
   },
   "resources": [
@@ -95,6 +101,9 @@
           },
           "ApimSKU": {
             "value": "[parameters('ApimSKU')]"
+          },
+          "ApimCapacity": {
+            "value": "[parameters('ApimCapacity')]"
           },
           "ApimGatewayHostname": {
             "value": "[parameters('ApimGatewayHostname')]"
