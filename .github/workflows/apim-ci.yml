@@ -1,4 +1,4 @@
-name: Validate_APIM_On_PR
+name: Validate_APIM_On_PR_to_Dev
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ jobs:
       ApimSKU: Developer
       ApimCapacity: 1
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
-      repoBranch: ${GITHUB_REF##*/}
+      repoBranch: develop
       repoApimPath: service
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
 
