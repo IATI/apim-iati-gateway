@@ -119,12 +119,6 @@
           },
           "Environment": {
             "value": "[parameters('Environment')]"
-          },
-          "SubscriptionId": {
-            "value": "[parameters('SubscriptionId')]"
-          },
-          "RedisConnectionString": {
-            "value": "[parameters('RedisConnectionString')]"
           }
         }
       },
