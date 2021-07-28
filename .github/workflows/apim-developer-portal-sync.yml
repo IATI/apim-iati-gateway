@@ -9,6 +9,8 @@ jobs:
 
     env:
       NODE_VERSION: 14
+      RESOURCE_GROUP: rg-apim
+      SERVICE_NAME: apim-iati
       SOURCE_ENV: dev
       TARGET_ENV: prod
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
@@ -38,9 +40,9 @@ jobs:
         working-directory: ./scripts.v3
         run: |
           node ./migrate \
-            --sourceSubscriptionId $SubscriptionId \
-            --sourceResourceGroupName "rg-apim-"$SOURCE_ENV \
-            --sourceServiceName "apim-iati-"$SOURCE_ENV \
-            --destSubscriptionId $SubscriptionId \
-            --destResourceGroupName "rg-apim-"$TARGET_ENV \
-            --destServiceName "apim-iati-"TARGET_ENV
+            --sourceSubscriptionId ${{ env.SubscriptionId }} \
+            --sourceResourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.SOURCE_ENV }} \
+            --sourceServiceName ${{ env.SERVICE_NAME }}-${{ env.SOURCE_ENV }} \
+            --destSubscriptionId ${{ env.SubscriptionId }} \
+            --destResourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.TARGET_ENV }} \
+            --destServiceName ${{ env.SERVICE_NAME }}-${{ env.TARGET_ENV }}
