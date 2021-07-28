@@ -6,7 +6,7 @@ on:
     types: [published]
 
 jobs:
-  validate-deploy-apim:
+  deploy-apim-prod:
     runs-on: ubuntu-latest
 
     env:

@@ -9,7 +9,7 @@ on:
       - ".github/workflows/apim-develop.yml"
 
 jobs:
-  validate-deploy-apim:
+  deploy-apim-dev:
     runs-on: ubuntu-latest
 
     env:
