@@ -25,7 +25,6 @@ jobs:
       ApimSKU: Developer
       ApimCapacity: 1
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
-      repoBranch: ${{ env.GITHUB_HEAD_REF }}
       repoApimPath: service
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
 
@@ -42,8 +41,8 @@ jobs:
       - name: Validate APIM ARM Templates with what-if
         working-directory: ./service
         env:
-          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
-          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.GITHUB_HEAD_REF }}/${{ env.repoApimPath }}
+          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.GITHUB_HEAD_REF }}/${{ env.repoApimPath }}/policies
           deploymentName: --name GH_what_if_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
