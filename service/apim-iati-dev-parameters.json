@@ -23,6 +23,9 @@
     "PolicyXMLBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
     },
+    "SubscriptionId": {
+      "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
+    },
     "serviceUrl": {
       "value": {
         "iativalidatorv2": null,
@@ -48,6 +51,9 @@
     },
     "ApimCapacity": {
       "value": 1
+    },
+    "RedisConnectionString": {
+      "value": "placeholderstring"
     }
   }
 }
