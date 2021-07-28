@@ -23,6 +23,7 @@ jobs:
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: service
+      RedisConnectionString: ${{ secrets.PROD_REDIS_CONNECTION_STRING }}
 
     steps:
       - name: "Checkout GitHub Action"
@@ -56,4 +57,5 @@ jobs:
             --parameters ApimSKU=${{ env.ApimSKU }} \
             --parameters ApimCapacity=${{ env.ApimCapacity }} \
             --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
-            --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }}
+            --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
+            --parameters RedisConnectionString=${{ env.RedisConnectionString }}
