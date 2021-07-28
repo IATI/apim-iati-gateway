@@ -1,0 +1,65 @@
+name: Validate_APIM_On_PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - "service/**"
+      - ".github/workflows/apim-ci.yml"
+      - ".github/workflows/apim-develop.yml"
+
+jobs:
+  validate-apim:
+    runs-on: ubuntu-latest
+
+    env:
+      Environment: dev
+      UrlEnvPrefix: dev-
+      SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      resourceGroup: rg-apim-dev
+      AZURE_CREDENTIALS: ${{ secrets.DEV_AZURE_CREDENTIALS }}
+      ApimServiceName: apim-iati-dev
+      ApimGatewayHostname: dev-api.iatistandard.org
+      ApimDevPortalHostname: dev-developer.iatistandard.org
+      ApimSKU: Developer
+      ApimCapacity: 1
+      repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
+      repoBranch: ${GITHUB_REF##*/}
+      repoApimPath: service
+      RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
+
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v2
+
+      - name: "Login to Azure"
+        uses: azure/login@v1.3.0
+        with:
+          creds: ${{ env.AZURE_CREDENTIALS }}
+
+      # ARM deployment tasks
+      - name: Deploy APIM Service and APIs
+        working-directory: ./service
+        env:
+          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
+          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+          deploymentName: --name GH_what_if_deployment_apim
+          rg: --resource-group ${{ env.resourceGroup }}
+          apiNamePrefix: apim-iati-dev
+        run: |
+          az deployment group what-if ${{env.deploymentName}} \
+            ${{env.rg}} \
+            --template-file ./${{env.apiNamePrefix}}-master.template.json \
+            --parameters ./${{env.apiNamePrefix}}-parameters.json \
+            --parameters ApimServiceName=${{ env.ApimServiceName }} \
+            --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
+            --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
+            --parameters Environment=${{ env.Environment }} \
+            --parameters UrlEnvPrefix=${{ env.UrlEnvPrefix }} \
+            --parameters SubscriptionId=${{ env.SubscriptionId }} \
+            --parameters ApimSKU=${{ env.ApimSKU }} \
+            --parameters ApimCapacity=${{ env.ApimCapacity }} \
+            --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
+            --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
+            --parameters RedisConnectionString=${{ env.RedisConnectionString }}
