@@ -18,10 +18,10 @@
       "value": "dev-"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/"
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/"
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
     },
     "SubscriptionId": {
       "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
@@ -53,7 +53,7 @@
       "value": 1
     },
     "RedisConnectionString": {
-      "value": {}
+      "value": "placeholderstring"
     }
   }
 }
