@@ -53,8 +53,7 @@
       "value": 1
     },
     "RedisConnectionString": {
-      "value": ""
+      "value": {}
     }
-  },
-  "resources": []
+  }
 }
