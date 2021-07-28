@@ -85,6 +85,12 @@
       "metadata": {
         "description": "Capacity of the APIM Instance"
       }
+    },
+    "RedisConnectionString": {
+      "type": "string",
+      "metadata": {
+        "description": "Connection string for external redis cache"
+      }
     }
   },
   "resources": [
@@ -113,6 +119,12 @@
           },
           "Environment": {
             "value": "[parameters('Environment')]"
+          },
+          "SubscriptionId": {
+            "value": "[parameters('SubscriptionId')]"
+          },
+          "RedisConnectionString": {
+            "value": "[parameters('RedisConnectionString')]"
           }
         }
       },
