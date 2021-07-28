@@ -18,8 +18,8 @@ jobs:
       ApimServiceName: apim-iati-PROD
       ApimGatewayHostname: api.iatistandard.org
       ApimDevPortalHostname: developer.iatistandard.org
-      ApimSKU: Standard
-      ApimCapacity: 2
+      ApimSKU: Basic
+      ApimCapacity: 1 # Basic - max 2
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: service
@@ -39,7 +39,7 @@ jobs:
         env:
           LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
           PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
-          deploymentName: --name GH_dev_deployment_apim
+          deploymentName: --name GH_PROD_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
         run: |
