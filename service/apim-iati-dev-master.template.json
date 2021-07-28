@@ -137,6 +137,35 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-caches.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "Environment": {
+            "value": "[parameters('Environment')]"
+          },
+          "SubscriptionId": {
+            "value": "[parameters('SubscriptionId')]"
+          },
+          "RedisConnectionString": {
+            "value": "[parameters('RedisConnectionString')]"
+          }
+        }
+      },
+      "name": "cachesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', parameters('ApimServiceName'))]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-namedValues.template.json')]",
           "contentVersion": "1.0.0.0"
         },

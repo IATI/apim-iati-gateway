@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "Environment": {
+      "type": "string"
+    },
+    "RedisConnectionString": {
+      "type": "string"
+    },
+    "SubscriptionId": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ApiManagement/service/caches",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/uksouth')]",
+      "properties": {
+        "useFromLocation": "uksouth",
+        "description": "[concat('redis-iati-',parameters('Environment'),'.redis.cache.windows.net')]",
+        "connectionString": "[parameters('RedisConnectionString')]",
+        "resourceId": "[concat('https://management.azure.com/subscriptions/',parameters('SubscriptionId'),'/resourceGroups/rg-sharedresources-',parameters('Environment'), '/providers/Microsoft.Cache/Redis/redis-iati-', parameters('Environment'))]"
+      }
+    }
+  ]
+}
