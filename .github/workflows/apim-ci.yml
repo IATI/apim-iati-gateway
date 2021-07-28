@@ -30,6 +30,16 @@ jobs:
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
 
     steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Check Env variables
+        run: |
+          echo $GITHUB_REF
+          echo $GITHUB_REF_SLUG
+          echo $GITHUB_HEAD_REF
+          echo $GITHUB_HEAD_REF_SLUG
+
       - name: "Checkout GitHub Action"
         uses: actions/checkout@v2
 
@@ -42,8 +52,8 @@ jobs:
       - name: Validate APIM ARM Templates with what-if
         working-directory: ./service
         env:
-          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
-          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.GITHUB_REF_SLUG }}/${{ env.repoApimPath }}
+          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.GITHUB_REF_SLUG }}/${{ env.repoApimPath }}/policies
           deploymentName: --name GH_what_if_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
