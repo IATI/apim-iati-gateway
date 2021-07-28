@@ -85,6 +85,12 @@
       "metadata": {
         "description": "Capacity of the APIM Instance"
       }
+    },
+    "RedisConnectionString": {
+      "type": "string",
+      "metadata": {
+        "description": "Connection string for external redis cache"
+      }
     }
   },
   "resources": [
@@ -120,6 +126,35 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": []
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-caches.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "Environment": {
+            "value": "[parameters('Environment')]"
+          },
+          "SubscriptionId": {
+            "value": "[parameters('SubscriptionId')]"
+          },
+          "RedisConnectionString": {
+            "value": "[parameters('RedisConnectionString')]"
+          }
+        }
+      },
+      "name": "cachesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
+      ]
     },
     {
       "properties": {
