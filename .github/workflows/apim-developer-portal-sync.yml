@@ -1,0 +1,45 @@
+name: Sync_Developer_Portal_Dev_To_PROD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-developer-portal:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_VERSION: 14
+      SOURCE_ENV: dev
+      TARGET_ENV: prod
+      SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_CREDENTIALS: ${{ secrets.PROD_AZURE_CREDENTIALS }}
+
+    steps:
+      - name: "Checkout Azure/api-management-developer-portal#master"
+        uses: actions/checkout@v2
+        with:
+          repository: Azure/api-management-developer-portal
+          ref: master
+
+      - name: "Login to Azure"
+        uses: azure/login@v1.3.0
+        with:
+          creds: ${{ env.AZURE_CREDENTIALS }}
+
+      - name: "Setup Node ${{ env.NODE_VERSION }} Environment"
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: "Install Dependencies with Npm"
+        run: npm install
+
+      - name: "Sync Developer Portal from Dev to Prod"
+        run: |
+          node ./migrate \
+            --sourceSubscriptionId $SubscriptionId \
+            --sourceResourceGroupName "rg-apim-"$SOURCE_ENV \
+            --sourceServiceName "apim-iati-"$SOURCE_ENV \
+            --destSubscriptionId $SubscriptionId \
+            --destResourceGroupName "rg-apim-"$TARGET_ENV \
+            --destServiceName "apim-iati-"TARGET_ENV
