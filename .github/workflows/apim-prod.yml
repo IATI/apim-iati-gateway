@@ -18,8 +18,8 @@ jobs:
       ApimServiceName: apim-iati-PROD
       ApimGatewayHostname: api.iatistandard.org
       ApimDevPortalHostname: developer.iatistandard.org
-      ApimSKU: Standard
-      ApimCapacity: 2
+      ApimSKU: Basic
+      ApimCapacity: 1 # Basic - max 2
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: service
