@@ -20,7 +20,7 @@ jobs:
 
         # Create storage account for the environment first before running:
         # New-AzStorageAccount -StorageAccountName "stapimiatibackup{env}" -Location uksouth -ResourceGroupName "rg-apim-{env}" -Type 'Standard_LRS'
-      - name: "Backup APIM $${{ env.INPUT_ENVIRONMENT }} Instance"
+      - name: "Backup APIM ${{ env.INPUT_ENVIRONMENT }} Instance"
         uses: azure/powershell@v1
         env:
           ApimServiceName: apim-iati-${{ env.INPUT_ENVIRONMENT }}
@@ -30,9 +30,12 @@ jobs:
           ContainerName: backup
         with:
           inlineScript: |
-            $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName $BackupResourceGroup -StorageAccountName $StorageName)[0].Value
-            $StorageContext = New-AzStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-            $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
-            $BlobName = ($ContainerName + "_" + $DateTime)
-            Backup-AzApiManagement -ResourceGroupName $BackupResourceGroup -Name $ApimServiceName -StorageContext $StorageContext -TargetContainerName $ContainerName -TargetBlobName $BlobName
+            ${INPUT_ENVIRONMENT}
+            $BackupResourceGroup
+            $StorageName
           azPSVersion: "3.1.0"
+          # $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName $BackupResourceGroup -StorageAccountName $StorageName)[0].Value
+          # $StorageContext = New-AzStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
+          # $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
+          # $BlobName = ($ContainerName + "_" + $DateTime)
+          # Backup-AzApiManagement -ResourceGroupName $BackupResourceGroup -Name $ApimServiceName -StorageContext $StorageContext -TargetContainerName $ContainerName -TargetBlobName $BlobName
