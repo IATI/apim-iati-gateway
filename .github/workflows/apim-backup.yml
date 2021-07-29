@@ -30,12 +30,9 @@ jobs:
           ContainerName: backup
         with:
           inlineScript: |
-            Echo ${{ github.event.inputs.environment }}
-            Echo ${{ env.BackupResourceGroup }}
-            Echo ${{ env.StorageName}}
+            $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName ${{ env.BackupResourceGroup }} -StorageAccountName ${{ env.StorageName }})[0].Value
+            $StorageContext = New-AzStorageContext -StorageAccountName ${{ env.StorageName }} -StorageAccountKey $StorageKey
+            $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
+            $BlobName = (${{ env.ContainerName }} + "_" + $DateTime)
+            Backup-AzApiManagement -ResourceGroupName ${{ env.BackupResourceGroup }} -Name ${{ env.ApimServiceName }} -StorageContext $StorageContext -TargetContainerName ${{ env.ContainerName }} -TargetBlobName $BlobName
           azPSVersion: "3.1.0"
-          # $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName $BackupResourceGroup -StorageAccountName $StorageName)[0].Value
-          # $StorageContext = New-AzStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-          # $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
-          # $BlobName = ($ContainerName + "_" + $DateTime)
-          # Backup-AzApiManagement -ResourceGroupName $BackupResourceGroup -Name $ApimServiceName -StorageContext $StorageContext -TargetContainerName $ContainerName -TargetBlobName $BlobName
