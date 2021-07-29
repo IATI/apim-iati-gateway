@@ -30,9 +30,9 @@ jobs:
           ContainerName: backup
         with:
           inlineScript: |
-            ${INPUT_ENVIRONMENT}
-            $BackupResourceGroup
-            $StorageName
+            Echo ${{ github.event.inputs.environment }}
+            Echo $BackupResourceGroup
+            Echo $StorageName
           azPSVersion: "3.1.0"
           # $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName $BackupResourceGroup -StorageAccountName $StorageName)[0].Value
           # $StorageContext = New-AzStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
