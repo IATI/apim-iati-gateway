@@ -33,6 +33,6 @@ jobs:
             $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName ${{ env.BackupResourceGroup }} -StorageAccountName ${{ env.StorageName }})[0].Value
             $StorageContext = New-AzStorageContext -StorageAccountName ${{ env.StorageName }} -StorageAccountKey $StorageKey
             $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
-            $BlobName = (${{ env.ContainerName }} + "_" + $DateTime)
+            $BlobName = ("${{ env.ContainerName }}" + "_" + $DateTime)
             Backup-AzApiManagement -ResourceGroupName ${{ env.BackupResourceGroup }} -Name ${{ env.ApimServiceName }} -StorageContext $StorageContext -TargetContainerName ${{ env.ContainerName }} -TargetBlobName $BlobName
           azPSVersion: "3.1.0"
