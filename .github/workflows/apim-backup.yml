@@ -1,0 +1,38 @@
+name: Backup_APIM
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to backup (e.g. dev or prod)"
+        required: true
+
+jobs:
+  backup-apim:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.PROD_AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
+        # Create storage account for the environment first before running:
+        # New-AzStorageAccount -StorageAccountName "stapimiatibackup{env}" -Location uksouth -ResourceGroupName "rg-apim-{env}" -Type 'Standard_LRS'
+      - name: "Backup APIM $${{ env.INPUT_ENVIRONMENT }} Instance"
+        uses: azure/powershell@v1
+        env:
+          ApimServiceName: apim-iati-${{ env.INPUT_ENVIRONMENT }}
+          BackupName: BackupApimIati${{ env.INPUT_ENVIRONMENT }}
+          BackupResourceGroup: rg-apim-${{ env.INPUT_ENVIRONMENT }}
+          StorageName: stapimiatibackup${{ env.INPUT_ENVIRONMENT }}
+          ContainerName: backup
+        with:
+          inlineScript: |
+            $StorageKey = (Get-AzStorageAccountKey -ResourceGroupName $BackupResourceGroup -StorageAccountName $StorageName)[0].Value
+            $StorageContext = New-AzStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
+            $DateTime = Get-Date -Format "dd_MM_yyyy_HHmm"
+            $BlobName = ($ContainerName + "_" + $DateTime)
+            Backup-AzApiManagement -ResourceGroupName $BackupResourceGroup -Name $ApimServiceName -StorageContext $StorageContext -TargetContainerName $ContainerName -TargetBlobName $BlobName
+          azPSVersion: "3.1.0"
