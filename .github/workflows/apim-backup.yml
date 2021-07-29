@@ -20,13 +20,13 @@ jobs:
 
         # Create storage account for the environment first before running:
         # New-AzStorageAccount -StorageAccountName "stapimiatibackup{env}" -Location uksouth -ResourceGroupName "rg-apim-{env}" -Type 'Standard_LRS'
-      - name: "Backup APIM ${{ env.INPUT_ENVIRONMENT }} Instance"
+      - name: "Backup APIM ${{ github.event.inputs.environment }} Instance"
         uses: azure/powershell@v1
         env:
-          ApimServiceName: apim-iati-${{ env.INPUT_ENVIRONMENT }}
-          BackupName: BackupApimIati${{ env.INPUT_ENVIRONMENT }}
-          BackupResourceGroup: rg-apim-${{ env.INPUT_ENVIRONMENT }}
-          StorageName: stapimiatibackup${{ env.INPUT_ENVIRONMENT }}
+          ApimServiceName: apim-iati-${{ github.event.inputs.environment }}
+          BackupName: BackupApimIati${{ github.event.inputs.environment }}
+          BackupResourceGroup: rg-apim-${{ github.event.inputs.environment }}
+          StorageName: stapimiatibackup${{ github.event.inputs.environment }}
           ContainerName: backup
         with:
           inlineScript: |
