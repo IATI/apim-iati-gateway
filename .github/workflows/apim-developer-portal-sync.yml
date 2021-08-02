@@ -18,7 +18,7 @@ jobs:
       gtmContainerId: ${{ secrets.GTM_CONTAINER_ID }}
 
     steps:
-      - name: "Checkout Azure/api-management-developer-portal#master"
+      - name: "Checkout IATI/api-management-developer-portal#master"
         uses: actions/checkout@v2
         with:
           repository: IATI/api-management-developer-portal
