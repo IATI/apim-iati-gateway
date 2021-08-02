@@ -3,7 +3,7 @@ name: Backup_APIM
 on:
   workflow_dispatch:
   schedule:
-    - cron: "56 14 * * *"
+    - cron: "05 3 * * *"
 
 jobs:
   backup-apim:
