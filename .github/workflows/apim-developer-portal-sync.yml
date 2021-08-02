@@ -15,12 +15,13 @@ jobs:
       TARGET_ENV: prod
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_CREDENTIALS: ${{ secrets.PROD_AZURE_CREDENTIALS }}
+      gtmContainerId: ${{ secrets.GTM_CONTAINER_ID }}
 
     steps:
       - name: "Checkout Azure/api-management-developer-portal#master"
         uses: actions/checkout@v2
         with:
-          repository: Azure/api-management-developer-portal
+          repository: IATI/api-management-developer-portal
           ref: master
 
       - name: "Login to Azure"
@@ -46,3 +47,12 @@ jobs:
             --destSubscriptionId ${{ env.SubscriptionId }} \
             --destResourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.TARGET_ENV }} \
             --destServiceName ${{ env.SERVICE_NAME }}-${{ env.TARGET_ENV }}
+
+      - name: "Update GTM config on Prod"
+        working-directory: ./scripts.v3
+        run: |
+          node ./gtm \
+            --subscriptionId ${{ env.SubscriptionId }} \
+            --resourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.TARGET_ENV }} \
+            --serviceName ${{ env.SERVICE_NAME }}-${{ env.TARGET_ENV }} \
+            --gtmContainerId ${{ env.gtmContainerId }}
