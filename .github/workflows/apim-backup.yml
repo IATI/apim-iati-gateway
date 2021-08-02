@@ -2,14 +2,15 @@ name: Backup_APIM
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: "Environment to backup (e.g. dev or prod)"
-        required: true
+  schedule:
+    - cron: "56 14 * * *"
 
 jobs:
   backup-apim:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: ["dev", "prod"]
 
     steps:
       - name: Login via Az module
@@ -20,13 +21,13 @@ jobs:
 
         # Create storage account for the environment first before running:
         # New-AzStorageAccount -StorageAccountName "stapimiatibackup{env}" -Location uksouth -ResourceGroupName "rg-apim-{env}" -Type 'Standard_LRS'
-      - name: "Backup APIM ${{ github.event.inputs.environment }} Instance"
+      - name: "Backup APIM ${{ matrix.environment }} Instance"
         uses: azure/powershell@v1
         env:
-          ApimServiceName: apim-iati-${{ github.event.inputs.environment }}
-          BackupName: BackupApimIati${{ github.event.inputs.environment }}
-          BackupResourceGroup: rg-apim-${{ github.event.inputs.environment }}
-          StorageName: stapimiatibackup${{ github.event.inputs.environment }}
+          ApimServiceName: apim-iati-${{ matrix.environment }}
+          BackupName: BackupApimIati${{ matrix.environment }}
+          BackupResourceGroup: rg-apim-${{ matrix.environment }}
+          StorageName: stapimiatibackup${{ matrix.environment }}
           ContainerName: backup
         with:
           inlineScript: |
