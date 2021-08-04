@@ -4,6 +4,9 @@
   "parameters": {
     "ApimServiceName": {
       "type": "string"
+    },
+    "NotificationEmail": {
+      "type": "string"
     }
   },
   "resources": [
@@ -16,6 +19,22 @@
       "type": "Microsoft.ApiManagement/service/notifications",
       "apiVersion": "2021-01-01-preview",
       "name": "[concat(parameters('ApimServiceName'), '/QuotaLimitApproachingPublisherNotificationMessage')]"
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/notifications/recipientEmails",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/QuotaLimitApproachingPublisherNotificationMessage/', parameters('NotificationEmail'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/notifications', parameters('ApimServiceName'), 'QuotaLimitApproachingPublisherNotificationMessage')]"
+      ]
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/notifications/recipientEmails",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/RequestPublisherNotificationMessage/', parameters('NotificationEmail'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/notifications', parameters('ApimServiceName'), 'RequestPublisherNotificationMessage')]"
+      ]
     }
   ]
 }
