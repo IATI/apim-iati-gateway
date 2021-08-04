@@ -27,7 +27,7 @@ jobs:
       repoUrl: https://raw.githubusercontent.com/iati/apim-iati-gateway
       repoApimPath: service
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
-      NotificationEmail: $${{ secrets.SLACK_NOTIFICATION_EMAIL }}
+      NotificationEmail: ${{ secrets.SLACK_NOTIFICATION_EMAIL }}
 
     steps:
       - name: "Checkout GitHub Action"
