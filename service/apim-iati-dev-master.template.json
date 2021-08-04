@@ -91,6 +91,12 @@
       "metadata": {
         "description": "Connection string for external redis cache"
       }
+    },
+    "NotificationEmail": {
+      "type": "string",
+      "metadata": {
+        "description": "Email to send notifications"
+      }
     }
   },
   "resources": [
@@ -154,6 +160,50 @@
       "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-notifications.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          }
+        }
+      },
+      "name": "notificationsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-notificationEmails.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "NotificationEmail": {
+            "value": "[parameters('NotificationEmail')]"
+          }
+        }
+      },
+      "name": "notificationEmailsTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'notificationsTemplate')]"
       ]
     },
     {

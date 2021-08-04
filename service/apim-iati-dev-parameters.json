@@ -54,6 +54,9 @@
     },
     "RedisConnectionString": {
       "value": "placeholderstring"
+    },
+    "NotificationEmail": {
+      "value": "code@iatistandard.org"
     }
   }
 }
