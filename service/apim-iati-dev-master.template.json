@@ -172,6 +172,9 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
+          },
+          "NotificationEmail": {
+            "value": "[parameters('NotificationEmail')]"
           }
         }
       },
