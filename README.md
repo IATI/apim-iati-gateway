@@ -6,36 +6,20 @@
 
 - [Azure CLI](https://docs.microsoft.com/en-us/dotnet/azure/install-azure-cli)
 - [.NET 3.1.0](https://docs.microsoft.com/en-us/dotnet/core/install/)
-- [Azure/azure-api-management-devops-resource-kit](https://github.com/Azure/azure-api-management-devops-resource-kit)
-- [Example Apim Devops](https://github.com/RvLabsMSFT/rvlabs-apim-devops)
 
 ## Extracting
 
 Install Extractor Tool as CLI
 
 ```bash
-git clone git@github.com:Azure/azure-api-management-devops-resource-kit.git
-cd {path_to_folder}/src/APIM_ARMTemplate/apimtemplate
-dotnet pack -c Release
-dotnet tool install -g --add-source bin/Release --version 1.0.0 apimtemplate
-# follow instuctions to save in PATH
+cd extraction_templates/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate
+dotnet restore
+dotnet run extract --extractorConfig ../../../../apimExtract.json
 ```
 
 Update the Extractor Tool
 
-```
-cd {path_to_folder}/src/APIM_ARMTemplate/apimtemplate
-git pull
-dotnet pack -c Release
-dotnet tool uninstall -g apimtemplate
-dotnet tool install -g --add-source bin/Release --version 1.0.0 apimtemplate
-```
-
-Run extractor w/ config
-
-```bash
-apim-templates extract --extractorConfig extraction_templates/apimExtract.json
-```
+- Update the submodule to the latest commit, then do the above
 
 ## Developer Portal
 
@@ -91,3 +75,8 @@ Take note of considerations [here](https://docs.microsoft.com/en-us/azure/api-ma
 - Restore is a long running operation that may take up to 30 or more minutes to complete.
 - [Constraints](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-disaster-recovery-backup-restore#constraints-when-making-backup-or-restore-request)
 - [What is not backed up](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-disaster-recovery-backup-restore#what-is-not-backed-up)
+
+# Resources
+
+- [Azure/azure-api-management-devops-resource-kit](https://github.com/Azure/azure-api-management-devops-resource-kit)
+- [Example Apim Devops](https://github.com/RvLabsMSFT/rvlabs-apim-devops)
