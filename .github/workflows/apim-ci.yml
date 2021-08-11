@@ -29,6 +29,7 @@ jobs:
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
       ApplicationInsightsInstanceName: appi-apim
 
+
     steps:
       - name: "Checkout GitHub Action"
         uses: actions/checkout@v2
