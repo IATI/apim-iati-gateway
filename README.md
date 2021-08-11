@@ -21,6 +21,34 @@ Update the Extractor Tool
 
 - Update the submodule to the latest commit, then do the above
 
+### Updating an Existing API Definition
+
+- Make your changes on the `dev` APIM instance in the Portal as neccessary
+- Run the extractor tool
+- Diff the changes made to `service/apim-iati-dev-apis.template.json` and include only your changes
+  - Remove the last object that has `"type": "Microsoft.ApiManagement/service/diagnostics"`, this is managed elsewhere.
+- Also look at `service/policies` for your related policy changes and add proper ones to your git index
+- Create a feature branch and commit your changes to `service/apim-iati-dev-apis.template.json` and `service/policies` ONLY
+- Remove changes made to other ARM templates by the extractor `git reset --hard HEAD`
+- Create a PR so that the ARM validation workflow runs
+- If the validation workflow errors with "NoEffect" this is OK
+- Merge the PR, the deployment to `dev` workflow will run
+- Check in Portal and do testing to ensure the configuration has deployed successfully
+
+### Adding a new API definition and/or backend
+
+- If adding a new API definition with a new backend, you'll also need to get the backend configuration and paramterise it
+  - Just make sure you don't wipe out the other backend paramterisation with the extractor tool
+- See the `apim-iati-dev-backends.template.json` for and example of how this is done for existing APIs
+
+## Making a Production Release
+
+- Create a PR to merge `develop` -> `main`
+- Merge the PR
+- Create a Release in GitHub from `main`, increment the tag appropriately with semver standard
+- Publish the Release, the `prod` deployment workflow will run
+- Check Portal/test that all your config made it there from `dev`
+
 ## Developer Portal
 
 The developer portal look and feel customisation cannot be managed with ARM templates in source control.
