@@ -35,7 +35,7 @@
           "instrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('ApplicationInsightsInstanceNameWithEnv')), '2015-05-01').InstrumentationKey]"
         },
         "isBuffered": true,
-        "resourceId": "[resourceId(subscription(),resourceGroup(),'Microsoft.Insights/components',variables('ApplicationInsightsInstanceNameWithEnv'))]"
+        "resourceId": "[resourceId('Microsoft.Insights/components',variables('ApplicationInsightsInstanceNameWithEnv'))]"
       },
       "name": "[concat(parameters('ApimServiceName'), '/', variables('ApplicationInsightsInstanceNameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/loggers",
