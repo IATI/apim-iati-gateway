@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "Environment": {
+      "type": "string"
+    },
+    "ApplicationInsightsInstanceName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "ApplicationInsightsInstanceNameWithEnv": "[concat(parameters('ApplicationInsightsInstanceName'), '-', parameters('Environment'))]"
+  },
+  "resources": [
+    {
+      "name": "[variables('ApplicationInsightsInstanceNameWithEnv')]",
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2015-05-01",
+      "location": "UK South",
+      "tags": {},
+      "kind": "other",
+      "properties": {
+        "Application_Type": "other"
+      }
+    },
+    {
+      "properties": {
+        "loggerType": "applicationInsights",
+        "description": "Application Insights logger for APIM",
+        "credentials": {
+          "instrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('ApplicationInsightsInstanceNameWithEnv')), '2015-05-01').InstrumentationKey]"
+        },
+        "isBuffered": true,
+        "resourceId": "[resourceId(subscription(),resourceGroup(),'Microsoft.Insights/components',variables('ApplicationInsightsInstanceNameWithEnv'))]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/', variables('ApplicationInsightsInstanceNameWithEnv'))]",
+      "type": "Microsoft.ApiManagement/service/loggers",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "alwaysLog": "allErrors",
+        "loggerId": "[concat('/loggers/', variables('ApplicationInsightsInstanceNameWithEnv'))]",
+        "httpCorrelationProtocol": "Legacy",
+        "logClientIp": true,
+        "sampling": {
+          "samplingType": "fixed",
+          "percentage": 100.0
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/applicationinsights')]",
+      "type": "Microsoft.ApiManagement/service/diagnostics",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/loggers', parameters('ApimServiceName'), variables('ApplicationInsightsInstanceNameWithEnv'))]"
+      ]
+    }
+  ]
+}

@@ -33,19 +33,6 @@
         "validatorservicesprivate": null
       }
     },
-    "NamedValues": {
-      "value": {
-        "ApimDevPortalHostname": "dev-developer.iatistandard.org",
-        "Environment": "dev",
-        "UrlEnvPrefix": "dev-"
-      }
-    },
-    "ApiLoggerId": {
-      "value": {}
-    },
-    "LoggerResourceId": {
-      "value": {}
-    },
     "ApimSKU": {
       "value": "Developer"
     },
@@ -54,6 +41,9 @@
     },
     "RedisConnectionString": {
       "value": "placeholderstring"
+    },
+    "ApplicationInsightsInstanceName": {
+      "value": "appi-apim"
     }
   }
 }
