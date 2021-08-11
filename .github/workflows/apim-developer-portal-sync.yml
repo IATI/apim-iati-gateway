@@ -1,0 +1,58 @@
+name: Sync_Developer_Portal_Dev_To_PROD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-developer-portal:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_VERSION: 14
+      RESOURCE_GROUP: rg-apim
+      SERVICE_NAME: apim-iati
+      SOURCE_ENV: dev
+      TARGET_ENV: prod
+      SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_CREDENTIALS: ${{ secrets.PROD_AZURE_CREDENTIALS }}
+      gtmContainerId: ${{ secrets.GTM_CONTAINER_ID }}
+
+    steps:
+      - name: "Checkout IATI/api-management-developer-portal#master"
+        uses: actions/checkout@v2
+        with:
+          repository: IATI/api-management-developer-portal
+          ref: master
+
+      - name: "Login to Azure"
+        uses: azure/login@v1.3.0
+        with:
+          creds: ${{ env.AZURE_CREDENTIALS }}
+
+      - name: "Setup Node ${{ env.NODE_VERSION }} Environment"
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: "Install Dependencies with Npm"
+        run: npm install
+
+      - name: "Sync Developer Portal from Dev to Prod"
+        working-directory: ./scripts.v3
+        run: |
+          node ./migrate \
+            --sourceSubscriptionId ${{ env.SubscriptionId }} \
+            --sourceResourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.SOURCE_ENV }} \
+            --sourceServiceName ${{ env.SERVICE_NAME }}-${{ env.SOURCE_ENV }} \
+            --destSubscriptionId ${{ env.SubscriptionId }} \
+            --destResourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.TARGET_ENV }} \
+            --destServiceName ${{ env.SERVICE_NAME }}-${{ env.TARGET_ENV }}
+
+      - name: "Update GTM config on Prod"
+        working-directory: ./scripts.v3
+        run: |
+          node ./gtm \
+            --subscriptionId ${{ env.SubscriptionId }} \
+            --resourceGroupName ${{ env.RESOURCE_GROUP }}-${{ env.TARGET_ENV }} \
+            --serviceName ${{ env.SERVICE_NAME }}-${{ env.TARGET_ENV }} \
+            --gtmContainerId ${{ env.gtmContainerId }}

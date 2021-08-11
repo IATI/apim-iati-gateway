@@ -2,7 +2,7 @@
   "sourceApimName": "apim-iati-dev",
   "destinationApimName": "apim-iati-dev",
   "resourceGroup": "rg-apim-dev",
-  "fileFolder": "./service",
+  "fileFolder": "../../../../../service",
   "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/",
   "policyXMLBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/",
   "splitAPIs": "false",

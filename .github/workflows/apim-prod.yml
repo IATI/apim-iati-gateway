@@ -24,6 +24,8 @@ jobs:
       repoBranch: ${GITHUB_REF##*/}
       repoApimPath: service
       RedisConnectionString: ${{ secrets.PROD_REDIS_CONNECTION_STRING }}
+      ApplicationInsightsInstanceName: appi-apim
+
 
     steps:
       - name: "Checkout GitHub Action"
@@ -58,4 +60,5 @@ jobs:
             --parameters ApimCapacity=${{ env.ApimCapacity }} \
             --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
             --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
-            --parameters RedisConnectionString=${{ env.RedisConnectionString }}
+            --parameters RedisConnectionString=${{ env.RedisConnectionString }} \
+            --parameters ApplicationInsightsInstanceName=${{ env.ApplicationInsightsInstanceName }}
