@@ -6,8 +6,5 @@
   "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/",
   "policyXMLBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/",
   "splitAPIs": "false",
-  "paramServiceUrl": "true",
-  "paramNamedValue": "true",
-  "paramApiLoggerId": "true",
-  "paramLogResourceId": "true"
+  "paramServiceUrl": "true"
 }
