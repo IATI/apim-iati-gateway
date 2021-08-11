@@ -50,22 +50,10 @@
         "description": "Service url for each Api"
       }
     },
-    "NamedValues": {
-      "type": "object",
+    "ApplicationInsightsInstanceName": {
+      "type": "string",
       "metadata": {
-        "description": "Named values"
-      }
-    },
-    "ApiLoggerId": {
-      "type": "object",
-      "metadata": {
-        "description": "LoggerId for this api"
-      }
-    },
-    "LoggerResourceId": {
-      "type": "object",
-      "metadata": {
-        "description": "ResourceId for the logger"
+        "description": "App Insights name for this apim instance (e.g. appi-apim)"
       }
     },
     "SubscriptionId": {
@@ -206,6 +194,32 @@
       "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
+      ]
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-loggers.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          },
+          "Environment": {
+            "value": "[parameters('Environment')]"
+          },
+          "ApplicationInsightsInstanceName": {
+            "value": "[parameters('ApplicationInsightsInstanceName')]"
+          }
+        }
+      },
+      "name": "loggersTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
     },

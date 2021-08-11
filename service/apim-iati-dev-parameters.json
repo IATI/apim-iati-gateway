@@ -54,6 +54,9 @@
     },
     "RedisConnectionString": {
       "value": "placeholderstring"
+    },
+    "ApplicationInsightsInstanceName": {
+      "value": "appi-apim"
     }
   }
 }

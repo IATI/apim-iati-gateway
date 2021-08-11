@@ -10,6 +10,9 @@
     },
     "serviceUrl": {
       "type": "object"
+    },
+    "ApiLoggerId": {
+      "type": "object"
     }
   },
   "resources": [
