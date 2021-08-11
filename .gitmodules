@@ -1,0 +1,3 @@
+[submodule "extraction_templates/azure-api-management-devops-resource-kit"]
+	path = extraction_templates/azure-api-management-devops-resource-kit
+	url = git@github.com:Azure/azure-api-management-devops-resource-kit.git
