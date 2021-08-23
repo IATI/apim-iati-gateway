@@ -13,7 +13,16 @@
 <policies>
 	<inbound>
 		<base />
-		<set-backend-service id="apim-generated-policy" backend-id="dev-func-validator-services" />
+		<set-backend-service id="apim-generated-policy" backend-id="{{Environment}}-func-validator-services" />
+		<cors>
+			<allowed-origins>
+				<origin>*</origin>
+			</allowed-origins>
+			<allowed-methods>
+				<method>GET</method>
+				<method>POST</method>
+			</allowed-methods>
+		</cors>
 	</inbound>
 	<backend>
 		<base />

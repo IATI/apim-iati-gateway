@@ -12,16 +12,8 @@
 -->
 <policies>
 	<inbound>
-		<cors>
-			<allowed-origins>
-				<origin>https://dev-ds.iatistandard.org/</origin>
-			</allowed-origins>
-			<allowed-methods>
-				<method>GET</method>
-			</allowed-methods>
-		</cors>
 		<base />
-		<authentication-basic username="admin" password="{{pw-solr-admin-PROD}}" />
+		<set-backend-service id="apim-generated-policy" backend-id="{{Environment}}-func-validator-services" />
 	</inbound>
 	<backend>
 		<base />
