@@ -11,7 +11,7 @@
 
 ## Extracting
 
-Install Extractor Tool as CLI
+Run Extractor Tool
 
 ```bash
 cd extraction_templates/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate
