@@ -497,6 +497,28 @@
                     ]
                   }
                 }
+              },
+              "Existing Report missing query parameter": {
+                "type": "object",
+                "properties": {
+                  "client_error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_error": "Either the id, url or hash of the document as obtained from the IATI Registry must be supplied as a GET parameter"
+                }
+              },
+              "Existing Report Not Found": {
+                "type": "object",
+                "properties": {
+                  "client_error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_error": "The requested report does not exist."
+                }
               }
             }
           }
@@ -565,7 +587,9 @@
             "representations": [
               {
                 "contentType": "application/json",
-                "sample": "{\r\n  \"client_error\": \"Either the id, url or hash of the document as obtained from the IATI Registry must be supplied as a GET parameter\"\r\n}"
+                "sample": "{\r\n  \"client_error\": \"Either the id, url or hash of the document as obtained from the IATI Registry must be supplied as a GET parameter\"\r\n}",
+                "schemaId": "1622545438727",
+                "typeName": "Existing Report missing query parameter"
               }
             ]
           },
@@ -585,7 +609,9 @@
             "representations": [
               {
                 "contentType": "application/json",
-                "sample": "{ client_error: 'The requested report does not exist.' }"
+                "sample": "{\r\n  \"client_error\": \"The requested report does not exist.\"\r\n}",
+                "schemaId": "1622545438727",
+                "typeName": "Existing Report Not Found"
               }
             ]
           },
@@ -652,7 +678,7 @@
         "templateParameters": [],
         "description": "This route allows the user to POST an IATI document to the Validator in the body of the request, and receive a JSON validation report in the response.\n\n[GitHub Repository](https://github.com/IATI/js-validator-api)  \n\n[Error ID Information](https://github.com/IATI/validator-rule-tracker)\n",
         "request": {
-          "description": "IATI XML document (activities or organisations)",
+          "description": "IATI XML document (organisations or activities)",
           "queryParameters": [
             {
               "name": "group",
@@ -769,7 +795,7 @@
             "representations": [
               {
                 "contentType": "application/json",
-                "sample": "{\r\n  \"valid\": true,\r\n  \"fileType\": \"iati-activities\",\r\n  \"iatiVersion\": \"string\",\r\n  \"rulesetCommitSha\": \"string\",\r\n  \"codelistCommitSha\": \"string\",\r\n  \"orgIdPrefixFileName\": \"string\",\r\n  \"apiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": [\r\n    {\r\n      \"errors\": [\r\n        {\r\n          \"errors\": [\r\n            {\r\n              \"id\": \"string\",\r\n              \"severity\": \"critical\",\r\n              \"message\": \"string\",\r\n              \"codelist\": \"string\",\r\n              \"context\": [\r\n                {\r\n                  \"text\": \"string\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"category\": \"string\"\r\n        }\r\n      ],\r\n      \"identifier\": \"string\",\r\n      \"title\": \"string\"\r\n    }\r\n  ]\r\n}",
+                "sample": "{\r\n  \"valid\": false,\r\n  \"fileType\": \"string\",\r\n  \"iatiVersion\": \"string\",\r\n  \"rulesetCommitSha\": \"string\",\r\n  \"codelistCommitSha\": \"string\",\r\n  \"orgIdPrefixFileName\": \"string\",\r\n  \"apiVersion\": \"string\",\r\n  \"summary\": {\r\n    \"critical\": 0,\r\n    \"error\": 0,\r\n    \"warning\": 0\r\n  },\r\n  \"errors\": [\r\n    {\r\n      \"errors\": [\r\n        {\r\n          \"errors\": [\r\n            {\r\n              \"id\": \"string\",\r\n              \"severity\": \"string\",\r\n              \"message\": \"string\",\r\n              \"codelist\": \"string\",\r\n              \"context\": [\r\n                {\r\n                  \"text\": \"string\"\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"category\": \"string\"\r\n        }\r\n      ],\r\n      \"identifier\": \"string\",\r\n      \"title\": \"string\"\r\n    }\r\n  ]\r\n}",
                 "schemaId": "1622545438727",
                 "typeName": "Validation Report Ad Hoc Validate"
               }
