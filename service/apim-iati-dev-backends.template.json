@@ -6,17 +6,21 @@
       "type": "string"
     },
     "Environment": {
-      "type": "string"    
+      "type": "string"
     },
     "SubscriptionId": {
-      "type": "string"    
+      "type": "string"
     }
+  },
+  "variables": {
+    "ValidatorServicesNameWithEnv": "[concat('func-validator-services-', parameters('Environment'))]",
+    "ValidatorAPINameWithEnv": "[concat('func-iativalidator-', parameters('Environment'))]"
   },
   "resources": [
     {
       "properties": {
-        "description": "[concat(parameters('Environment'), '-func-validator-services')]",
-        "resourceId": "[concat('https://management.azure.com/subscriptions/', parameters('SubscriptionId'), '/resourceGroups/rg-validator-services-', parameters('Environment'), '/providers/Microsoft.Web/sites/' , parameters('Environment'), '-func-validator-services')]",
+        "description": "[variables('ValidatorServicesNameWithEnv')]",
+        "resourceId": "[concat('https://management.azure.com/subscriptions/', parameters('SubscriptionId'), '/resourceGroups/rg-validator-services-', parameters('Environment'), '/providers/Microsoft.Web/sites/' , variables('ValidatorServicesNameWithEnv'))]",
         "credentials": {
           "header": {
             "x-functions-key": [
@@ -24,28 +28,28 @@
             ]
           }
         },
-        "url": "[concat( 'https://', parameters('Environment'), '-func-validator-services.azurewebsites.net/api')]",
+        "url": "[concat( 'https://', variables('ValidatorServicesNameWithEnv'), '.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', parameters('Environment'), '-func-validator-services')]",
+      "name": "[concat(parameters('ApimServiceName'), '/', variables('ValidatorServicesNameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     },
     {
       "properties": {
-        "description": "[concat('func-iativalidator-', parameters('Environment'))]",
-        "resourceId": "[concat('https://management.azure.com/subscriptions/', parameters('SubscriptionId'), '/resourceGroups/rg-iativalidator-', parameters('Environment'),   '/providers/Microsoft.Web/sites/func-iativalidator-', parameters('Environment'))]",
+        "description": "[variables('ValidatorAPINameWithEnv')]",
+        "resourceId": "[concat('https://management.azure.com/subscriptions/', parameters('SubscriptionId'), '/resourceGroups/rg-iativalidator-', parameters('Environment'),   '/providers/Microsoft.Web/sites/', variables('ValidatorAPINameWithEnv'))]",
         "credentials": {
           "header": {
             "x-functions-key": [
-              "[concat('{{func-iativalidator-', parameters('Environment'), '-key}}')]"
+              "[concat('{{',variables('ValidatorAPINameWithEnv'),'-key}}')]"
             ]
           }
         },
-        "url": "[concat( 'https://func-iativalidator-', parameters('Environment'), '.azurewebsites.net/api')]",
+        "url": "[concat( 'https://', variables('ValidatorAPINameWithEnv'), '.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-', parameters('Environment'))]",
+      "name": "[concat(parameters('ApimServiceName'), '/', variables('ValidatorAPINameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     }
