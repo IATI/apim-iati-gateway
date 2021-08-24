@@ -942,7 +942,7 @@
     },
     {
       "properties": {
-        "description": "Import from \"dev-func-validator-services\" Function App",
+        "description": "Validator Services Routes",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
         },
