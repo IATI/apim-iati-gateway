@@ -714,14 +714,22 @@
           "representations": [
             {
               "contentType": "application/xml",
-              "sample": "&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;xml&gt;&lt;/xml&gt;"
+              "sample": "Hello World"
             },
             {
-              "contentType": "application/xml",
+              "contentType": "application/json",
+              "sample": "Hello World"
+            },
+            {
+              "contentType": "text/plain",
+              "sample": "Hello World"
+            },
+            {
+              "contentType": "text/xml",
               "sample": "<xml></xml>"
             },
             {
-              "contentType": "application/xml",
+              "contentType": "text/xml",
               "sample": "&lt;xml&gt;&lt;/xml&gt;"
             }
           ]
