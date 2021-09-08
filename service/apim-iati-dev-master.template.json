@@ -29,7 +29,7 @@
     "UrlEnvPrefix": {
       "type": "string",
       "metadata": {
-        "description": "URL Environment Prefix to prepend (e.g. dev- or '' for PROD)"
+        "description": "URL Environment Prefix to prepend (e.g. 'https://dev-' or 'https://' for PROD)"
       }
     },
     "LinkedTemplatesBaseUrl": {
