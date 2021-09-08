@@ -15,7 +15,7 @@
       "value": "dev"
     },
     "UrlEnvPrefix": {
-      "value": "dev-"
+      "value": "https://dev-"
     },
     "LinkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
