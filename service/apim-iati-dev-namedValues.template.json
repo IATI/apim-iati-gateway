@@ -15,6 +15,9 @@
       "type": "string"
     }
   },
+  "variables": {
+    "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]"
+  },
   "resources": [
     {
       "properties": {
@@ -80,10 +83,10 @@
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/UrlEnvPrefix')]",
+      "name": "[concat(parameters('ApimServiceName'), '/ValidatorSubdomain')]",
       "properties": {
-        "displayName": "UrlEnvPrefix",
-        "value": "[parameters('UrlEnvPrefix')]",
+        "displayName": "ValidatorSubdomain",
+        "value": "[variables('ValidatorSubdomain')]",
         "tags": ["policy"],
         "secret": false
       }
