@@ -25,9 +25,7 @@
       "name": "[concat(parameters('ApimServiceName'), '/private-routes/validator-services-private')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'private-routes')]"
-      ]
+      "dependsOn": []
     }
   ]
 }
