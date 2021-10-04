@@ -713,24 +713,19 @@
           ],
           "representations": [
             {
-              "contentType": "application/xml",
-              "sample": "Hello World"
+              "contentType": "application/xml"
             },
             {
-              "contentType": "application/json",
-              "sample": "Hello World"
+              "contentType": "application/json"
             },
             {
-              "contentType": "text/plain",
-              "sample": "Hello World"
+              "contentType": "text/plain"
             },
             {
-              "contentType": "text/xml",
-              "sample": "<xml></xml>"
+              "contentType": "text/xml"
             },
             {
-              "contentType": "text/xml",
-              "sample": "&lt;xml&gt;&lt;/xml&gt;"
+              "contentType": "text/xml"
             }
           ]
         },
@@ -880,7 +875,7 @@
         "subscriptionRequired": false,
         "displayName": "SOLR Private",
         "serviceUrl": "[parameters('serviceUrl').solr]",
-        "path": "solr",
+        "path": "datastore",
         "protocols": ["https"]
       },
       "name": "[concat(parameters('ApimServiceName'), '/solr')]",
@@ -891,25 +886,18 @@
     {
       "properties": {
         "templateParameters": [],
-        "description": "GET Passthrough",
+        "description": "Query the activity collection",
         "request": {
           "queryParameters": [],
           "headers": [],
           "representations": []
         },
-        "responses": [
-          {
-            "statusCode": 200,
-            "description": "null",
-            "headers": [],
-            "representations": []
-          }
-        ],
-        "displayName": "GET Passthrough",
+        "responses": [],
+        "displayName": "Activity Query",
         "method": "GET",
-        "urlTemplate": "/*"
+        "urlTemplate": "/activity/select"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/get-passthrough')]",
+      "name": "[concat(parameters('ApimServiceName'), '/solr/activity-query')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
@@ -918,14 +906,14 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-get-passthrough-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-activity-query-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/get-passthrough/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/solr/activity-query/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'get-passthrough')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'activity-query')]"
       ]
     },
     {
