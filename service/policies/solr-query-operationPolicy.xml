@@ -13,6 +13,7 @@
 <policies>
 	<inbound>
 		<base />
+		<rewrite-uri template="/solr/{collection}/select" />
 	</inbound>
 	<backend>
 		<base />
