@@ -885,19 +885,26 @@
     },
     {
       "properties": {
-        "templateParameters": [],
-        "description": "Query the activity collection",
+        "templateParameters": [
+          {
+            "name": "collection",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
         "request": {
           "queryParameters": [],
           "headers": [],
           "representations": []
         },
         "responses": [],
-        "displayName": "Activity Query",
+        "displayName": "Query",
         "method": "GET",
-        "urlTemplate": "/activity/select"
+        "urlTemplate": "/{collection}/select"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/activity-query')]",
+      "name": "[concat(parameters('ApimServiceName'), '/solr/query')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
@@ -906,14 +913,14 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-activity-query-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-query-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/activity-query/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/solr/query/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'activity-query')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'query')]"
       ]
     },
     {
