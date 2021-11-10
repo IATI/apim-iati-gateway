@@ -873,7 +873,7 @@
         "apiRevision": "1",
         "isCurrent": true,
         "subscriptionRequired": false,
-        "displayName": "SOLR Private",
+        "displayName": "IATI Datastore",
         "serviceUrl": "[parameters('serviceUrl').solr]",
         "path": "datastore",
         "protocols": ["https"]
