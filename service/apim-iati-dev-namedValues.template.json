@@ -59,6 +59,19 @@
       "apiVersion": "2021-01-01-preview"
     },
     {
+      "properties": {
+        "tags": ["key"],
+        "secret": true,
+        "displayName": "pw-solr-user-PROD",
+        "keyVault": {
+          "secretIdentifier": "https://kv-iati-prod.vault.azure.net/secrets/pw-solr-user-PROD"
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-user-PROD')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
       "name": "[concat(parameters('ApimServiceName'), '/ApimDevPortalHostname')]",
