@@ -29,7 +29,7 @@
     "serviceUrl": {
       "value": {
         "iativalidatorv2": null,
-        "solr": "https://default-iati-prod-solrcloud.solr.iatistandard.org",
+        "solr": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "validatorservicesprivate": null
       }
     },
@@ -44,6 +44,9 @@
     },
     "ApplicationInsightsInstanceName": {
       "value": "appi-apim"
+    },
+    "SolrBaseURL": {
+      "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
     }
   }
 }
