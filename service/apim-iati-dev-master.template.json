@@ -79,6 +79,9 @@
       "metadata": {
         "description": "Connection string for external redis cache"
       }
+    },
+    "SolrBaseURL": {
+      "type": "string"
     }
   },
   "resources": [
@@ -311,6 +314,9 @@
           },
           "serviceUrl": {
             "value": "[parameters('serviceUrl')]"
+          },
+          "SolrBaseUrl": {
+            "value": "[parameters('SolrBaseURL')]"
           }
         }
       },
