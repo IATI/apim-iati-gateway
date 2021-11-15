@@ -10,6 +10,9 @@
     },
     "serviceUrl": {
       "type": "object"
+    },
+    "SolrBaseURL": {
+      "type": "string"
     }
   },
   "resources": [
@@ -27,7 +30,7 @@
         "isCurrent": true,
         "subscriptionRequired": false,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('serviceUrl').solr]",
+        "serviceUrl": "[parameters('SolrBaseURL')]",
         "path": "datastore",
         "protocols": ["https"]
       },
