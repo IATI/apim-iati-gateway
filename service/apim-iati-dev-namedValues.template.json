@@ -51,12 +51,12 @@
       "properties": {
         "tags": ["key"],
         "secret": true,
-        "displayName": "[variables('SolrUserPwName')]",
+        "displayName": "pw-solr-user",
         "keyVault": {
           "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/', variables('SolrUserPwName'))]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', variables('SolrUserPwName'))]",
+      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-user')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },

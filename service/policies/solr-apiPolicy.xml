@@ -21,7 +21,7 @@
 			</allowed-methods>
 		</cors>
 		<base />
-		<authentication-basic username="solr" password="{{pw-solr-user-dev}}" />
+		<authentication-basic username="solr" password="{{pw-solr-user}}" />
 	</inbound>
 	<backend>
 		<base />
