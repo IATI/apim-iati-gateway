@@ -15,6 +15,81 @@
   "resources": [
     {
       "properties": {
+        "description": "IATI Datastore Query Endpoint",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": false,
+        "displayName": "IATI Datastore",
+        "serviceUrl": "[parameters('serviceUrl').solr]",
+        "path": "datastore",
+        "protocols": ["https"]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solr')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "collection",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Query",
+        "method": "GET",
+        "urlTemplate": "/{collection}/select"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solr/query')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-query-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solr/query/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'query')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-apiPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solr/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
+      ]
+    },
+    {
+      "properties": {
         "description": "IATI's public validation API. Provides routes related to the validation of IATI XML.",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
@@ -858,81 +933,6 @@
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
-      ]
-    },
-    {
-      "properties": {
-        "description": "Passthrough to Solr API",
-        "authenticationSettings": {
-          "subscriptionKeyRequired": false
-        },
-        "subscriptionKeyParameterNames": {
-          "header": "Ocp-Apim-Subscription-Key",
-          "query": "subscription-key"
-        },
-        "apiRevision": "1",
-        "isCurrent": true,
-        "subscriptionRequired": false,
-        "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('serviceUrl').solr]",
-        "path": "datastore",
-        "protocols": ["https"]
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/solr')]",
-      "type": "Microsoft.ApiManagement/service/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
-    },
-    {
-      "properties": {
-        "templateParameters": [
-          {
-            "name": "collection",
-            "type": "",
-            "required": true,
-            "values": []
-          }
-        ],
-        "description": "",
-        "request": {
-          "queryParameters": [],
-          "headers": [],
-          "representations": []
-        },
-        "responses": [],
-        "displayName": "Query",
-        "method": "GET",
-        "urlTemplate": "/{collection}/select"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/query')]",
-      "type": "Microsoft.ApiManagement/service/apis/operations",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
-      ]
-    },
-    {
-      "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-query-operationPolicy.xml')]",
-        "format": "rawxml-link"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/query/policy')]",
-      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'query')]"
-      ]
-    },
-    {
-      "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-apiPolicy.xml')]",
-        "format": "rawxml-link"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/policy')]",
-      "type": "Microsoft.ApiManagement/service/apis/policies",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
       ]
     },
     {

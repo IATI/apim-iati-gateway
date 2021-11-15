@@ -16,7 +16,9 @@
     }
   },
   "variables": {
-    "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]"
+    "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]",
+    "SolrUserPwName": "[concat('pw-solr-user-', parameters('Environment'))]",
+    "KeyVaultName": "[concat('kv-iati-', parameters('Environment'))]"
   },
   "resources": [
     {
@@ -25,7 +27,7 @@
         "secret": true,
         "displayName": "[concat(parameters('Environment'), '-func-validator-services-key')]",
         "keyVault": {
-          "secretIdentifier": "[concat('https://kv-iati-',parameters('Environment'), '.vault.azure.net/secrets/host--functionKey--default')]"
+          "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
       "name": "[concat(parameters('ApimServiceName'), '/', parameters('Environment'),'-func-validator-services-key')]",
@@ -38,7 +40,7 @@
         "secret": true,
         "displayName": "[concat('func-iativalidator-', parameters('Environment'), '-key')]",
         "keyVault": {
-          "secretIdentifier": "[concat('https://kv-iati-',parameters('Environment'), '.vault.azure.net/secrets/host--functionKey--default')]"
+          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
       "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
@@ -49,25 +51,12 @@
       "properties": {
         "tags": ["key"],
         "secret": true,
-        "displayName": "pw-solr-admin-PROD",
+        "displayName": "pw-solr-user",
         "keyVault": {
-          "secretIdentifier": "https://kv-iati-prod.vault.azure.net/secrets/pw-solr-admin-PROD"
+          "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/', variables('SolrUserPwName'))]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-admin-PROD')]",
-      "type": "Microsoft.ApiManagement/service/namedValues",
-      "apiVersion": "2021-01-01-preview"
-    },
-    {
-      "properties": {
-        "tags": ["key"],
-        "secret": true,
-        "displayName": "pw-solr-user-PROD",
-        "keyVault": {
-          "secretIdentifier": "https://kv-iati-prod.vault.azure.net/secrets/pw-solr-user-PROD"
-        }
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-user-PROD')]",
+      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-user')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -103,6 +92,28 @@
         "tags": ["policy"],
         "secret": false
       }
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "solrDefaultRows",
+        "value": "10"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solrDefaultRows')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "solrMaxRows",
+        "value": "1000"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/solrMaxRows')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
     }
   ]
 }
