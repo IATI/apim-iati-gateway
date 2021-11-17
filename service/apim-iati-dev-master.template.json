@@ -44,12 +44,6 @@
         "description": "Base URL of the repository that contains the generated policy files"
       }
     },
-    "serviceUrl": {
-      "type": "object",
-      "metadata": {
-        "description": "Service url for each Api"
-      }
-    },
     "ApplicationInsightsInstanceName": {
       "type": "string",
       "metadata": {
@@ -311,9 +305,6 @@
           },
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
-          },
-          "serviceUrl": {
-            "value": "[parameters('serviceUrl')]"
           },
           "SolrBaseUrl": {
             "value": "[parameters('SolrBaseURL')]"
