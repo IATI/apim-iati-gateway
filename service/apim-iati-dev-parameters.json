@@ -38,7 +38,7 @@
     "ApplicationInsightsInstanceName": {
       "value": "appi-apim"
     },
-    "SolrBaseURL": {
+    "SolrBaseUrl": {
       "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
     }
   }
