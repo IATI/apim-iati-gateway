@@ -74,7 +74,7 @@
         "description": "Connection string for external redis cache"
       }
     },
-    "SolrBaseURL": {
+    "SolrBaseUrl": {
       "type": "string"
     }
   },
@@ -307,7 +307,7 @@
             "value": "[parameters('PolicyXMLBaseUrl')]"
           },
           "SolrBaseUrl": {
-            "value": "[parameters('SolrBaseURL')]"
+            "value": "[parameters('SolrBaseUrl')]"
           }
         }
       },

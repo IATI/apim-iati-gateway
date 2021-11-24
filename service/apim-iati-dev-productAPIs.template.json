@@ -8,18 +8,10 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('ApimServiceName'), '/exploratory/solr')]",
-      "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
-    },
-    {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'solr')]"
-      ]
+      "dependsOn": []
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2')]",
