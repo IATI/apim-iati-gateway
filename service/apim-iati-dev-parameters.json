@@ -26,13 +26,6 @@
     "SubscriptionId": {
       "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
     },
-    "serviceUrl": {
-      "value": {
-        "iativalidatorv2": null,
-        "solr": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
-        "validatorservicesprivate": null
-      }
-    },
     "ApimSKU": {
       "value": "Developer"
     },
@@ -45,7 +38,7 @@
     "ApplicationInsightsInstanceName": {
       "value": "appi-apim"
     },
-    "SolrBaseURL": {
+    "SolrBaseUrl": {
       "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
     }
   }

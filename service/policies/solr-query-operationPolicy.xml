@@ -13,7 +13,7 @@
 <policies>
 	<inbound>
 		<base />
-		<rewrite-uri template="/solr/{collection}/select" />
+		<rewrite-uri template="/solr/{collection}/{responsetype}" />
 		<set-variable name="solrMaxRows" value="{{solrMaxRows}}" />
 		<set-variable name="solrDefaultRows" value="{{solrDefaultRows}}" />
 		<set-query-parameter name="rows" exists-action="override">
