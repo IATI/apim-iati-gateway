@@ -31,7 +31,7 @@
         "path": "datastore",
         "protocols": ["https"]
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr')]",
+      "name": "[concat(parameters('ApimServiceName'), '/datastore')]",
       "type": "Microsoft.ApiManagement/service/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": []
@@ -1454,11 +1454,11 @@
           }
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/1637146457784')]",
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/1637146457784')]",
       "type": "Microsoft.ApiManagement/service/apis/schemas",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]"
       ]
     },
     {
@@ -1849,12 +1849,12 @@
         "method": "GET",
         "urlTemplate": "/{collection}/{responsetype}"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/query')]",
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/query')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]",
-        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'solr', '1637146457784')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'datastore', '1637146457784')]"
       ]
     },
     {
@@ -1862,11 +1862,11 @@
         "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-query-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/query/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/query/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'solr', 'query')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'datastore', 'query')]"
       ]
     },
     {
@@ -1874,11 +1874,11 @@
         "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-apiPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solr/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'solr')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]"
       ]
     },
     {
