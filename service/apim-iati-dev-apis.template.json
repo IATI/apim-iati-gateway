@@ -1898,7 +1898,7 @@
         "path": "validator",
         "protocols": ["https"]
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator')]",
       "type": "Microsoft.ApiManagement/service/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": []
@@ -2391,11 +2391,11 @@
           }
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/1622545438727')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/1622545438727')]",
       "type": "Microsoft.ApiManagement/service/apis/schemas",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator')]"
       ]
     },
     {
@@ -2509,35 +2509,35 @@
         "method": "GET",
         "urlTemplate": "/report"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/get-pub-get-report')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]",
-        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'iati-validator-v2', '1622545438727')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'validator', '1622545438727')]"
       ]
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/iati-validator-v2-get-pub-get-report-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/validator-get-pub-get-report-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/get-pub-get-report/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator', 'get-pub-get-report')]"
       ]
     },
     {
       "properties": {
         "displayName": "validator"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/validator')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/get-pub-get-report/validator')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator', 'get-pub-get-report')]"
       ]
     },
     {
@@ -2680,51 +2680,51 @@
         "method": "POST",
         "urlTemplate": "/validate"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/post-pub-validate-post')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]",
-        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'iati-validator-v2', '1622545438727')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('ApimServiceName'), 'validator', '1622545438727')]"
       ]
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/iati-validator-v2-post-pub-validate-post-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/validator-post-pub-validate-post-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/post-pub-validate-post/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'post-pub-validate-post')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator', 'post-pub-validate-post')]"
       ]
     },
     {
       "properties": {
         "displayName": "validator"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post/validator')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/post-pub-validate-post/validator')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'iati-validator-v2', 'post-pub-validate-post')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'validator', 'post-pub-validate-post')]"
       ]
     },
     {
-      "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/validator')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator')]"
       ]
     },
     {
-      "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2')]",
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/validator')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'iati-validator-v2')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'validator')]"
       ]
     },
     {

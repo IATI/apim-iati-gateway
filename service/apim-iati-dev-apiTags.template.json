@@ -11,7 +11,7 @@
       "properties": {
         "displayName": "validator"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/validator')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/get-pub-get-report/validator')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": []
@@ -20,11 +20,11 @@
       "properties": {
         "displayName": "validator"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post/validator')]",
+      "name": "[concat(parameters('ApimServiceName'), '/validator/post-pub-validate-post/validator')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report', 'validator')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'validator', 'get-pub-get-report', 'validator')]"
       ]
     }
   ]
