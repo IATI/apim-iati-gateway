@@ -25,7 +25,7 @@
         },
         "apiRevision": "1",
         "isCurrent": true,
-        "subscriptionRequired": false,
+        "subscriptionRequired": true,
         "displayName": "IATI Datastore",
         "serviceUrl": "[parameters('SolrBaseUrl')]",
         "path": "datastore",
