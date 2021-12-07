@@ -1853,7 +1853,7 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-query-operationPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/datastore-query-operationPolicy.xml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/datastore/query/policy')]",
@@ -1865,11 +1865,27 @@
     },
     {
       "properties": {
-        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/solr-apiPolicy.xml')]",
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/datastore-apiPolicy.xml')]",
         "format": "rawxml-link"
       },
       "name": "[concat(parameters('ApimServiceName'), '/datastore/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'datastore')]"
