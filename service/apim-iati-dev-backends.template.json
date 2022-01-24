@@ -14,7 +14,8 @@
   },
   "variables": {
     "ValidatorServicesNameWithEnv": "[concat('func-validator-services-', parameters('Environment'))]",
-    "ValidatorAPINameWithEnv": "[concat('func-iativalidator-', parameters('Environment'))]"
+    "ValidatorAPINameWithEnv": "[concat('func-iativalidator-', parameters('Environment'))]",
+    "DatastoreServicesAPINameWithEnv": "[concat('func-datastore-services-', parameters('Environment'))]"
   },
   "resources": [
     {
@@ -50,6 +51,22 @@
         "protocol": "http"
       },
       "name": "[concat(parameters('ApimServiceName'), '/', variables('ValidatorAPINameWithEnv'))]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2020-12-01"
+    },
+    {
+      "properties": {
+        "description": "[variables('DatastoreServicesAPINameWithEnv')]",
+        "resourceId": "[concat('https://management.azure.com/subscriptions/', parameters('SubscriptionId'), '/resourceGroups/rg-datastore-services-', parameters('Environment'),   '/providers/Microsoft.Web/sites/', variables('DatastoreServicesAPINameWithEnv'))]",
+        "credentials": {
+          "header": {
+            "x-functions-key": ["{{default-function-key}}"]
+          }
+        },
+        "url": "[concat( 'https://', variables('DatastoreServicesAPINameWithEnv'), '.azurewebsites.net/api')]",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/', variables('DatastoreServicesAPINameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     }

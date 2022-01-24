@@ -49,6 +49,19 @@
     },
     {
       "properties": {
+        "tags": ["key", "function", "auto"],
+        "secret": true,
+        "displayName": "default-function-key",
+        "keyVault": {
+          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/default-function-key')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
         "tags": ["key"],
         "secret": true,
         "displayName": "pw-solr-user",
