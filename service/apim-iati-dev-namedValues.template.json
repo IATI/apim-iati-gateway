@@ -17,6 +17,7 @@
   },
   "variables": {
     "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]",
+    "DatastoreSearchSubdomain": "[concat(parameters('UrlEnvPrefix'), 'ds-search')]",
     "SolrUserPwName": "[concat('pw-solr-user-', parameters('Environment'))]",
     "KeyVaultName": "[concat('kv-iati-', parameters('Environment'))]"
   },
@@ -102,6 +103,17 @@
       "properties": {
         "displayName": "ValidatorSubdomain",
         "value": "[variables('ValidatorSubdomain')]",
+        "tags": ["policy"],
+        "secret": false
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/DatastoreSearchSubdomain')]",
+      "properties": {
+        "displayName": "DatastoreSearchSubdomain",
+        "value": "[variables('DatastoreSearchSubdomain')]",
         "tags": ["policy"],
         "secret": false
       }
