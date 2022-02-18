@@ -17,6 +17,7 @@
   },
   "variables": {
     "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]",
+    "DatastoreSearchSubdomain": "[concat(parameters('UrlEnvPrefix'), 'ds-search')]",
     "SolrUserPwName": "[concat('pw-solr-user-', parameters('Environment'))]",
     "KeyVaultName": "[concat('kv-iati-', parameters('Environment'))]"
   },
@@ -44,6 +45,19 @@
         }
       },
       "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": ["key", "function", "auto"],
+        "secret": true,
+        "displayName": "default-function-key",
+        "keyVault": {
+          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/default-function-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -89,6 +103,17 @@
       "properties": {
         "displayName": "ValidatorSubdomain",
         "value": "[variables('ValidatorSubdomain')]",
+        "tags": ["policy"],
+        "secret": false
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/DatastoreSearchSubdomain')]",
+      "properties": {
+        "displayName": "DatastoreSearchSubdomain",
+        "value": "[variables('DatastoreSearchSubdomain')]",
         "tags": ["policy"],
         "secret": false
       }
