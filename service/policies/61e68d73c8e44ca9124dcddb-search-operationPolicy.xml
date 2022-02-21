@@ -13,6 +13,7 @@
 <policies>
 	<inbound>
 		<base />
+		<authentication-basic username="solr" password="{{pw-solr-user}}" />
 		<rewrite-uri template="/solr/{collection}/search" />
 	</inbound>
 	<backend>
