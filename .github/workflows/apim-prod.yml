@@ -26,6 +26,7 @@ jobs:
       RedisConnectionString: ${{ secrets.PROD_REDIS_CONNECTION_STRING }}
       ApplicationInsightsInstanceName: appi-apim
       SolrBaseUrl: ${{ secrets.PROD_SOLR_BASE_URL }}
+      Branch: main
 
     steps:
       - name: "Checkout GitHub Action"
@@ -62,4 +63,5 @@ jobs:
             --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
             --parameters RedisConnectionString=${{ env.RedisConnectionString }} \
             --parameters ApplicationInsightsInstanceName=${{ env.ApplicationInsightsInstanceName }} \
-            --parameters SolrBaseUrl=${{ env.SolrBaseUrl }}
+            --parameters SolrBaseUrl=${{ env.SolrBaseUrl }} \
+            --parameters Branch=${{ env.Branch }}

@@ -13,6 +13,9 @@
     },
     "UrlEnvPrefix": {
       "type": "string"
+    },
+    "Branch": {
+      "type": "string"
     }
   },
   "variables": {
@@ -137,6 +140,17 @@
         "value": "1000"
       },
       "name": "[concat(parameters('ApimServiceName'), '/solrMaxRows')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "branch",
+        "value": "[parameters('Branch')]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/branch')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     }

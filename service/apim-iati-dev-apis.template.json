@@ -1498,6 +1498,46 @@
       "properties": {
         "templateParameters": [
           {
+            "name": "type",
+            "type": "",
+            "required": true,
+            "values": ["filters", "codelists"]
+          }
+        ],
+        "description": "Get filter and codelists resources for the front end filter config.",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Filter Resources",
+        "method": "GET",
+        "urlTemplate": "/resources/{type}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/61e68d73c8e44ca9124dcddb/filter-resources')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), '61e68d73c8e44ca9124dcddb')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/61e68d73c8e44ca9124dcddb-filter-resources-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/61e68d73c8e44ca9124dcddb/filter-resources/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), '61e68d73c8e44ca9124dcddb', 'filter-resources')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
             "name": "collection",
             "description": "Defines which collection to query. The activity collection holds the data in one document per IATI Activity element. The transaction collection explodes the data to include one document per Transaction element. The budget collection explodes the data to include one document per Budget element.\n",
             "type": "string",

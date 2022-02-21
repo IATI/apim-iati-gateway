@@ -40,6 +40,9 @@
     },
     "SolrBaseUrl": {
       "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
+    },
+    "Branch": {
+      "value": "develop"
     }
   }
 }
