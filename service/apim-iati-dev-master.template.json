@@ -76,6 +76,9 @@
     },
     "SolrBaseUrl": {
       "type": "string"
+    },
+    "Branch": {
+      "type": "string"
     }
   },
   "resources": [
@@ -160,6 +163,9 @@
           },
           "UrlEnvPrefix": {
             "value": "[parameters('UrlEnvPrefix')]"
+          },
+          "Branch": {
+            "value": "[parameters('Branch')]"
           }
         }
       },
