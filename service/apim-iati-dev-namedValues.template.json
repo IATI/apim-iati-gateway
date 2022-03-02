@@ -20,7 +20,8 @@
   },
   "variables": {
     "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]",
-    "DatastoreSearchSubdomain": "[concat(parameters('UrlEnvPrefix'), 'ds-search')]",
+    "DatastoreSearchSubdomain": "[concat(parameters('UrlEnvPrefix'), 'datastore')]",
+    "DatastoreSearchLegacySubdomain": "[concat(parameters('UrlEnvPrefix'), 'iatidatastore')]",
     "SolrUserPwName": "[concat('pw-solr-user-', parameters('Environment'))]",
     "KeyVaultName": "[concat('kv-iati-', parameters('Environment'))]"
   },
@@ -117,6 +118,17 @@
       "properties": {
         "displayName": "DatastoreSearchSubdomain",
         "value": "[variables('DatastoreSearchSubdomain')]",
+        "tags": ["policy"],
+        "secret": false
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview",
+      "name": "[concat(parameters('ApimServiceName'), '/DatastoreSearchLegacySubdomain')]",
+      "properties": {
+        "displayName": "DatastoreSearchLegacySubdomain",
+        "value": "[variables('DatastoreSearchLegacySubdomain')]",
         "tags": ["policy"],
         "secret": false
       }
