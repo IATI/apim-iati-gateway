@@ -9,12 +9,89 @@
   "resources": [
     {
       "properties": {
+        "displayName": "datastore"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/query/datastore')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "displayName": "GET"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/query/get')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'datastore', 'query', 'datastore')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "query"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/query/query')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'datastore', 'query', 'get')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "datastore"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/datastore')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'datastore', 'query', 'query')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "datause"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore/datause')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), 'datastore', 'datastore')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "GET"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/get')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), 'datastore', 'datause')]"
+      ]
+    },
+    {
+      "properties": {
         "displayName": "validator"
       },
       "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/get-pub-get-report/validator')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report', 'get')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "POST"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/post-pub-validate-post/post')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report', 'validator')]"
+      ]
     },
     {
       "properties": {
@@ -24,7 +101,29 @@
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'get-pub-get-report', 'validator')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'post-pub-validate-post', 'post')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "publisher"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/publisher')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'post-pub-validate-post', 'validator')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "validator"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/iati-validator-v2/validator')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), 'iati-validator-v2', 'publisher')]"
       ]
     }
   ]

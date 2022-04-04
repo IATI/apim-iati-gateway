@@ -14,9 +14,10 @@
 Run Extractor Tool
 
 ```bash
-cd extraction_templates/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate
-dotnet restore
+cd extraction_templates/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate && \
+dotnet restore && \
 dotnet run extract --extractorConfig ../../../../apimExtract.json
+cd -
 ```
 
 Update the Extractor Tool
