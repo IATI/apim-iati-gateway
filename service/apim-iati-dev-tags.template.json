@@ -9,9 +9,41 @@
   "resources": [
     {
       "properties": {
+        "displayName": "datastore"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datastore')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "displayName": "datause"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/datause')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "displayName": "GET"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/get')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
         "displayName": "organisation"
       },
       "name": "[concat(parameters('ApimServiceName'), '/organisation')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "displayName": "POST"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/post')]",
       "type": "Microsoft.ApiManagement/service/tags",
       "apiVersion": "2021-01-01-preview"
     },
@@ -28,6 +60,14 @@
         "displayName": "publisher"
       },
       "name": "[concat(parameters('ApimServiceName'), '/publisher')]",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "displayName": "query"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/query')]",
       "type": "Microsoft.ApiManagement/service/tags",
       "apiVersion": "2021-01-01-preview"
     },
