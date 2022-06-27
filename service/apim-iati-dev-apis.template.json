@@ -27,7 +27,6 @@
         "isCurrent": true,
         "subscriptionRequired": false,
         "displayName": "API Definitions",
-        "serviceUrl": "[parameters('serviceUrl').apidefinitions]",
         "path": "definitions",
         "protocols": ["https"]
       },
