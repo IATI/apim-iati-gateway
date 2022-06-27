@@ -51,6 +51,7 @@ Update the Extractor Tool
 - Create a Release in GitHub from `main`, increment the tag appropriately with semver standard
 - Publish the Release, the `prod` deployment workflow will run
 - Check Portal/test that all your config made it there from `dev`
+- PR from `main` -> `develop` to sync back to dev
 
 ## Developer Portal
 
