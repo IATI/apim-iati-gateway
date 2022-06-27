@@ -35,7 +35,7 @@
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), '61e68d73c8e44ca9124dcddb', 'specifications')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), 'datastore', 'query', 'datastore')]"
       ]
     },
     {
