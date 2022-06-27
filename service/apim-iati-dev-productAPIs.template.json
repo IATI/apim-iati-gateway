@@ -14,6 +14,12 @@
       "dependsOn": []
     },
     {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
