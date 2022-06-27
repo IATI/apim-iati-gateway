@@ -243,6 +243,14 @@
       ]
     },
     {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/api-definitions')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
       "properties": {
         "description": "IATI Datastore API for the exclusive use of the Datastore Search application. ",
         "authenticationSettings": {
