@@ -12,18 +12,12 @@
 -->
 <policies>
 	<inbound>
-		<cors>
-			<allowed-origins>
-				<origin>http://localhost:4200/</origin>
-				<origin>https://dev-validator-vue.iatistandard.org/</origin>
-				<origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
-			</allowed-origins>
-			<allowed-methods>
-				<method>GET</method>
-				<method>POST</method>
-			</allowed-methods>
-		</cors>
 		<base />
+		<rewrite-uri template="/{api}" />
+		<set-query-parameter name="api-version" exists-action="override">
+			<value>2021-04-01-preview</value>
+		</set-query-parameter>
+		<set-backend-service base-url="https://apim-iati-dev.management.azure-api.net/subscriptions/000/resourceGroups/000/providers/Microsoft.ApiManagement/service/apim-iati-dev/apis" />
 	</inbound>
 	<backend>
 		<base />

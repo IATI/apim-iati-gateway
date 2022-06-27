@@ -8,10 +8,18 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/api-definitions')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": []
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', '61e68d73c8e44ca9124dcddb')]"
+      ]
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore')]",

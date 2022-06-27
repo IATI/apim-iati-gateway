@@ -15,6 +15,235 @@
   "resources": [
     {
       "properties": {
+        "description": "Endpoints providing API Definitions in the following standard specifications:\n- Open API 2 JSON (swagger)\n- Open API 3 JSON\n- Open API 3 YAML\n- WADL\n\n**Note:** these definitions can also be downloaded directly from each API's documentation page using the \"API definition\" dropdown. These endpoints are designed to make it easier to integrate tools that rely on a public endpoint for the API specification.",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": false,
+        "displayName": "API Definitions",
+        "serviceUrl": "[parameters('serviceUrl').apidefinitions]",
+        "path": "definitions",
+        "protocols": ["https"]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "api",
+            "description": "The api to return the definition for",
+            "type": "string",
+            "required": true,
+            "values": ["datastore", "iati-validator-v2"]
+          }
+        ],
+        "description": "Returns the Open API 2 definition for the selected `{api}` in JSON format. Open API 2 was formerly the Swagger RESTful API Documentation Specification.\n- [OpenAPI Specification](https://swagger.io/specification/v2/)",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Open API 2 (JSON)",
+        "method": "GET",
+        "urlTemplate": "/{api}/openapi2.json"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-2-json')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/api-definitions-open-api-2-json-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-2-json/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'api-definitions', 'open-api-2-json')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "api",
+            "description": "The api to return the definition for",
+            "type": "string",
+            "required": true,
+            "values": ["datastore", "iati-validator-v2"]
+          }
+        ],
+        "description": "Returns the Open API 3 definition for the selected `{api}` in JSON format. \n- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Open API 3 (JSON)",
+        "method": "GET",
+        "urlTemplate": "/{api}/openapi3.json"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-3-json')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/api-definitions-open-api-3-json-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-3-json/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'api-definitions', 'open-api-3-json')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "api",
+            "description": "The api to return the definition for",
+            "type": "string",
+            "required": true,
+            "values": ["datastore", "iati-validator-v2"]
+          }
+        ],
+        "description": "Returns the Open API 3 definition for the selected `{api}` in YAML format. \n- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "Open API 3 (YAML)",
+        "method": "GET",
+        "urlTemplate": "/{api}/openapi3.yaml"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-3-yaml')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/api-definitions-open-api-3-yaml-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/open-api-3-yaml/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'api-definitions', 'open-api-3-yaml')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "api",
+            "description": "The api to return the definition for",
+            "type": "",
+            "required": true,
+            "values": ["datastore", "iati-validator-v2"]
+          }
+        ],
+        "description": "Returns the WADL definition for the selected `{api}` in `application/vnd.sun.wadl+xml` format. \n- [WADL Specification](https://www.w3.org/Submission/wadl/)",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "WADL",
+        "method": "GET",
+        "urlTemplate": "/{api}/wadl.xml"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/wadl')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/api-definitions-wadl-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/wadl/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'api-definitions', 'wadl')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/api-definitions-apiPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "definitions"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/definitions')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
+        "displayName": "specifications"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/specifications')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/api-definitions')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'api-definitions')]"
+      ]
+    },
+    {
+      "properties": {
         "description": "IATI Datastore API for the exclusive use of the Datastore Search application. ",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
@@ -3923,7 +4152,7 @@
     },
     {
       "properties": {
-        "description": "IATI's public validation API. Provides routes related to the validation of IATI XML.",
+        "description": "IATI Validation API. Provides routes related to the validation of IATI XML.",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
         },

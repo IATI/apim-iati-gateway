@@ -9,12 +9,34 @@
   "resources": [
     {
       "properties": {
+        "displayName": "definitions"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/definitions')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "displayName": "specifications"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/api-definitions/specifications')]",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), 'api-definitions', 'definitions')]"
+      ]
+    },
+    {
+      "properties": {
         "displayName": "datastore"
       },
       "name": "[concat(parameters('ApimServiceName'), '/datastore/query/datastore')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/tags",
       "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/tags', parameters('ApimServiceName'), '61e68d73c8e44ca9124dcddb', 'specifications')]"
+      ]
     },
     {
       "properties": {
