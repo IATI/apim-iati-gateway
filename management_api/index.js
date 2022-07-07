@@ -15,19 +15,7 @@ const getPaginatedResponse = async (url, requestOptions, values = []) => {
 
 (async () => {
   // update me to return emails only for these user IDs
-  const filterUsers = [
-    "61405e03217d20169008b011",
-    "614b503a217d20169008ba81",
-    "617c01b00a23230aa047a74b",
-    "54c800b332965a0035030000",
-    "619650ae217d20157c79ecb0",
-    "62a251470a23230cf07b4bae",
-    "620da4ed0a232310f40dcde4",
-    "6257ed6f217d200f5cc68908",
-    "61af7310217d20157c7a066b",
-    "624e91580a232313904b5100",
-    "62855e71217d2012ec2ee8f1",
-  ];
+  const filterUsers = [];
   try {
     const token = await getBearerToken();
 
