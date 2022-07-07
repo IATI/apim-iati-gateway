@@ -2226,7 +2226,7 @@
     },
     {
       "properties": {
-        "description": "IATI Datastore API. Uses Apache Solr to index IATI data and provide search capabilities. Provides routes for querying all IATI data that is not critically invalid as determined by the [IATI Validator](https://iativalidator.iatistandard.org/).\n\n",
+        "description": "IATI Datastore API. Uses Apache Solr to index IATI data and provide search capabilities. Provides routes for querying all IATI data that is not critically invalid as determined by the [IATI Validator](https://iativalidator.iatistandard.org/).\n\nThe API adheres to the [IATI Datastore version 3 API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Datastore_version_3_API_Contract.pdf).\n",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
         },
@@ -4159,7 +4159,7 @@
     },
     {
       "properties": {
-        "description": "IATI Validation API. Provides routes related to the validation of IATI XML.",
+        "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
         "authenticationSettings": {
           "subscriptionKeyRequired": false
         },
