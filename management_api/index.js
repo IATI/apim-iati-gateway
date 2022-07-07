@@ -4,6 +4,8 @@ const { getBearerToken } = require("./config/azureAPI");
 const config = require("./config/config");
 
 (async () => {
+  // update me to return emails only for these user IDs
+  const filterUsers = [];
   try {
     const token = await getBearerToken();
 
@@ -27,9 +29,16 @@ const config = require("./config/config");
     const data = await response.json();
 
     const emailList = data.value
-      .reduce((acc, { properties }) => {
-        if (properties.state == "active") {
-          acc.push(properties.email);
+      .reduce((acc, { id, properties }) => {
+        if (properties.state === "active") {
+          if (
+            filterUsers.length > 0 &&
+            filterUsers.includes(id.split("/").pop())
+          ) {
+            acc.push(properties.email);
+          } else if (filterUsers.length === 0) {
+            acc.push(properties.email);
+          }
         }
         return acc;
       }, [])
