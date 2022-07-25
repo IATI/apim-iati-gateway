@@ -26,7 +26,7 @@
     },
     {
       "properties": {
-        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
+        "description": "Administrators is a built-in group containing the admin email account provided at the time of service creation. Its membership is managed by the system.",
         "displayName": "Administrators",
         "type": "system",
         "builtIn": true
@@ -94,7 +94,7 @@
     },
     {
       "properties": {
-        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
+        "description": "Administrators is a built-in group containing the admin email account provided at the time of service creation. Its membership is managed by the system.",
         "displayName": "Administrators",
         "type": "system",
         "builtIn": true
@@ -160,7 +160,7 @@
     },
     {
       "properties": {
-        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
+        "description": "Administrators is a built-in group containing the admin email account provided at the time of service creation. Its membership is managed by the system.",
         "displayName": "Administrators",
         "type": "system",
         "builtIn": true
