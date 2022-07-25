@@ -2238,7 +2238,7 @@
         "apiRevisionDescription": "v3 Initial Release",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('serviceUrl').datastorerev1]",
+        "serviceUrl": "[parameters('SolrBaseUrl')]",
         "path": "datastore",
         "protocols": ["https"]
       },
