@@ -73,6 +73,15 @@ The APIM instance can be manually backed up by running the `apim-backup.yml` Git
 
 The backup is stored in a blob storage account in the same resource group as the APIM instance that it's backing up.
 
+The Service Principal used to do the backups must have access to both Dev and Prod APIMs. So you can give the Prod Service Principle the "contributor" role on the scope of the dev resource group:
+
+```bash
+az role assignment create \
+  --assignee <prod sp id> \
+  --scope /subscriptions/<sub id>/resourceGroups/<dev resource group> \
+  --role contributor
+```
+
 ## Restore
 
 Budget approximately 2-3hrs to complete a restore to a NEW Apim instance.
