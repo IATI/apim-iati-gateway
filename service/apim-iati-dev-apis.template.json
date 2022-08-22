@@ -6993,7 +6993,7 @@
         },
         "apiRevision": "2",
         "isCurrent": true,
-        "apiRevisionDescription": "[v2.0.1] Add showerrors query parameter to existing report route. Validator Services [v2.4.8]()",
+        "apiRevisionDescription": "[v2.0.1] Add showerrors query parameter to existing report route. Validator Services [v2.4.8](https://github.com/IATI/validator-services/releases/tag/v2.4.8)",
         "subscriptionRequired": true,
         "displayName": "IATI Validator",
         "path": "validator",
