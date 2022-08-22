@@ -6105,7 +6105,6 @@
         "apiRevisionDescription": "v2 Initial Release",
         "subscriptionRequired": true,
         "displayName": "IATI Validator",
-        "serviceUrl": "[parameters('serviceUrl').iativalidatorv2rev1]",
         "path": "validator",
         "protocols": ["https"]
       },
