@@ -52,11 +52,27 @@
       ]
     },
     {
-      "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'datastore')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2;rev=1')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'iati-validator-v2;rev=1')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'iati-validator-v2;rev=1')]"
       ]
     },
     {
