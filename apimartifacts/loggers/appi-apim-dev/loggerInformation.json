@@ -1,0 +1,12 @@
+{
+  "name": "appi-apim-dev",
+  "properties": {
+    "description": "Application Insights logger for APIM",
+    "isBuffered": true,
+    "loggerType": "applicationInsights",
+    "resourceId": "/subscriptions/bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9/resourceGroups/rg-apim-dev/providers/Microsoft.Insights/components/appi-apim-dev",
+    "credentials": {
+      "instrumentationKey": "{{Logger-Credentials--630339dd217d20013c8228e2}}"
+    }
+  }
+}

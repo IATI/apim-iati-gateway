@@ -1,0 +1,9 @@
+{
+  "name": "branch",
+  "properties": {
+    "displayName": "branch",
+    "secret": false,
+    "tags": [],
+    "value": "develop"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "61e68d73c8e44ca9124dcddb",
+  "properties": {
+    "path": "dss",
+    "displayName": "Datastore Search Services",
+    "apiRevision": "1",
+    "description": "IATI Datastore API for the exclusive use of the Datastore Search application. ",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+    "subscriptionRequired": true
+  }
+}

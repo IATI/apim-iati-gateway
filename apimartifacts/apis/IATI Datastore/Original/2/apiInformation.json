@@ -1,0 +1,16 @@
+{
+  "name": "datastore",
+  "properties": {
+    "path": "datastore",
+    "displayName": "IATI Datastore",
+    "apiRevision": "2",
+    "apiRevisionDescription": "[v3.1.0](https://github.com/IATI/datastore-solr-configs/releases/tag/v3.1.0) - Added \u0060indexed_datetime\u0060 as an available field in queries and response JSON, CSV.",
+    "description": "IATI Datastore API. Uses Apache Solr to index IATI data and provide search capabilities. Provides routes for querying all IATI data that is not critically invalid as determined by the [IATI Validator](https://iativalidator.iatistandard.org/).\n\nThe API adheres to the [IATI Datastore version 3 API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Datastore_version_3_API_Contract.pdf).\n",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+    "subscriptionRequired": true
+  }
+}

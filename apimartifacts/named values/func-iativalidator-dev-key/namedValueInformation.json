@@ -1,0 +1,15 @@
+{
+  "name": "func-iativalidator-dev-key",
+  "properties": {
+    "displayName": "func-iativalidator-dev-key",
+    "keyVault": {
+      "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/host--functionKey--default"
+    },
+    "secret": true,
+    "tags": [
+      "key",
+      "function",
+      "auto"
+    ]
+  }
+}

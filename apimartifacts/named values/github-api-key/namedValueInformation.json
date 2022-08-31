@@ -1,0 +1,11 @@
+{
+  "name": "github-api-key",
+  "properties": {
+    "displayName": "github-api-key",
+    "keyVault": {
+      "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/pw-gh-api-key"
+    },
+    "secret": true,
+    "tags": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "default-function-key",
+  "properties": {
+    "displayName": "default-function-key",
+    "keyVault": {
+      "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/host--functionKey--default"
+    },
+    "secret": true,
+    "tags": [
+      "key",
+      "function",
+      "auto"
+    ]
+  }
+}

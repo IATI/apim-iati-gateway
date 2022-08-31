@@ -1,0 +1,11 @@
+{
+  "name": "DatastoreSearchSubdomain",
+  "properties": {
+    "displayName": "DatastoreSearchSubdomain",
+    "secret": false,
+    "tags": [
+      "policy"
+    ],
+    "value": "dev-datastore"
+  }
+}

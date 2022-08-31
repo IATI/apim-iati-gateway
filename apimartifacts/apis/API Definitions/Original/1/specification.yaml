@@ -1,0 +1,93 @@
+openapi: 3.0.1
+info:
+  title: API Definitions
+  description: "Endpoints providing API Definitions in the following standard specifications:\n- Open API 2 JSON (swagger)\n- Open API 3 JSON\n- Open API 3 YAML\n- WADL\n\n**Note:** these definitions can also be downloaded directly from each API's documentation page using the \"API definition\" dropdown. These endpoints are designed to make it easier to integrate tools that rely on a public endpoint for the API specification."
+  version: '1.0'
+servers:
+  - url: https://dev-api.iatistandard.org/definitions
+paths:
+  '/{api}/openapi2.json':
+    get:
+      summary: Open API 2 (JSON)
+      description: "Returns the Open API 2 definition for the selected `{api}` in JSON format. Open API 2 was formerly the Swagger RESTful API Documentation Specification.\n- [OpenAPI Specification](https://swagger.io/specification/v2/)"
+      operationId: open-api-2-json
+      parameters:
+        - name: api
+          in: path
+          description: The api to return the definition for
+          required: true
+          schema:
+            enum:
+              - datastore
+              - iati-validator-v2
+            type: string
+      responses:
+        '200':
+          description: 
+  '/{api}/openapi3.json':
+    get:
+      summary: Open API 3 (JSON)
+      description: "Returns the Open API 3 definition for the selected `{api}` in JSON format. \n- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)"
+      operationId: open-api-3-json
+      parameters:
+        - name: api
+          in: path
+          description: The api to return the definition for
+          required: true
+          schema:
+            enum:
+              - datastore
+              - iati-validator-v2
+            type: string
+      responses:
+        '200':
+          description: 
+  '/{api}/openapi3.yaml':
+    get:
+      summary: Open API 3 (YAML)
+      description: "Returns the Open API 3 definition for the selected `{api}` in YAML format. \n- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)"
+      operationId: open-api-3-yaml
+      parameters:
+        - name: api
+          in: path
+          description: The api to return the definition for
+          required: true
+          schema:
+            enum:
+              - datastore
+              - iati-validator-v2
+            type: string
+      responses:
+        '200':
+          description: 
+  '/{api}/wadl.xml':
+    get:
+      summary: WADL
+      description: "Returns the WADL definition for the selected `{api}` in `application/vnd.sun.wadl+xml` format. \n- [WADL Specification](https://www.w3.org/Submission/wadl/)"
+      operationId: wadl
+      parameters:
+        - name: api
+          in: path
+          description: The api to return the definition for
+          required: true
+          schema:
+            enum:
+              - ''
+              - ''
+            type: ''
+      responses:
+        '200':
+          description: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

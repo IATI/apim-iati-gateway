@@ -1,0 +1,14 @@
+{
+  "name": "validator-services-private",
+  "properties": {
+    "path": "vs",
+    "displayName": "Validator Services Private",
+    "apiRevision": "1",
+    "description": "Validator Services Routes",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "subscriptionRequired": true
+  }
+}

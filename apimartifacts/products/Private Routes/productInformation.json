@@ -1,0 +1,10 @@
+{
+  "name": "private-routes",
+  "properties": {
+    "displayName": "Private Routes",
+    "approvalRequired": false,
+    "description": "Private routes for internal use only by the IATI Unified Platform",
+    "state": "notPublished",
+    "subscriptionRequired": true
+  }
+}

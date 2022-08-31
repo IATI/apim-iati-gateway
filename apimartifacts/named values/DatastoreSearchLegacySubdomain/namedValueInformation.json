@@ -1,0 +1,11 @@
+{
+  "name": "DatastoreSearchLegacySubdomain",
+  "properties": {
+    "displayName": "DatastoreSearchLegacySubdomain",
+    "secret": false,
+    "tags": [
+      "policy"
+    ],
+    "value": "dev-iatidatastore"
+  }
+}

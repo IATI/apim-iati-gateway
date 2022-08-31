@@ -1,0 +1,9 @@
+{
+  "name": "solrDefaultRows",
+  "properties": {
+    "displayName": "solrDefaultRows",
+    "secret": false,
+    "tags": [],
+    "value": "10"
+  }
+}

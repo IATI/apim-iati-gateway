@@ -1,0 +1,15 @@
+{
+  "name": "iati-validator-v2",
+  "properties": {
+    "path": "validator",
+    "displayName": "IATI Validator",
+    "apiRevision": "2",
+    "apiRevisionDescription": "[v2.0.1] Add showerrors query parameter to existing report route. Validator Services [v2.4.8](https://github.com/IATI/validator-services/releases/tag/v2.4.8)",
+    "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "subscriptionRequired": true
+  }
+}

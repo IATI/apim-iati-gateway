@@ -1,0 +1,14 @@
+{
+  "name": "api-definitions",
+  "properties": {
+    "path": "definitions",
+    "displayName": "API Definitions",
+    "apiRevision": "1",
+    "description": "Endpoints providing API Definitions in the following standard specifications:\n- Open API 2 JSON (swagger)\n- Open API 3 JSON\n- Open API 3 YAML\n- WADL\n\n**Note:** these definitions can also be downloaded directly from each API\u0027s documentation page using the \u0022API definition\u0022 dropdown. These endpoints are designed to make it easier to integrate tools that rely on a public endpoint for the API specification.",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "subscriptionRequired": false
+  }
+}

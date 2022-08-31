@@ -1,0 +1,13 @@
+{
+  "name": "pw-solr-user",
+  "properties": {
+    "displayName": "pw-solr-user",
+    "keyVault": {
+      "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/pw-solr-user-dev"
+    },
+    "secret": true,
+    "tags": [
+      "key"
+    ]
+  }
+}

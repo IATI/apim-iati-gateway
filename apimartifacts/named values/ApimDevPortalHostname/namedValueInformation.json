@@ -1,0 +1,11 @@
+{
+  "name": "ApimDevPortalHostname",
+  "properties": {
+    "displayName": "ApimDevPortalHostname",
+    "secret": false,
+    "tags": [
+      "policy"
+    ],
+    "value": "dev-developer.iatistandard.org"
+  }
+}

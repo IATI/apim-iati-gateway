@@ -1,0 +1,11 @@
+{
+  "name": "Environment",
+  "properties": {
+    "displayName": "Environment",
+    "secret": false,
+    "tags": [
+      "policy"
+    ],
+    "value": "dev"
+  }
+}

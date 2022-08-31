@@ -1,0 +1,11 @@
+{
+  "name": "ValidatorSubdomain",
+  "properties": {
+    "displayName": "ValidatorSubdomain",
+    "secret": false,
+    "tags": [
+      "policy"
+    ],
+    "value": "dev-iativalidator"
+  }
+}

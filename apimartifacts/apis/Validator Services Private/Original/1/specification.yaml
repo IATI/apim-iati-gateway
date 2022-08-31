@@ -1,0 +1,219 @@
+openapi: 3.0.1
+info:
+  title: Validator Services Private
+  description: Validator Services Routes
+  version: '1.0'
+servers:
+  - url: https://dev-api.iatistandard.org/vs
+paths:
+  /pub/validation/existing:
+    get:
+      summary: pub-get-report
+      operationId: get-pub-get-report
+      responses:
+        '200':
+          description: 
+  '/pvt/publishers/{id}/documents':
+    get:
+      summary: pvt-get-publishers-documents
+      operationId: get-pvt-get-publisher-documents
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: 
+  /pvt/publishers:
+    get:
+      summary: pvt-get-publishers
+      operationId: get-pvt-get-publishers
+      responses:
+        '200':
+          description: 
+  '/pvt/publishers/{id}':
+    get:
+      summary: pvt-get-single-publisher
+      operationId: get-pvt-get-single-publisher
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: 
+  '/pvt/documents/{id}':
+    get:
+      summary: pvt-get-single-document
+      operationId: get-pvt-get-single-document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: 
+  '/pvt/guidance-links/{version}':
+    get:
+      summary: pvt-get-guidance-links
+      operationId: get-pvt-get-guidance-links
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: 
+  /pvt/adhoc/upload:
+    post:
+      summary: pvt-post-adhoc-file
+      description: Uploader for adhoc validation
+      operationId: pvt-post-adhoc-file
+      responses:
+        '200':
+          description: 'null'
+  /pvt/adhoc/session:
+    get:
+      summary: pvt-get-adhoc-session
+      description: pvt-get-adhoc-session
+      operationId: 610a46b0342160c523b5a90f
+      parameters:
+        - name: sessionId
+          in: query
+          required: true
+          schema:
+            type: ''
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                rootNodeName:
+                  type: string
+      responses:
+        '200':
+          description: 'null'
+  /pvt/adhoc/url:
+    post:
+      summary: pvt-post-adhoc-url
+      description: URL poster for adhoc validation
+      operationId: 6114e44dd2a66d17c80f78ce
+      responses:
+        '200':
+          description: 'null'
+  /pub/version:
+    get:
+      summary: pub-get-version
+      operationId: get-pub-get-version
+      responses:
+        '200':
+          description: 
+  /pub/validator-version:
+    get:
+      summary: pub-get-validator-version
+      operationId: get-pub-get-version-1
+      responses:
+        '200':
+          description: 
+  /pub/stats/all:
+    get:
+      summary: pub-get-stats-all
+      operationId: pub-get-stats-all
+      parameters:
+        - name: date
+          in: query
+          description: YYYY-MM-DD
+          schema:
+            enum:
+              - ''
+            type: ''
+            default: ''
+        - name: format
+          in: query
+          schema:
+            enum:
+              - ''
+              - ''
+            type: ''
+            default: ''
+      responses:
+        '200':
+          description: 
+  /pub/stats/summary:
+    get:
+      summary: pub-get-stats-summary
+      operationId: pub-get-stats-summary
+      parameters:
+        - name: date
+          in: query
+          description: YYYY-MM-DD
+          schema:
+            enum:
+              - ''
+            type: ''
+            default: ''
+        - name: publisher
+          in: query
+          schema:
+            type: ''
+        - name: format
+          in: query
+          schema:
+            enum:
+              - ''
+              - ''
+            type: ''
+            default: ''
+      responses:
+        '200':
+          description: 
+  '/pub/stats/publisher/{publisher}':
+    get:
+      summary: pub-get-stats-publisher
+      operationId: pub-get-stats-publisher
+      parameters:
+        - name: publisher
+          in: path
+          required: true
+          schema:
+            type: ''
+        - name: date
+          in: query
+          description: YYYY-MM-DD
+          schema:
+            enum:
+              - ''
+            type: ''
+            default: ''
+        - name: format
+          in: query
+          schema:
+            enum:
+              - ''
+              - ''
+            type: ''
+            default: ''
+      responses:
+        '200':
+          description: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

@@ -1,0 +1,9 @@
+{
+  "name": "solrMaxRows",
+  "properties": {
+    "displayName": "solrMaxRows",
+    "secret": false,
+    "tags": [],
+    "value": "1000"
+  }
+}

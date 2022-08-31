@@ -1,0 +1,14 @@
+{
+  "name": "iati-validator-v2;rev=1",
+  "properties": {
+    "path": "validator",
+    "displayName": "IATI Validator",
+    "apiRevision": "1",
+    "apiRevisionDescription": "v2 Initial Release",
+    "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
+    "protocols": [
+      "https"
+    ],
+    "subscriptionRequired": true
+  }
+}

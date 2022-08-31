@@ -1,0 +1,15 @@
+{
+  "name": "dev-func-validator-services-key",
+  "properties": {
+    "displayName": "dev-func-validator-services-key",
+    "keyVault": {
+      "secretIdentifier": "https://kv-iati-dev.vault.azure.net/secrets/host--functionKey--default"
+    },
+    "secret": true,
+    "tags": [
+      "key",
+      "function",
+      "auto"
+    ]
+  }
+}
