@@ -171,6 +171,74 @@
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'private-routes')]"
       ]
+    },
+    {
+      "properties": {
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 100 API requests/60 seconds\n- Quota: 20,000 API requests/7 days\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "terms": "This text defines the Terms of Use for the International Aid Transparency Initiative (IATI) API. By creating this subscription you agree to these Terms of Use.\n\nAbuse or excessively frequent requests to the IATI API may result in the temporary or permanent suspension of your Account's access to the API. IATI, in our sole discretion, will determine abuse or excessive usage of the API. We will make a reasonable attempt to warn you via email prior to suspension.\n\nYou may not share API tokens to exceed IATI's rate limitations.\n\nYou may not use the API to download data or Content from IATI for spamming purposes, including for the purposes of selling IATI publishers' personal information.\n\nIATI APIs are not intended for or allowed to be used as a free web service to run your online business, e-commerce site, or any other website that is primarily directed at either facilitating commercial transactions or providing commercial software as a service (SaaS).\n\nYou will not resell or exploit any portion of the API, use of the API, or access to the API without our express written permission.\n\nAll use of the IATI API is subject to these Terms of Use and the IATI Privacy Policy (https://iatistandard.org/en/privacy-policy).",
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "subscriptionsLimit": 0,
+        "state": "published",
+        "displayName": "Temporary Increased Quota"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota')]",
+      "type": "Microsoft.ApiManagement/service/products",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "description": "Administrators is a built-in group containing the admin email account provided at the time of service creation. Its membership is managed by the system.",
+        "displayName": "Administrators",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/administrators')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'temporary-increased-quota')]"
+      ]
+    },
+    {
+      "properties": {
+        "description": "Developers is a built-in group. Its membership is managed by the system. Signed-in users fall into this group.",
+        "displayName": "Developers",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/developers')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'temporary-increased-quota')]"
+      ]
+    },
+    {
+      "properties": {
+        "description": "Guests is a built-in group. Its membership is managed by the system. Unauthenticated users visiting the developer portal fall into this group.",
+        "displayName": "Guests",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/guests')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'temporary-increased-quota')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/temporary-increased-quota-productPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/policy')]",
+      "type": "Microsoft.ApiManagement/service/products/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'temporary-increased-quota')]"
+      ]
     }
   ]
 }
