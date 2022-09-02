@@ -10,128 +10,82 @@
     {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/api-definitions')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": []
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/api-definitions')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'api-definitions')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/api-definitions')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'api-definitions')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'datastore')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'datastore;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/datastore;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'datastore;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'datastore;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'datastore')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/datastore')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'datastore')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'datastore')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'iati-validator-v2;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=1')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'iati-validator-v2;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'iati-validator-v2;rev=1')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/unlimited/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'exploratory', 'iati-validator-v2')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/iati-validator-v2')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'unlimited', 'iati-validator-v2')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     },
     {
       "name": "[concat(parameters('ApimServiceName'), '/private-routes/validator-services-private')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
-      "apiVersion": "2021-01-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'iati-validator-v2')]"
-      ]
+      "apiVersion": "2021-01-01-preview"
     }
   ]
 }
