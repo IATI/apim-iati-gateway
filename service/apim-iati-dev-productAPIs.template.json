@@ -34,7 +34,7 @@
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', '61e68d73c8e44ca9124dcddb')]"
+        "[resourceId('Microsoft.ApiManagement/service/products/apis', parameters('ApimServiceName'), 'temporary-increased-quota', 'datastore')]"
       ]
     },
     {
