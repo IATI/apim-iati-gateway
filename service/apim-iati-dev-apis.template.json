@@ -5935,6 +5935,27 @@
               "type": "string",
               "required": false,
               "values": []
+            },
+            {
+              "name": "sfield",
+              "description": "Used if fq={!geofilt} for great circle distance or fq={!bbox} for the bounding box of the calculated circle. Identifies the field that should be used as the spatial index.",
+              "type": "string",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "pt",
+              "description": "Used if fq={!geofilt} for great circle distance or fq={!bbox} for the bounding box of the calculated circle. The center point using the format \"lat,lon\".",
+              "type": "string",
+              "required": false,
+              "values": []
+            },
+            {
+              "name": "d",
+              "description": "Used if fq={!geofilt} for great circle distance or fq={!bbox} for the bounding box of the calculated circle. Radial distance as measured in kilometers.",
+              "type": "float",
+              "required": false,
+              "values": []
             }
           ],
           "headers": [],
