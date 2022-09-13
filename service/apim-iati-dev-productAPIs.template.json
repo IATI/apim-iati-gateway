@@ -38,6 +38,21 @@
       "apiVersion": "2021-01-01-preview"
     },
     {
+      "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore;rev=2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/unlimited/datastore;rev=2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/temporary-increased-quota/datastore;rev=2')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
       "name": "[concat(parameters('ApimServiceName'), '/exploratory/datastore')]",
       "type": "Microsoft.ApiManagement/service/products/apis",
       "apiVersion": "2021-01-01-preview"
