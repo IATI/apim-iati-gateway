@@ -4187,7 +4187,6 @@
         "apiRevisionDescription": "[v3.1.0](https://github.com/IATI/datastore-solr-configs/releases/tag/v3.1.0) - Added `indexed_datetime` as an available field in queries and response JSON, CSV.",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('serviceUrl').datastorerev2]",
         "path": "datastore",
         "protocols": ["https"]
       },
