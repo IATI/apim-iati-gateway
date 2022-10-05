@@ -74,8 +74,11 @@
         "description": "Connection string for external redis cache"
       }
     },
-    "SolrBaseUrl": {
-      "type": "string"
+    "serviceUrl": {
+      "type": "object",
+      "metadata": {
+        "description": "Service url for each Api"
+      }
     },
     "Branch": {
       "type": "string"
@@ -312,8 +315,8 @@
           "PolicyXMLBaseUrl": {
             "value": "[parameters('PolicyXMLBaseUrl')]"
           },
-          "SolrBaseUrl": {
-            "value": "[parameters('SolrBaseUrl')]"
+          "serviceUrl": {
+            "value": "[parameters('serviceUrl')]"
           }
         }
       },

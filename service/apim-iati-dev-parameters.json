@@ -5,6 +5,24 @@
     "ApimServiceName": {
       "value": "apim-iati-dev"
     },
+    "LinkedTemplatesBaseUrl": {
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
+    },
+    "PolicyXMLBaseUrl": {
+      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
+    },
+    "serviceUrl": {
+      "value": {
+        "apidefinitions": null,
+        "Api61e68d73c8e44ca9124dcddb": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev2": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastore": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "iativalidatorv2rev1": null,
+        "iativalidatorv2": null,
+        "validatorservicesprivate": null
+      }
+    },
     "ApimGatewayHostname": {
       "value": "dev-api.iatistandard.org"
     },
@@ -17,12 +35,7 @@
     "UrlEnvPrefix": {
       "value": "https://dev-"
     },
-    "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
-    },
-    "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
-    },
+
     "SubscriptionId": {
       "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
     },
@@ -37,9 +50,6 @@
     },
     "ApplicationInsightsInstanceName": {
       "value": "appi-apim"
-    },
-    "SolrBaseUrl": {
-      "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
     },
     "Branch": {
       "value": "develop"
