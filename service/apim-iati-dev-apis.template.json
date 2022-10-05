@@ -8,8 +8,8 @@
     "PolicyXMLBaseUrl": {
       "type": "string"
     },
-    "SolrBaseUrl": {
-      "type": "string"
+    "serviceUrl": {
+      "type": "object"
     }
   },
   "resources": [
@@ -27,6 +27,7 @@
         "isCurrent": true,
         "subscriptionRequired": false,
         "displayName": "API Definitions",
+        "serviceUrl": "[parameters('serviceUrl').apidefinitions]",
         "path": "definitions",
         "protocols": ["https"]
       },
@@ -271,7 +272,7 @@
         "isCurrent": true,
         "subscriptionRequired": true,
         "displayName": "Datastore Search Services",
-        "serviceUrl": "[parameters('SolrBaseUrl')]",
+        "serviceUrl": "[parameters('serviceUrl').Api61e68d73c8e44ca9124dcddb]",
         "path": "dss",
         "protocols": ["https"]
       },
@@ -2246,7 +2247,7 @@
         "apiRevisionDescription": "v3 Initial Release",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('SolrBaseUrl')]",
+        "serviceUrl": "[parameters('serviceUrl').datastorerev1]",
         "path": "datastore",
         "protocols": ["https"]
       },
@@ -4187,7 +4188,7 @@
         "apiRevisionDescription": "[v3.1.0](https://github.com/IATI/datastore-solr-configs/releases/tag/v3.1.0) - Added `indexed_datetime` as an available field in queries and response JSON, CSV.",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('SolrBaseUrl')]",
+        "serviceUrl": "[parameters('serviceUrl').datastorerev2]",
         "path": "datastore",
         "protocols": ["https"]
       },
@@ -6150,7 +6151,7 @@
         "apiRevisionDescription": "[v3.2.0](https://github.com/IATI/datastore-solr-configs/releases/tag/v3.2.0) - Add geospatial point field and query parameters",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
-        "serviceUrl": "[parameters('SolrBaseUrl')]",
+        "serviceUrl": "[parameters('serviceUrl').datastore]",
         "path": "datastore",
         "protocols": ["https"]
       },
@@ -8112,6 +8113,7 @@
         "apiRevisionDescription": "v2 Initial Release",
         "subscriptionRequired": true,
         "displayName": "IATI Validator",
+        "serviceUrl": "[parameters('serviceUrl').iativalidatorv2rev1]",
         "path": "validator",
         "protocols": ["https"]
       },
@@ -9011,6 +9013,7 @@
         "apiRevisionDescription": "[v2.0.1] Add showerrors query parameter to existing report route. Validator Services [v2.4.8](https://github.com/IATI/validator-services/releases/tag/v2.4.8)",
         "subscriptionRequired": true,
         "displayName": "IATI Validator",
+        "serviceUrl": "[parameters('serviceUrl').iativalidatorv2]",
         "path": "validator",
         "protocols": ["https"]
       },
@@ -9916,6 +9919,7 @@
         "isCurrent": true,
         "subscriptionRequired": true,
         "displayName": "Validator Services Private",
+        "serviceUrl": "[parameters('serviceUrl').validatorservicesprivate]",
         "path": "vs",
         "protocols": ["https"]
       },
