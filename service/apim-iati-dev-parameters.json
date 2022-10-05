@@ -51,9 +51,6 @@
     "ApplicationInsightsInstanceName": {
       "value": "appi-apim"
     },
-    "SolrBaseUrl": {
-      "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
-    },
     "Branch": {
       "value": "develop"
     }
