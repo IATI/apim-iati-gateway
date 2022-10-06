@@ -89,7 +89,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-api-management-service.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), '/apim-iati-dev-api-management-service.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -122,12 +122,12 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-caches.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), '/apim-iati-dev-caches.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
           "Environment": {
             "value": "[parameters('Environment')]"
@@ -151,12 +151,12 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-namedValues.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), '/apim-iati-dev-namedValues.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
           "ApimDevPortalHostname": {
             "value": "[parameters('ApimDevPortalHostname')]"

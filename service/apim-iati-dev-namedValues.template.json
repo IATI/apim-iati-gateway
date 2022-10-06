@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     },
     "ApimDevPortalHostname": {
@@ -35,7 +35,7 @@
           "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', parameters('Environment'),'-func-validator-services-key')]",
+      "name": "[concat(parameters('apimServiceName'), '/', parameters('Environment'),'-func-validator-services-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -48,7 +48,7 @@
           "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
+      "name": "[concat(parameters('apimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -61,7 +61,7 @@
           "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--default')]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/default-function-key')]",
+      "name": "[concat(parameters('apimServiceName'), '/default-function-key')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -74,14 +74,14 @@
           "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/', variables('SolrUserPwName'))]"
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/pw-solr-user')]",
+      "name": "[concat(parameters('apimServiceName'), '/pw-solr-user')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/ApimDevPortalHostname')]",
+      "name": "[concat(parameters('apimServiceName'), '/ApimDevPortalHostname')]",
       "properties": {
         "displayName": "ApimDevPortalHostname",
         "value": "[parameters('ApimDevPortalHostname')]",
@@ -92,7 +92,7 @@
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/Environment')]",
+      "name": "[concat(parameters('apimServiceName'), '/Environment')]",
       "properties": {
         "displayName": "Environment",
         "value": "[parameters('Environment')]",
@@ -103,7 +103,7 @@
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/ValidatorSubdomain')]",
+      "name": "[concat(parameters('apimServiceName'), '/ValidatorSubdomain')]",
       "properties": {
         "displayName": "ValidatorSubdomain",
         "value": "[variables('ValidatorSubdomain')]",
@@ -114,7 +114,7 @@
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/DatastoreSearchSubdomain')]",
+      "name": "[concat(parameters('apimServiceName'), '/DatastoreSearchSubdomain')]",
       "properties": {
         "displayName": "DatastoreSearchSubdomain",
         "value": "[variables('DatastoreSearchSubdomain')]",
@@ -125,7 +125,7 @@
     {
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview",
-      "name": "[concat(parameters('ApimServiceName'), '/DatastoreSearchLegacySubdomain')]",
+      "name": "[concat(parameters('apimServiceName'), '/DatastoreSearchLegacySubdomain')]",
       "properties": {
         "displayName": "DatastoreSearchLegacySubdomain",
         "value": "[variables('DatastoreSearchLegacySubdomain')]",
@@ -140,7 +140,7 @@
         "displayName": "solrDefaultRows",
         "value": "10"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solrDefaultRows')]",
+      "name": "[concat(parameters('apimServiceName'), '/solrDefaultRows')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -151,7 +151,7 @@
         "displayName": "solrMaxRows",
         "value": "1000"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/solrMaxRows')]",
+      "name": "[concat(parameters('apimServiceName'), '/solrMaxRows')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     },
@@ -162,7 +162,7 @@
         "displayName": "branch",
         "value": "[parameters('Branch')]"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/branch')]",
+      "name": "[concat(parameters('apimServiceName'), '/branch')]",
       "type": "Microsoft.ApiManagement/service/namedValues",
       "apiVersion": "2021-01-01-preview"
     }

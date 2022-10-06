@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     },
     "Environment": {
@@ -37,7 +37,7 @@
         "isBuffered": true,
         "resourceId": "[resourceId('Microsoft.Insights/components',variables('ApplicationInsightsInstanceNameWithEnv'))]"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', variables('ApplicationInsightsInstanceNameWithEnv'))]",
+      "name": "[concat(parameters('apimServiceName'), '/', variables('ApplicationInsightsInstanceNameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/loggers",
       "apiVersion": "2021-01-01-preview"
     },
@@ -52,11 +52,11 @@
           "percentage": 100.0
         }
       },
-      "name": "[concat(parameters('ApimServiceName'), '/applicationinsights')]",
+      "name": "[concat(parameters('apimServiceName'), '/applicationinsights')]",
       "type": "Microsoft.ApiManagement/service/diagnostics",
       "apiVersion": "2021-01-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/loggers', parameters('ApimServiceName'), variables('ApplicationInsightsInstanceNameWithEnv'))]"
+        "[resourceId('Microsoft.ApiManagement/service/loggers', parameters('apimServiceName'), variables('ApplicationInsightsInstanceNameWithEnv'))]"
       ]
     }
   ]
