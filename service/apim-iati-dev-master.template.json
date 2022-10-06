@@ -286,7 +286,7 @@
           }
         }
       }
-      },
+    },
     {
       "apiVersion": "2022-01-01",
       "type": "Microsoft.Resources/deployments",
@@ -316,7 +316,7 @@
           }
         }
       }
-      },
+    },
     {
       "apiVersion": "2022-01-01",
       "type": "Microsoft.Resources/deployments",
@@ -335,9 +335,9 @@
           "apimServiceName": {
             "value": "[parameters('apimServiceName')]"
           }
-          }
         }
-      },
+      }
+    },
     {
       "apiVersion": "2022-01-01",
       "type": "Microsoft.Resources/deployments",
