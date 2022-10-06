@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     },
     "Environment": {
@@ -19,7 +19,7 @@
     {
       "type": "Microsoft.ApiManagement/service/caches",
       "apiVersion": "2020-12-01",
-      "name": "[concat(parameters('ApimServiceName'), '/uksouth')]",
+      "name": "[concat(parameters('apimServiceName'), '/uksouth')]",
       "properties": {
         "useFromLocation": "uksouth",
         "description": "[concat('redis-iati-',parameters('Environment'),'.redis.cache.windows.net')]",

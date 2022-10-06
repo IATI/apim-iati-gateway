@@ -11,18 +11,18 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-	<inbound>
-		<base />
-		<rate-limit-by-key calls="5" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-		<quota-by-key calls="100" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-	</inbound>
-	<backend>
-		<base />
-	</backend>
-	<outbound>
-		<base />
-	</outbound>
-	<on-error>
-		<base />
-	</on-error>
+  <inbound>
+    <base />
+    <rate-limit-by-key calls="5" renewal-period="60" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" />
+    <quota-by-key calls="100" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" />
+  </inbound>
+  <backend>
+    <base />
+  </backend>
+  <outbound>
+    <base />
+  </outbound>
+  <on-error>
+    <base />
+  </on-error>
 </policies>

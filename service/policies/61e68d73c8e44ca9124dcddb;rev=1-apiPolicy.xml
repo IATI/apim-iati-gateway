@@ -12,9 +12,25 @@
 -->
 <policies>
   <inbound>
+    <cors allow-credentials="true">
+      <allowed-origins>
+        <origin>http://localhost:3000/</origin>
+        <origin>https://{{DatastoreSearchLegacySubdomain}}.iatistandard.org/</origin>
+        <origin>https://{{DatastoreSearchSubdomain}}.iatistandard.org/</origin>
+      </allowed-origins>
+      <allowed-methods preflight-result-max-age="300">
+        <method>GET</method>
+        <method>POST</method>
+        <method>OPTIONS</method>
+      </allowed-methods>
+      <allowed-headers>
+        <header>*</header>
+      </allowed-headers>
+      <expose-headers>
+        <header>*</header>
+      </expose-headers>
+    </cors>
     <base />
-    <rate-limit-by-key calls="100" renewal-period="60" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" />
-    <quota-by-key calls="20000" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" increment-condition="@(context.Response.StatusCode &gt;= 200 &amp;&amp; context.Response.StatusCode &lt; 400)" />
   </inbound>
   <backend>
     <base />
