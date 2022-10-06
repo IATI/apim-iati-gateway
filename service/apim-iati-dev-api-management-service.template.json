@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     },
     "ApimSKU": {
@@ -25,8 +25,11 @@
     {
       "type": "Microsoft.ApiManagement/service",
       "apiVersion": "2020-12-01",
-      "name": "[parameters('ApimServiceName')]",
+      "name": "[parameters('apimServiceName')]",
       "location": "UK South",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "tags": {
         "env": "[parameters('Environment')]"
       },
@@ -34,17 +37,32 @@
         "name": "[parameters('ApimSKU')]",
         "capacity": "[parameters('ApimCapacity')]"
       },
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "properties": {
-        "publisherEmail": "niko@devinit.org",
-        "publisherName": "IATI",
+        "apiVersionConstraint": {},
+        "customProperties": {
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "false",
+          "microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "false"
+        },
+        "disableGateway": false,
         "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+        "platformVersion": "stv2",
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Enabled",
+        "publisherEmail": "code@iatistandard.org",
+        "publisherName": "IATI",
+        "restore": false,
+        "targetProvisioningState": "",
+        "virtualNetworkType": "None",
         "hostnameConfigurations": [
           {
             "type": "Proxy",
-            "hostName": "[concat(parameters('ApimServiceName'), '.azure-api.net')]",
+            "hostName": "[concat(parameters('apimServiceName'), '.azure-api.net')]",
             "negotiateClientCertificate": false,
             "defaultSslBinding": true,
             "certificateSource": "BuiltIn"
@@ -75,20 +93,7 @@
             "defaultSslBinding": false,
             "certificateSource": "Custom"
           }
-        ],
-        "customProperties": {
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "false",
-          "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "false"
-        },
-        "virtualNetworkType": "None",
-        "disableGateway": false,
-        "apiVersionConstraint": {}
+        ]
       }
     }
   ]

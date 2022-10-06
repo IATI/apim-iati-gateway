@@ -2,106 +2,106 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     }
   },
   "resources": [
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/datastore')]",
       "properties": {
         "displayName": "datastore"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/datastore')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/datause')]",
       "properties": {
         "displayName": "datause"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/datause')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/definitions')]",
       "properties": {
         "displayName": "definitions"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/definitions')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/get')]",
       "properties": {
         "displayName": "GET"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/get')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/organisation')]",
       "properties": {
         "displayName": "organisation"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/organisation')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/post')]",
       "properties": {
         "displayName": "POST"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/post')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/publish')]",
       "properties": {
         "displayName": "publish"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/publish')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/publisher')]",
       "properties": {
         "displayName": "publisher"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/publisher')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/query')]",
       "properties": {
         "displayName": "query"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/query')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/registry')]",
       "properties": {
         "displayName": "registry"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/registry')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/specifications')]",
       "properties": {
         "displayName": "specifications"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/specifications')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     },
     {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/tags",
+      "name": "[concat(parameters('apimServiceName'), '/validator')]",
       "properties": {
         "displayName": "validator"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/validator')]",
-      "type": "Microsoft.ApiManagement/service/tags",
-      "apiVersion": "2021-01-01-preview"
+      }
     }
   ]
 }

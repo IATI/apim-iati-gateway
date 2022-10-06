@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string"
     },
     "Environment": {
@@ -32,7 +32,7 @@
         "url": "[concat( 'https://', variables('ValidatorServicesNameWithEnv'), '.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', variables('ValidatorServicesNameWithEnv'))]",
+      "name": "[concat(parameters('apimServiceName'), '/', variables('ValidatorServicesNameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     },
@@ -50,7 +50,7 @@
         "url": "[concat( 'https://', variables('ValidatorAPINameWithEnv'), '.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', variables('ValidatorAPINameWithEnv'))]",
+      "name": "[concat(parameters('apimServiceName'), '/', variables('ValidatorAPINameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     },
@@ -66,7 +66,7 @@
         "url": "[concat( 'https://', variables('DatastoreServicesAPINameWithEnv'), '.azurewebsites.net/api')]",
         "protocol": "http"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/', variables('DatastoreServicesAPINameWithEnv'))]",
+      "name": "[concat(parameters('apimServiceName'), '/', variables('DatastoreServicesAPINameWithEnv'))]",
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2020-12-01"
     }

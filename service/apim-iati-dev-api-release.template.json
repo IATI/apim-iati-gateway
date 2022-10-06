@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/api-definitions;rev=1/2f3f4af3-00cc-4f55-8a16-1cadef7891bf')]",
+      "properties": {
+        "apiId": "/apis/api-definitions;rev=1"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/61e68d73c8e44ca9124dcddb;rev=1/055819ec-cb84-4946-a7fa-a05d95f7eb3e')]",
+      "properties": {
+        "apiId": "/apis/61e68d73c8e44ca9124dcddb;rev=1"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/datastore;rev=3/6b5893a1-9bdd-4b4b-b629-410db99bcc29')]",
+      "properties": {
+        "apiId": "/apis/datastore;rev=3"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=2/7faa8a41-1e08-43df-b918-322d58e57f62')]",
+      "properties": {
+        "apiId": "/apis/iati-validator-v2;rev=2"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/fbe4b545-7bf2-4ab2-9795-7597479bf62d')]",
+      "properties": {
+        "apiId": "/apis/validator-services-private;rev=1"
+      }
+    }
+  ]
+}

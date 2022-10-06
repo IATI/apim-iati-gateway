@@ -13,8 +13,8 @@
 <policies>
   <inbound>
     <base />
-    <rate-limit-by-key calls="100" renewal-period="60" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" />
-    <quota-by-key calls="20000" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" increment-condition="@(context.Response.StatusCode &gt;= 200 &amp;&amp; context.Response.StatusCode &lt; 400)" />
+    <set-backend-service id="apim-generated-policy" backend-id="func-datastore-services-{{Environment}}" />
+    <rewrite-uri template="/orchestrators/DownloadOrchestrator" />
   </inbound>
   <backend>
     <base />

@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "type": "string",
       "metadata": {
         "description": "Name of the API Management"
@@ -32,13 +32,13 @@
         "description": "URL Environment Prefix to prepend (e.g. 'https://dev-' or 'https://' for PROD)"
       }
     },
-    "LinkedTemplatesBaseUrl": {
+    "linkedTemplatesBaseUrl": {
       "type": "string",
       "metadata": {
         "description": "Base URL of the repository that contains the generated templates"
       }
     },
-    "PolicyXMLBaseUrl": {
+    "policyXMLBaseUrl": {
       "type": "string",
       "metadata": {
         "description": "Base URL of the repository that contains the generated policy files"
@@ -89,12 +89,12 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-apim.template.json')]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-api-management-service.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
           "ApimSKU": {
             "value": "[parameters('ApimSKU')]"
@@ -115,7 +115,7 @@
       },
       "name": "apimTemplate",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2022-01-01",
       "dependsOn": []
     },
     {
@@ -142,7 +142,7 @@
       },
       "name": "cachesTemplate",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2022-01-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
       ]
@@ -180,39 +180,40 @@
       ]
     },
     {
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "globalServicePolicyTemplate",
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-globalServicePolicy.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-globalServicePolicy.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
+          "policyXMLBaseUrl": {
+            "value": "[parameters('policyXMLBaseUrl')]"
           }
         }
-      },
-      "name": "globalServicePolicyTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
+      }
     },
     {
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "loggersTemplate",
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-loggers.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-loggers.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
           "Environment": {
             "value": "[parameters('Environment')]"
@@ -221,69 +222,61 @@
             "value": "[parameters('ApplicationInsightsInstanceName')]"
           }
         }
-      },
-      "name": "loggersTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
+      }
     },
     {
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-products.template.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          }
-        }
-      },
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
       "name": "productsTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
-    },
-    {
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-tags.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-products.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
+          },
+          "policyXMLBaseUrl": {
+            "value": "[parameters('policyXMLBaseUrl')]"
           }
         }
-      },
-      "name": "tagTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
+      }
     },
     {
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "tagTemplate",
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-backends.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-tags.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "backendsTemplate",
+      "dependsOn": [],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-backends.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
           "Environment": {
             "value": "[parameters('Environment')]"
@@ -292,89 +285,79 @@
             "value": "[parameters('SubscriptionId')]"
           }
         }
+      }
       },
-      "name": "backendsTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
-    },
     {
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "apisTemplate",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'loggersTemplate')]",
+        "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-apis.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-apis.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
           },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
+          "policyXMLBaseUrl": {
+            "value": "[parameters('policyXMLBaseUrl')]"
           },
           "serviceUrl": {
             "value": "[parameters('serviceUrl')]"
           }
         }
+      }
       },
-      "name": "apisTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'backendsTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
-    },
     {
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-productAPIs.template.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
-          }
-        }
-      },
+      "apiVersion": "2022-01-01",
+      "type": "Microsoft.Resources/deployments",
       "name": "productAPIsTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
-    },
-    {
+        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/apim-iati-dev-apiTags.template.json')]",
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-productAPIs.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
+          }
           }
         }
       },
-      "name": "apiTagsTemplate",
+    {
+      "apiVersion": "2022-01-01",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "name": "apiTagsTemplate",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'tagTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]",
-        "[resourceId('Microsoft.Resources/deployments', 'apimTemplate')]"
-      ]
+        "[resourceId('Microsoft.Resources/deployments', 'apisTemplate')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('linkedTemplatesBaseUrl'), 'apim-iati-dev-apiTags.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "apimServiceName": {
+            "value": "[parameters('apimServiceName')]"
+          }
+        }
+      }
     }
   ]
 }

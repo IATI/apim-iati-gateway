@@ -1,26 +1,26 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "value": "apim-iati-dev"
     },
-    "LinkedTemplatesBaseUrl": {
+    "linkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
     },
-    "PolicyXMLBaseUrl": {
+    "policyXMLBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
     },
     "serviceUrl": {
       "value": {
-        "apidefinitions": null,
-        "Api61e68d73c8e44ca9124dcddb": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "apidefinitionsrev1": "",
+        "api61e68d73c8e44ca9124dcddbrev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "datastorerev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "datastorerev2": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
-        "datastore": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
-        "iativalidatorv2rev1": null,
-        "iativalidatorv2": null,
-        "validatorservicesprivate": null
+        "datastorerev3": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "iativalidatorv2rev1": "",
+        "iativalidatorv2rev2": "",
+        "validatorservicesprivaterev1": ""
       }
     },
     "ApimGatewayHostname": {
@@ -54,5 +54,6 @@
     "Branch": {
       "value": "develop"
     }
-  }
+  },
+  "resources": []
 }
