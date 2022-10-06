@@ -44,8 +44,8 @@ jobs:
       - name: Deploy APIM Service and APIs
         working-directory: ./service
         env:
-          linkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}
-          policyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies
+          linkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/
+          policyXMLBaseUrl: ${{ env.repoUrl }}/${{ env.repoBranch }}/${{ env.repoApimPath }}/policies/
           deploymentName: --name GH_dev_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev

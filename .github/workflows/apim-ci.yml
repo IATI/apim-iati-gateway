@@ -43,8 +43,8 @@ jobs:
       - name: Validate APIM ARM Templates with what-if
         working-directory: ./service
         env:
-          linkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}
-          policyXMLBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/policies
+          linkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/
+          policyXMLBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/policies/
           deploymentName: --name GH_what_if_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
