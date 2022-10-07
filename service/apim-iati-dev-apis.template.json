@@ -12052,7 +12052,7 @@
         "displayName": "Existing Report",
         "method": "GET",
         "urlTemplate": "/report",
-        "description": "Get an existing validation report of a published IATI document known to the IATI Registry by passing either the id, hash or URL of the document, as available from the Registry API.\n\n[GitHub Repository](https://github.com/IATI/validator-services)\n\n[Error ID Information](https://github.com/IATI/validator-rule-tracker)\n",
+        "description": "Get an existing validation report of a published IATI document known to the IATI Registry by passing either the id, hash or URL of the document, as available from the Registry API. Test123\n\n[GitHub Repository](https://github.com/IATI/validator-services)\n\n[Error ID Information](https://github.com/IATI/validator-rule-tracker)\n",
         "templateParameters": [],
         "request": {
           "headers": [
