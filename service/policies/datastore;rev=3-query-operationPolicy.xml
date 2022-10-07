@@ -22,7 +22,7 @@
                 int solrMaxRows = int.Parse((string) context.Variables["solrMaxRows"]);
                 bool convertible = Int32.TryParse(context.Request.Url.Query.GetValueOrDefault("rows", ""), out rows);
                 if (convertible) {
-                    return (rows &gt; solrMaxRows) ? solrMaxRows.ToString() : rows.ToString();
+                    return (rows > solrMaxRows) ? solrMaxRows.ToString() : rows.ToString();
                 }
                 return (string) context.Variables["solrDefaultRows"];
                 }</value>
