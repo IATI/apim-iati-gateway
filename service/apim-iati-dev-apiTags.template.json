@@ -102,6 +102,22 @@
       "properties": {
         "displayName": "validator"
       }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/publisher')]",
+      "properties": {
+        "displayName": "publisher"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/validator')]",
+      "properties": {
+        "displayName": "validator"
+      }
     }
   ]
 }

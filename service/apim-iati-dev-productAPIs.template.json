@@ -226,6 +226,42 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/exploratory/iati-validator-v2;rev=3')]",
+      "properties": {
+        "displayName": "Exploratory",
+        "description": "No approval is required. Get started using our APIs now!\n\nSubscribers have access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/60 seconds\n- Quota: 100 API requests/7 days \n\nWhen you are ready to do more intensive testing or take an integration live, please request a Full Access subscription. ",
+        "subscriptionRequired": true,
+        "approvalRequired": false,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/unlimited/iati-validator-v2;rev=3')]",
+      "properties": {
+        "displayName": "Full Access",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 100 API requests/60 seconds\n- Quota: 10,000 API requests/7 days\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=3')]",
+      "properties": {
+        "displayName": "Temporary Increased Quota",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 100 API requests/60 seconds\n- Quota: 20,000 API requests/7 days\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
       "name": "[concat(parameters('apimServiceName'), '/private-routes/validator-services-private;rev=1')]",
       "properties": {
         "displayName": "Private Routes",
