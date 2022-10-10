@@ -25,6 +25,13 @@ Update the Extractor Tool
 ### Updating an Existing API Definition
 
 - Make your changes on the `dev` APIM instance in the Portal as necessary
+- If this is a Public API change (e.g. IATI Validator, IATI Datastore) that requires a new version bump/documentation then follow this process in the Portal:
+  - Create a new Revision (APIs > Select API > Revisions > Add Revision)
+  - Update the description following the strategy for previous releases/revisions. Basic markdown formatting is accepted.
+  - Update documentation in the API definition (e.g. query params, response bodies, etc.)
+  - Make the Revision current by selecting the `...` to the right of the revision row and selecting "Make Current"
+  - Check the box to publish the change log, using the same documentation as the "Description" for the revision. Basic markdown formatting is accepted.
+  - Take the previous revision offline.
 - Run the extractor tool bash script
 - You should see changes to a number of the ARM templates and policies in `./service`
 - If there are any changes (new parameters) in `service/apim-iati-dev-parameters.json`, ensure that you update the github actions workflows to pass in the new parameters:
