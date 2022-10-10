@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimGatewayHostname": {
+      "value": "dev-api.iatistandard.org"
+    },
+    "ApimDevPortalHostname": {
+      "value": "dev-developer.iatistandard.org"
+    },
+    "Environment": {
+      "value": "dev"
+    },
+    "UrlEnvPrefix": {
+      "value": "https://dev-"
+    },
+    "SubscriptionId": {
+      "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
+    },
+    "ApimSKU": {
+      "value": "Developer"
+    },
+    "ApimCapacity": {
+      "value": 1
+    },
+    "RedisConnectionString": {
+      "value": "placeholderstring"
+    },
+    "ApplicationInsightsInstanceName": {
+      "value": "appi-apim"
+    },
+    "Branch": {
+      "value": "develop"
+    }
+  },
+  "resources": []
+}
