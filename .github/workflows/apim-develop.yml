@@ -54,6 +54,7 @@ jobs:
             ${{env.rg}} \
             --template-file ./${{env.apiNamePrefix}}-master.template.json \
             --parameters ./${{env.apiNamePrefix}}-parameters.json \
+            --parameters ./manual-parameters.json \
             --parameters apimServiceName=${{ env.apimServiceName }} \
             --parameters linkedTemplatesBaseUrl=${{ env.linkedTemplatesBaseUrl }} \
             --parameters policyXMLBaseUrl=${{ env.policyXMLBaseUrl }} \
