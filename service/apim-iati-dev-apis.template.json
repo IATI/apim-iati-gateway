@@ -147,7 +147,7 @@
       "type": "Microsoft.ApiManagement/service/apis",
       "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=1')]",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=2')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
       ],
       "properties": {
         "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
@@ -174,7 +174,9 @@
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis",
       "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=2')]",
-      "dependsOn": [],
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
       "properties": {
         "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
         "authenticationSettings": {
@@ -185,10 +187,36 @@
           "query": "subscription-key"
         },
         "apiRevision": "2",
+        "isOnline": false,
         "apiRevisionDescription": "[v2.0.1] Add showerrors query parameter to existing report route. Validator Services [v2.4.8](https://github.com/IATI/validator-services/releases/tag/v2.4.8)",
         "subscriptionRequired": true,
         "displayName": "IATI Validator",
         "serviceUrl": "[parameters('serviceUrl').iativalidatorv2rev2]",
+        "path": "validator",
+        "protocols": [
+          "https"
+        ]
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3')]",
+      "dependsOn": [],
+      "properties": {
+        "description": "IATI Validation API. Provides routes related to the validation of IATI XML.\n\nThe API adheres to the [IATI Validator API Contract](https://cdn.iatistandard.org/prod-iati-website/documents/IATI_Validator_API_Contract.pdf).",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "3",
+        "apiRevisionDescription": "[v2.1.0]\n\n- js-validator-api [v2.2.0]() - activity level schema validation\n- validator-services [v2.5.0]() - lookup report by registry name",
+        "subscriptionRequired": true,
+        "displayName": "IATI Validator",
+        "serviceUrl": "[parameters('serviceUrl').iativalidatorv2rev3]",
         "path": "validator",
         "protocols": [
           "https"
@@ -7652,6 +7680,557 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/schemas",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/1622545438727')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
+      "properties": {
+        "contentType": "application/vnd.oai.openapi.components+json",
+        "document": {
+          "components": {
+            "schemas": {
+              "No Body Error": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "error": "No body"
+                }
+              },
+              "Malformed Body Error": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "error": "Body must be an application/xml string"
+                }
+              },
+              "Validation Report Ad Hoc Validate": {
+                "type": "object",
+                "required": [
+                  "valid",
+                  "fileType",
+                  "iatiVersion",
+                  "rulesetCommitSha",
+                  "codelistCommitSha",
+                  "orgIdPrefixFileName",
+                  "apiVersion",
+                  "summary",
+                  "errors"
+                ],
+                "properties": {
+                  "valid": {
+                    "type": "boolean",
+                    "description": "Files with no critical severity errors are considered valid"
+                  },
+                  "fileType": {
+                    "type": "string",
+                    "description": "The type of IATI file",
+                    "enum": [
+                      "iati-activities",
+                      "iati-organisations"
+                    ]
+                  },
+                  "iatiVersion": {
+                    "type": "string",
+                    "description": "Version of the IATI Standard of the file",
+                    "examples": [
+                      "2.01",
+                      "2.02",
+                      "2.03"
+                    ]
+                  },
+                  "rulesetCommitSha": {
+                    "type": "string",
+                    "description": "git commit sha of the ruleset used to create the validation report"
+                  },
+                  "codelistCommitSha": {
+                    "type": "string",
+                    "description": "git commit sha of the codelist rules used to create the validation report"
+                  },
+                  "orgIdPrefixFileName": {
+                    "type": "string",
+                    "description": "file name of org id prefixes from https://org-id.guide/download.json"
+                  },
+                  "apiVersion": {
+                    "type": "string",
+                    "description": "version of the validator api"
+                  },
+                  "summary": {
+                    "type": "object",
+                    "required": [
+                      "critical",
+                      "error",
+                      "warning"
+                    ],
+                    "properties": {
+                      "critical": {
+                        "type": "integer",
+                        "description": "Number of critical level validation errors with the file"
+                      },
+                      "error": {
+                        "type": "integer",
+                        "description": "Number of error level validation errors with the file"
+                      },
+                      "warning": {
+                        "type": "integer",
+                        "description": "Number of warning level validation errors with the file"
+                      }
+                    }
+                  },
+                  "errors": {
+                    "type": "array",
+                    "description": "array of errors, if empty the file has no errors",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "errors": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The unique identifier of the error",
+                                      "examples": [
+                                        "9.26.1",
+                                        "9.42.1"
+                                      ]
+                                    },
+                                    "severity": {
+                                      "type": "string",
+                                      "enum": [
+                                        "critical",
+                                        "danger",
+                                        "warning"
+                                      ],
+                                      "description": "The severity level of the error"
+                                    },
+                                    "message": {
+                                      "type": "string",
+                                      "description": "The informational message about the validation error"
+                                    },
+                                    "codelist": {
+                                      "type": "string",
+                                      "description": "The codelist that is being validated against (if applicable)",
+                                      "examples": [
+                                        "OrganisationRole",
+                                        "DescriptionType",
+                                        "ActivityDateType"
+                                      ]
+                                    },
+                                    "context": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "text": {
+                                            "type": "string",
+                                            "description": "The context of the error",
+                                            "examples": [
+                                              "\"25\" is not a valid value for attribute @code"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "text"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "severity",
+                                    "message",
+                                    "context"
+                                  ]
+                                }
+                              },
+                              "category": {
+                                "type": "string",
+                                "enum": [
+                                  "identifiers",
+                                  "organisation",
+                                  "information",
+                                  "participating",
+                                  "geo",
+                                  "classifications",
+                                  "financial",
+                                  "documents",
+                                  "relations",
+                                  "performance"
+                                ],
+                                "description": "The category of the validation error"
+                              }
+                            },
+                            "required": [
+                              "errors",
+                              "category"
+                            ]
+                          }
+                        },
+                        "identifier": {
+                          "type": "string",
+                          "description": "The activity's iati-identifier for iati-activities files, organisation-identifier for iati-organisations file, or 'file' for file level errors"
+                        },
+                        "title": {
+                          "type": "string",
+                          "description": "The activity's title for iati-activities files, the organisation name for iati-organisations files, or 'File level errors' for file level errors"
+                        }
+                      },
+                      "required": [
+                        "errors",
+                        "identifier",
+                        "title"
+                      ]
+                    }
+                  }
+                },
+                "example": {
+                  "valid": false,
+                  "fileType": "string",
+                  "iatiVersion": "string",
+                  "rulesetCommitSha": "string",
+                  "codelistCommitSha": "string",
+                  "orgIdPrefixFileName": "string",
+                  "apiVersion": "string",
+                  "summary": {
+                    "critical": 0,
+                    "error": 0,
+                    "warning": 0
+                  },
+                  "errors": [
+                    {
+                      "errors": [
+                        {
+                          "errors": [
+                            {
+                              "id": "string",
+                              "severity": "string",
+                              "message": "string",
+                              "codelist": "string",
+                              "context": [
+                                {
+                                  "text": "string"
+                                }
+                              ]
+                            }
+                          ],
+                          "category": "string"
+                        }
+                      ],
+                      "identifier": "string",
+                      "title": "string"
+                    }
+                  ]
+                }
+              },
+              "Existing Report missing query parameter": {
+                "type": "object",
+                "properties": {
+                  "client_error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_error": "Either the id, url or hash of the document as obtained from the IATI Registry must be supplied as a GET parameter"
+                }
+              },
+              "Existing Report Not Found": {
+                "type": "object",
+                "properties": {
+                  "client_error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_error": "The requested report does not exist."
+                }
+              },
+              "Validation Report Published File": {
+                "type": "object",
+                "required": [
+                  "registry_hash",
+                  "registry_id",
+                  "registry_name",
+                  "document_url",
+                  "valid",
+                  "report"
+                ],
+                "properties": {
+                  "registry_hash": {
+                    "type": "string",
+                    "description": "hash of the file as defined by the IATI registry"
+                  },
+                  "registry_id": {
+                    "type": "string",
+                    "description": "id of the file as defined by the IATI registry"
+                  },
+                  "registry_name": {
+                    "type": "string",
+                    "description": "name of the file as defined by the IATI registry"
+                  },
+                  "document_url": {
+                    "type": "string",
+                    "description": "url of the file as defined in the IATI registry"
+                  },
+                  "valid": {
+                    "type": "boolean",
+                    "description": "Files with no critical severity errors are considered valid"
+                  },
+                  "report": {
+                    "type": "object",
+                    "required": [
+                      "valid",
+                      "fileType",
+                      "iatiVersion",
+                      "rulesetCommitSha",
+                      "codelistCommitSha",
+                      "orgIdPrefixFileName",
+                      "apiVersion",
+                      "summary",
+                      "errors"
+                    ],
+                    "properties": {
+                      "valid": {
+                        "type": "boolean",
+                        "description": "Files with no critical severity errors are considered valid"
+                      },
+                      "fileType": {
+                        "type": "string",
+                        "description": "The type of IATI file",
+                        "enum": [
+                          "iati-activities",
+                          "iati-organisations"
+                        ]
+                      },
+                      "iatiVersion": {
+                        "type": "string",
+                        "description": "Version of the IATI Standard of the file",
+                        "examples": [
+                          "2.01",
+                          "2.02",
+                          "2.03"
+                        ]
+                      },
+                      "rulesetCommitSha": {
+                        "type": "string",
+                        "description": "git commit sha of the ruleset used to create the validation report"
+                      },
+                      "codelistCommitSha": {
+                        "type": "string",
+                        "description": "git commit sha of the codelist rules used to create the validation report"
+                      },
+                      "orgIdPrefixFileName": {
+                        "type": "string",
+                        "description": "file name of org id prefixes from https://org-id.guide/download.json"
+                      },
+                      "apiVersion": {
+                        "type": "string",
+                        "description": "version of the validator api"
+                      },
+                      "summary": {
+                        "type": "object",
+                        "required": [
+                          "critical",
+                          "error",
+                          "warning"
+                        ],
+                        "properties": {
+                          "critical": {
+                            "type": "integer",
+                            "description": "Number of critical level validation errors with the file"
+                          },
+                          "error": {
+                            "type": "integer",
+                            "description": "Number of error level validation errors with the file"
+                          },
+                          "warning": {
+                            "type": "integer",
+                            "description": "Number of warning level validation errors with the file"
+                          }
+                        }
+                      },
+                      "errors": {
+                        "type": "array",
+                        "description": "array of errors, if empty the file has no errors",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "errors": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "errors": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "The unique identifier of the error",
+                                          "examples": [
+                                            "9.26.1",
+                                            "9.42.1"
+                                          ]
+                                        },
+                                        "severity": {
+                                          "type": "string",
+                                          "enum": [
+                                            "critical",
+                                            "danger",
+                                            "warning"
+                                          ],
+                                          "description": "The severity level of the error"
+                                        },
+                                        "message": {
+                                          "type": "string",
+                                          "description": "The informational message about the validation error"
+                                        },
+                                        "codelist": {
+                                          "type": "string",
+                                          "description": "The codelist that is being validated against (if applicable)",
+                                          "examples": [
+                                            "OrganisationRole",
+                                            "DescriptionType",
+                                            "ActivityDateType"
+                                          ]
+                                        },
+                                        "context": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "text": {
+                                                "type": "string",
+                                                "description": "The context of the error",
+                                                "examples": [
+                                                  "\"25\" is not a valid value for attribute @code"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "text"
+                                            ]
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "severity",
+                                        "message",
+                                        "context"
+                                      ]
+                                    }
+                                  },
+                                  "category": {
+                                    "type": "string",
+                                    "enum": [
+                                      "identifiers",
+                                      "organisation",
+                                      "information",
+                                      "participating",
+                                      "geo",
+                                      "classifications",
+                                      "financial",
+                                      "documents",
+                                      "relations",
+                                      "performance"
+                                    ],
+                                    "description": "The category of the validation error"
+                                  }
+                                },
+                                "required": [
+                                  "errors",
+                                  "category"
+                                ]
+                              }
+                            },
+                            "identifier": {
+                              "type": "string",
+                              "description": "The activity's iati-identifier for iati-activities files, organisation-identifier for iati-organisations file, or 'file' for file level errors"
+                            },
+                            "title": {
+                              "type": "string",
+                              "description": "The activity's title for iati-activities files, the organisation name for iati-organisations files, or 'File level errors' for file level errors"
+                            }
+                          },
+                          "required": [
+                            "errors",
+                            "identifier",
+                            "title"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "registry_hash": "string",
+                  "registry_id": "string",
+                  "registry_name": "string",
+                  "document_url": "string",
+                  "valid": false,
+                  "report": {
+                    "valid": false,
+                    "fileType": "string",
+                    "iatiVersion": "string",
+                    "rulesetCommitSha": "string",
+                    "codelistCommitSha": "string",
+                    "orgIdPrefixFileName": "string",
+                    "apiVersion": "string",
+                    "summary": {
+                      "critical": 0,
+                      "error": 0,
+                      "warning": 0
+                    },
+                    "errors": [
+                      {
+                        "errors": [
+                          {
+                            "errors": [
+                              {
+                                "id": "string",
+                                "severity": "string",
+                                "message": "string",
+                                "codelist": "string",
+                                "context": [
+                                  {
+                                    "text": "string"
+                                  }
+                                ]
+                              }
+                            ],
+                            "category": "string"
+                          }
+                        ],
+                        "identifier": "string",
+                        "title": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/schemas",
       "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/6110dd60217d200e04c7fe43')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'validator-services-private;rev=1')]"
@@ -7970,6 +8549,51 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/exploratory/iati-validator-v2;rev=3')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
+      "properties": {
+        "displayName": "Exploratory",
+        "description": "No approval is required. Get started using our APIs now!\n\nSubscribers have access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/60 seconds\n- Quota: 100 API requests/7 days \n\nWhen you are ready to do more intensive testing or take an integration live, please request a Full Access subscription. ",
+        "subscriptionRequired": true,
+        "approvalRequired": false,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/unlimited/iati-validator-v2;rev=3')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
+      "properties": {
+        "displayName": "Full Access",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 100 API requests/60 seconds\n- Quota: 10,000 API requests/7 days\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=3')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
+      "properties": {
+        "displayName": "Temporary Increased Quota",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 100 API requests/60 seconds\n- Quota: 20,000 API requests/7 days\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "subscriptionRequired": true,
+        "approvalRequired": true,
+        "state": "published"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/products/apis",
       "name": "[concat(parameters('apimServiceName'), '/private-routes/validator-services-private;rev=1')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'validator-services-private;rev=1')]"
@@ -8109,6 +8733,28 @@
       "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=2/validator')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=2')]"
+      ],
+      "properties": {
+        "displayName": "validator"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/publisher')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
+      ],
+      "properties": {
+        "displayName": "publisher"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/validator')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]"
       ],
       "properties": {
         "displayName": "validator"
@@ -12478,6 +13124,447 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/operations",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/get-pub-get-report')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('apimServiceName'), 'iati-validator-v2;rev=3', '1622545438727')]"
+      ],
+      "properties": {
+        "displayName": "Existing Report",
+        "method": "GET",
+        "urlTemplate": "/report",
+        "description": "Get an existing validation report of a published IATI document known to the IATI Registry by passing either the id, hash or URL of the document, as available from the Registry API.\n\n[GitHub Repository](https://github.com/IATI/validator-services)\n\n[Error ID Information](https://github.com/IATI/validator-rule-tracker)\n",
+        "templateParameters": [],
+        "request": {
+          "headers": [
+            {
+              "defaultValue": "application/json",
+              "name": "Accept"
+            }
+          ],
+          "queryParameters": [
+            {
+              "description": "id of the published document for which you want a validation report, as provided by the Registry API",
+              "name": "id",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "url of the published document for which you want a validation report, as provided by the Registry API",
+              "name": "url",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "hash of the published document for which you want a validation report, as provided by the Registry API",
+              "name": "hash",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "name of the published document for which you want a validation report, as provided by the Registry API",
+              "name": "name",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "If set to false, the detailed errors of the validation report will not be returned. Default is true and detailed validation errors are returned. This parameter is useful to save on response body size if you are not using the full validation report errors.",
+              "name": "showerrors",
+              "required": false,
+              "type": "boolean"
+            }
+          ],
+          "representations": []
+        },
+        "responses": [
+          {
+            "description": "Response if id, url, hash or name is not provided as a query parameter.",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type of the response",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Existing Report missing query parameter",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "client_error": "Either the id, url or hash of the document as obtained from the IATI Registry must be supplied as a GET parameter"
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 422
+          },
+          {
+            "description": "Response if a report cannot be found for the supplied id, url, hash or name.",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type of response",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Existing Report Not Found",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "client_error": "The requested report does not exist."
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 404
+          },
+          {
+            "description": "Response if a report is found and returned.",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type of the response",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Validation Report Published File",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "registry_hash": "string",
+                      "registry_id": "string",
+                      "document_url": "string",
+                      "valid": false,
+                      "report": {
+                        "valid": false,
+                        "fileType": "string",
+                        "iatiVersion": "string",
+                        "rulesetCommitSha": "string",
+                        "codelistCommitSha": "string",
+                        "orgIdPrefixFileName": "string",
+                        "apiVersion": "string",
+                        "summary": {
+                          "critical": 0,
+                          "error": 0,
+                          "warning": 0
+                        },
+                        "errors": [
+                          {
+                            "errors": [
+                              {
+                                "errors": [
+                                  {
+                                    "id": "string",
+                                    "severity": "string",
+                                    "message": "string",
+                                    "codelist": "string",
+                                    "context": [
+                                      {
+                                        "text": "string"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "category": "string"
+                              }
+                            ],
+                            "identifier": "string",
+                            "title": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 200
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/post-pub-validate-post')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'iati-validator-v2;rev=3')]",
+        "[resourceId('Microsoft.ApiManagement/service/apis/schemas', parameters('apimServiceName'), 'iati-validator-v2;rev=3', '1622545438727')]"
+      ],
+      "properties": {
+        "displayName": "Validate",
+        "method": "POST",
+        "urlTemplate": "/validate",
+        "description": "This route allows the user to POST an IATI document to the Validator in the body of the request, and receive a JSON validation report in the response.\n\n[GitHub Repository](https://github.com/IATI/js-validator-api)  \n\n[Error ID Information](https://github.com/IATI/validator-rule-tracker)\n",
+        "templateParameters": [],
+        "request": {
+          "description": "IATI XML document (organisations or activities)",
+          "headers": [
+            {
+              "description": "Indicates the content type of the request body",
+              "name": "Content-Type"
+            },
+            {
+              "defaultValue": "application/json",
+              "name": "Accept"
+            }
+          ],
+          "queryParameters": [
+            {
+              "description": "group errors by activity (or organisation) and category. Defaults to true if left blank. Set to false to ungroup errors.",
+              "name": "group",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "show all available details of errors. Defaults to false if left blank. Set to true to see all details. ",
+              "name": "details",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "representations": [
+            {
+              "contentType": "application/xml"
+            },
+            {
+              "contentType": "application/json"
+            },
+            {
+              "contentType": "text/plain"
+            },
+            {
+              "contentType": "text/xml"
+            },
+            {
+              "contentType": "text/xml"
+            }
+          ]
+        },
+        "responses": [
+          {
+            "description": "The body is either not present or is malformed.",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "No Body Error",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "error": "No body"
+                    }
+                  }
+                }
+              },
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Malformed Body Error",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "error": "Body must be an application/xml string"
+                    }
+                  }
+                }
+              },
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Validation Report Ad Hoc Validate",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "valid": false,
+                      "fileType": "string",
+                      "iatiVersion": "string",
+                      "rulesetCommitSha": "string",
+                      "codelistCommitSha": "string",
+                      "orgIdPrefixFileName": "string",
+                      "apiVersion": "string",
+                      "summary": {
+                        "critical": 0,
+                        "error": 0,
+                        "warning": 0
+                      },
+                      "errors": [
+                        {
+                          "errors": [
+                            {
+                              "errors": [
+                                {
+                                  "id": "string",
+                                  "severity": "string",
+                                  "message": "string",
+                                  "codelist": "string",
+                                  "context": [
+                                    {
+                                      "text": "string"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "category": "string"
+                            }
+                          ],
+                          "identifier": "string",
+                          "title": "string"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 400
+          },
+          {
+            "description": "Content of the body can be interpreted by the application but doesn't make sense for one of the following reasons.\n- Not recognisable as IATI\n- Critical (Schema) Errors\n- Not a supported version of IATI",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Validation Report Ad Hoc Validate",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "valid": false,
+                      "fileType": "string",
+                      "iatiVersion": "string",
+                      "rulesetCommitSha": "string",
+                      "codelistCommitSha": "string",
+                      "orgIdPrefixFileName": "string",
+                      "apiVersion": "string",
+                      "summary": {
+                        "critical": 0,
+                        "error": 0,
+                        "warning": 0
+                      },
+                      "errors": [
+                        {
+                          "errors": [
+                            {
+                              "errors": [
+                                {
+                                  "id": "string",
+                                  "severity": "string",
+                                  "message": "string",
+                                  "codelist": "string",
+                                  "context": [
+                                    {
+                                      "text": "string"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "category": "string"
+                            }
+                          ],
+                          "identifier": "string",
+                          "title": "string"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 422
+          },
+          {
+            "description": "No Critical errors were detected with the IATI document and validation was successful. There may be validation errors of severity \"error\" or \"warning\" with the document.",
+            "headers": [
+              {
+                "defaultValue": "application/json",
+                "description": "content type",
+                "name": "Content-Type"
+              }
+            ],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "schemaId": "1622545438727",
+                "typeName": "Validation Report Ad Hoc Validate",
+                "examples": {
+                  "default": {
+                    "value": {
+                      "valid": false,
+                      "fileType": "string",
+                      "iatiVersion": "string",
+                      "rulesetCommitSha": "string",
+                      "codelistCommitSha": "string",
+                      "orgIdPrefixFileName": "string",
+                      "apiVersion": "string",
+                      "summary": {
+                        "critical": 0,
+                        "error": 0,
+                        "warning": 0
+                      },
+                      "errors": [
+                        {
+                          "errors": [
+                            {
+                              "errors": [
+                                {
+                                  "id": "string",
+                                  "severity": "string",
+                                  "message": "string",
+                                  "codelist": "string",
+                                  "context": [
+                                    {
+                                      "text": "string"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "category": "string"
+                            }
+                          ],
+                          "identifier": "string",
+                          "title": "string"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "statusCode": 200
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
       "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/get-pub-get-report')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimServiceName'), 'validator-services-private;rev=1')]"
@@ -13016,6 +14103,30 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/get-pub-get-report/policy')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'get-pub-get-report')]"
+      ],
+      "properties": {
+        "value": "[concat(parameters('policyXMLBaseUrl'), 'iati-validator-v2;rev=3-get-pub-get-report-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/post-pub-validate-post/policy')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'post-pub-validate-post')]"
+      ],
+      "properties": {
+        "value": "[concat(parameters('policyXMLBaseUrl'), 'iati-validator-v2;rev=3-post-pub-validate-post-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/get-pub-get-report/policy')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'validator-services-private;rev=1', 'get-pub-get-report')]"
@@ -13327,6 +14438,50 @@
       "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=2/post-pub-validate-post/validator')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=2', 'post-pub-validate-post')]"
+      ],
+      "properties": {
+        "displayName": "validator"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/get-pub-get-report/get')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'get-pub-get-report')]"
+      ],
+      "properties": {
+        "displayName": "GET"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/get-pub-get-report/validator')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'get-pub-get-report')]"
+      ],
+      "properties": {
+        "displayName": "validator"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/post-pub-validate-post/post')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'post-pub-validate-post')]"
+      ],
+      "properties": {
+        "displayName": "POST"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/operations/tags",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/post-pub-validate-post/validator')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('apimServiceName'), 'iati-validator-v2;rev=3', 'post-pub-validate-post')]"
       ],
       "properties": {
         "displayName": "validator"

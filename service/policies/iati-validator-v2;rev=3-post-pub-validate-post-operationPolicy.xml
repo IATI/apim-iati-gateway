@@ -1,0 +1,16 @@
+<policies>
+  <inbound>
+    <base />
+    <set-backend-service id="apim-generated-policy" backend-id="func-iativalidator-{{Environment}}" />
+    <rewrite-uri template="/pub/validate" />
+  </inbound>
+  <backend>
+    <base />
+  </backend>
+  <outbound>
+    <base />
+  </outbound>
+  <on-error>
+    <base />
+  </on-error>
+</policies>
