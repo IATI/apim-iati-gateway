@@ -13,7 +13,7 @@ rm -rfv notused-parameters
 
 # restore non-api related services
 echo "Restoring changes to non-api related services..."
-SERVICES=("api-management-service.template" "backends.template" "loggers.template" "master.template" "parameters")
+SERVICES=("api-management-service.template" "backends.template" "loggers.template" "master.template")
 for SERVICE in ${SERVICES[@]}; do
     echo 'Restoring apim-iati-dev-'$SERVICE'.json'
     git restore apim-iati-dev-$SERVICE.json
