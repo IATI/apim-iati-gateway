@@ -20,6 +20,7 @@
         "datastorerev3": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "iativalidatorv2rev1": "",
         "iativalidatorv2rev2": "",
+        "iativalidatorv2rev3": "",
         "validatorservicesprivaterev1": ""
       }
     },

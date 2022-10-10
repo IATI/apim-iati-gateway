@@ -65,4 +65,4 @@ jobs:
             --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
             --parameters RedisConnectionString=${{ env.RedisConnectionString }} \
             --parameters ApplicationInsightsInstanceName=${{ env.ApplicationInsightsInstanceName }} \
-            --parameters '{"serviceUrl":{"value":{"apidefinitionsrev1":"","api61e68d73c8e44ca9124dcddbrev1":"${{ env.SolrBaseUrl }}","datastorerev1":"${{ env.SolrBaseUrl }}","datastorerev2":"${{ env.SolrBaseUrl }}","datastorerev3":"${{ env.SolrBaseUrl }}","iativalidatorv2rev1":"","iativalidatorv2rev2":"","validatorservicesprivaterev1":""}}}'
+            --parameters '{"serviceUrl":{"value":{"apidefinitionsrev1":"","api61e68d73c8e44ca9124dcddbrev1":"${{ env.SolrBaseUrl }}","datastorerev1":"${{ env.SolrBaseUrl }}","datastorerev2":"${{ env.SolrBaseUrl }}","datastorerev3":"${{ env.SolrBaseUrl }}","iativalidatorv2rev1":"","iativalidatorv2rev2":"","iativalidatorv2rev3":"","validatorservicesprivaterev1":""}}}'
