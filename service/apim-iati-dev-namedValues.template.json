@@ -19,7 +19,7 @@
     }
   },
   "variables": {
-    "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'iativalidator')]",
+    "ValidatorSubdomain": "[concat(parameters('UrlEnvPrefix'), 'validator')]",
     "DatastoreSearchSubdomain": "[concat(parameters('UrlEnvPrefix'), 'datastore')]",
     "SolrUserPwName": "[concat('pw-solr-user-', parameters('Environment'))]",
     "KeyVaultName": "[concat('kv-iati-', parameters('Environment'))]"
