@@ -74,6 +74,22 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/datastore;rev=4/datastore')]",
+      "properties": {
+        "displayName": "datastore"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
+      "name": "[concat(parameters('apimServiceName'), '/datastore;rev=4/datause')]",
+      "properties": {
+        "displayName": "datause"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/tags",
       "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=1/publisher')]",
       "properties": {
         "displayName": "publisher"

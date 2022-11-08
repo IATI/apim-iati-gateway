@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd azure-api-management-devops-resource-kit/src/ARMTemplates && \
+cd azure-api-management-devops-resource-kit/src/ArmTemplates && \
 dotnet restore && \
 dotnet run extract --extractorConfig ../../../apimExtract.json && \
 cd -
@@ -20,10 +20,21 @@ for SERVICE in ${SERVICES[@]}; do
 done
 
 # Temp XML encoding bugifx: https://github.com/Azure/azure-api-management-devops-resource-kit/issues/825
-for filename in policies/* ; do
-    echo $filename
-    sed -i '' -e 's/&gt;/>/g' $filename
-    sed -i '' -e 's/&lt;/</g' $filename
-    sed -i '' -e 's/&quot;/"/g' $filename
-    sed -i '' -e 's/amp;//g' $filename
-done 
+# Different syntax for sed between MacOS and Linux
+if [[ $OSTYPE == 'darwin'* ]]; then
+    for filename in policies/* ; do
+        echo $filename
+        sed -i '' -e 's/&gt;/>/g' $filename
+        sed -i '' -e 's/&lt;/</g' $filename
+        sed -i '' -e 's/&quot;/"/g' $filename
+        sed -i '' -e 's/amp;//g' $filename
+    done
+else
+    for filename in policies/* ; do
+        echo $filename
+        sed -i -e 's/&gt;/>/g' $filename
+        sed -i -e 's/&lt;/</g' $filename
+        sed -i -e 's/&quot;/"/g' $filename
+        sed -i -e 's/amp;//g' $filename
+    done
+fi
