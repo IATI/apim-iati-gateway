@@ -16,7 +16,7 @@
       <allowed-origins>
         <origin>http://localhost:4200/</origin>
         <origin>https://{{ValidatorSubdomain}}-old.iatistandard.org/</origin>
-				<origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
+        <origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
       </allowed-origins>
       <allowed-methods>
         <method>GET</method>
