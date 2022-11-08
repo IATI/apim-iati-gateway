@@ -10,7 +10,7 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/releases",
-      "name": "[concat(parameters('apimServiceName'), '/api-definitions;rev=1/1df20cd6-ab87-49e0-92a5-976efafadf40')]",
+      "name": "[concat(parameters('apimServiceName'), '/api-definitions;rev=1/4ce7bbc0-fb68-44bc-a360-92eb3074ad8f')]",
       "properties": {
         "apiId": "/apis/api-definitions;rev=1"
       }
@@ -18,7 +18,7 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/releases",
-      "name": "[concat(parameters('apimServiceName'), '/61e68d73c8e44ca9124dcddb;rev=1/7b6dde5b-7d26-44a0-8017-b4b07a1d7482')]",
+      "name": "[concat(parameters('apimServiceName'), '/61e68d73c8e44ca9124dcddb;rev=1/30f23e0b-31fd-428a-ae69-b38248faf987')]",
       "properties": {
         "apiId": "/apis/61e68d73c8e44ca9124dcddb;rev=1"
       }
@@ -26,15 +26,15 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/releases",
-      "name": "[concat(parameters('apimServiceName'), '/datastore;rev=3/127f1686-65dd-4313-b293-17761a5a0ffc')]",
+      "name": "[concat(parameters('apimServiceName'), '/datastore;rev=4/8ab064c4-eef0-42ad-a1b4-2b56073dce5d')]",
       "properties": {
-        "apiId": "/apis/datastore;rev=3"
+        "apiId": "/apis/datastore;rev=4"
       }
     },
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/releases",
-      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/e5b1a661-172f-4d29-9155-6ca3c04e439c')]",
+      "name": "[concat(parameters('apimServiceName'), '/iati-validator-v2;rev=3/5bc6eff8-d3dc-4abf-8969-ac8d4d08cdeb')]",
       "properties": {
         "apiId": "/apis/iati-validator-v2;rev=3"
       }
@@ -42,7 +42,7 @@
     {
       "apiVersion": "2021-08-01",
       "type": "Microsoft.ApiManagement/service/apis/releases",
-      "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/2136f970-a4d2-41e0-8361-df9f54e772eb')]",
+      "name": "[concat(parameters('apimServiceName'), '/validator-services-private;rev=1/b16e9486-10f5-480e-a7d4-752fe679fbca')]",
       "properties": {
         "apiId": "/apis/validator-services-private;rev=1"
       }
