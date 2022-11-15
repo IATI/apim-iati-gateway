@@ -1,48 +1,30 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ApimServiceName": {
+    "apimServiceName": {
       "value": "apim-iati-dev"
     },
-    "ApimGatewayHostname": {
-      "value": "dev-api.iatistandard.org"
-    },
-    "ApimDevPortalHostname": {
-      "value": "dev-developer.iatistandard.org"
-    },
-    "Environment": {
-      "value": "dev"
-    },
-    "UrlEnvPrefix": {
-      "value": "https://dev-"
-    },
-    "LinkedTemplatesBaseUrl": {
+    "linkedTemplatesBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/"
     },
-    "PolicyXMLBaseUrl": {
+    "policyXMLBaseUrl": {
       "value": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/"
     },
-    "SubscriptionId": {
-      "value": "bcaf7a00-7a14-4932-ac41-7bb0dee0d2a9"
-    },
-    "ApimSKU": {
-      "value": "Developer"
-    },
-    "ApimCapacity": {
-      "value": 1
-    },
-    "RedisConnectionString": {
-      "value": "placeholderstring"
-    },
-    "ApplicationInsightsInstanceName": {
-      "value": "appi-apim"
-    },
-    "SolrBaseUrl": {
-      "value": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org"
-    },
-    "Branch": {
-      "value": "develop"
+    "serviceUrl": {
+      "value": {
+        "apidefinitionsrev1": "",
+        "api61e68d73c8e44ca9124dcddbrev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev2": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev3": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev4": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "iativalidatorv2rev1": "",
+        "iativalidatorv2rev2": "",
+        "iativalidatorv2rev3": "",
+        "validatorservicesprivaterev1": ""
+      }
     }
-  }
+  },
+  "resources": []
 }

@@ -5,19 +5,17 @@
 ### For extractor tool
 
 - Clone this repo `git clone <repo> --recurse-submodules`
-  - Make sure to bring in submodule for extractor tool
+  - Make sure to bring in submodule for extractor tool `extraction_templates/azure-api-management-devops-resource-kit` - https://github.com/Azure/azure-api-management-devops-resource-kit
 - [Azure CLI](https://docs.microsoft.com/en-us/dotnet/azure/install-azure-cli)
-- [.NET 3.1.0](https://docs.microsoft.com/en-us/dotnet/core/install/)
+- [.NET 6.0.0](https://docs.microsoft.com/en-us/dotnet/core/install/)
 
 ## Extracting
 
-Run Extractor Tool
+Run Extractor Tool bash script
 
 ```bash
-cd extraction_templates/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate && \
-dotnet restore && \
-dotnet run extract --extractorConfig ../../../../apimExtract.json
-cd -
+cd extraction_templates
+./extract_apis.sh
 ```
 
 Update the Extractor Tool
@@ -26,13 +24,21 @@ Update the Extractor Tool
 
 ### Updating an Existing API Definition
 
-- Make your changes on the `dev` APIM instance in the Portal as neccessary
-- Run the extractor tool
-- Diff the changes made to `service/apim-iati-dev-apis.template.json` and include only your changes
-  - Remove the last object that has `"type": "Microsoft.ApiManagement/service/diagnostics"`, this is managed elsewhere.
-- Also look at `service/policies` for your related policy changes and add proper ones to your git index
-- Create a feature branch and commit your changes to `service/apim-iati-dev-apis.template.json` and `service/policies` ONLY
-- Remove changes made to other ARM templates by the extractor `git reset --hard HEAD`
+- Make your changes on the `dev` APIM instance in the Portal as necessary
+- If this is a Public API change (e.g. IATI Validator, IATI Datastore) that requires a new version bump/documentation then follow this process in the Portal:
+  - Create a new Revision (APIs > Select API > Revisions > Add Revision)
+  - Update the description following the strategy for previous releases/revisions. Basic markdown formatting is accepted.
+  - Update documentation in the API definition (e.g. query params, response bodies, etc.)
+  - Make the Revision current by selecting the `...` to the right of the revision row and selecting "Make Current"
+  - Check the box to publish the change log, using the same documentation as the "Description" for the revision. Basic markdown formatting is accepted.
+  - Take the previous revision offline.
+- Run the extractor tool bash script
+- You should see changes to a number of the ARM templates and policies in `./service`
+- If there are any changes (new parameters) in `service/apim-iati-dev-parameters.json`, ensure that you update the github actions workflows to pass in the new parameters:
+  - `apim-ci.yml`
+  - `apim-develop.yml`
+  - `apim-prod.yml`
+- Create a feature branch, commit all changes to the feature branch
 - Create a PR so that the ARM validation workflow runs
 - If the validation workflow errors with "NoEffect" this is OK
 - Merge the PR, the deployment to `dev` workflow will run
@@ -40,7 +46,7 @@ Update the Extractor Tool
 
 ### Adding a new API definition and/or backend
 
-- If adding a new API definition with a new backend, you'll also need to get the backend configuration and paramterise it
+- If adding a new API definition with a new backend, you'll also need to get the backend configuration and parameterise it
   - Just make sure you don't wipe out the other backend paramterisation with the extractor tool
 - See the `apim-iati-dev-backends.template.json` for and example of how this is done for existing APIs
 

@@ -13,14 +13,15 @@
 <policies>
   <inbound>
     <base />
-    <rate-limit-by-key calls="5" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-    <quota-by-key calls="100" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+    <set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
+    <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" />
   </inbound>
   <backend>
     <base />
   </backend>
   <outbound>
     <base />
+    <cache-store duration="600" />
   </outbound>
   <on-error>
     <base />

@@ -2,13 +2,14 @@
   <inbound>
     <base />
     <set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
-    <rewrite-uri template="/pub/validation/existing" />
+    <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" />
   </inbound>
   <backend>
     <base />
   </backend>
   <outbound>
     <base />
+    <cache-store duration="600" />
   </outbound>
   <on-error>
     <base />

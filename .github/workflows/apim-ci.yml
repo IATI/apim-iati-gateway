@@ -19,7 +19,7 @@ jobs:
       SubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       resourceGroup: rg-apim-dev
       AZURE_CREDENTIALS: ${{ secrets.DEV_AZURE_CREDENTIALS }}
-      ApimServiceName: apim-iati-dev
+      apimServiceName: apim-iati-dev
       ApimGatewayHostname: dev-api.iatistandard.org
       ApimDevPortalHostname: dev-developer.iatistandard.org
       ApimSKU: Developer
@@ -28,7 +28,8 @@ jobs:
       repoApimPath: service
       RedisConnectionString: ${{ secrets.DEV_REDIS_CONNECTION_STRING }}
       ApplicationInsightsInstanceName: appi-apim
-
+      SolrBaseUrl: ${{ secrets.DEV_SOLR_BASE_URL }}
+      Branch: develop
 
     steps:
       - name: "Checkout GitHub Action"
@@ -43,8 +44,8 @@ jobs:
       - name: Validate APIM ARM Templates with what-if
         working-directory: ./service
         env:
-          LinkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}
-          PolicyXMLBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/policies
+          linkedTemplatesBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/
+          policyXMLBaseUrl: ${{ env.repoUrl }}/${{ github.HEAD_REF }}/${{ env.repoApimPath }}/policies/
           deploymentName: --name GH_what_if_deployment_apim
           rg: --resource-group ${{ env.resourceGroup }}
           apiNamePrefix: apim-iati-dev
@@ -53,9 +54,10 @@ jobs:
             ${{env.rg}} \
             --template-file ./${{env.apiNamePrefix}}-master.template.json \
             --parameters ./${{env.apiNamePrefix}}-parameters.json \
-            --parameters ApimServiceName=${{ env.ApimServiceName }} \
-            --parameters LinkedTemplatesBaseUrl=${{ env.LinkedTemplatesBaseUrl }} \
-            --parameters PolicyXMLBaseUrl=${{ env.PolicyXMLBaseUrl }} \
+            --parameters ./manual-parameters.json \
+            --parameters apimServiceName=${{ env.apimServiceName }} \
+            --parameters linkedTemplatesBaseUrl=${{ env.linkedTemplatesBaseUrl }} \
+            --parameters policyXMLBaseUrl=${{ env.policyXMLBaseUrl }} \
             --parameters Environment=${{ env.Environment }} \
             --parameters UrlEnvPrefix=${{ env.UrlEnvPrefix }} \
             --parameters SubscriptionId=${{ env.SubscriptionId }} \
@@ -64,4 +66,6 @@ jobs:
             --parameters ApimGatewayHostname=${{ env.ApimGatewayHostname }} \
             --parameters ApimDevPortalHostname=${{ env.ApimDevPortalHostname }} \
             --parameters RedisConnectionString=${{ env.RedisConnectionString }} \
-            --parameters ApplicationInsightsInstanceName=${{ env.ApplicationInsightsInstanceName }}
+            --parameters ApplicationInsightsInstanceName=${{ env.ApplicationInsightsInstanceName }} \
+            --parameters Branch=${{ env.Branch }} \
+            --parameters '{"serviceUrl":{"value":{"apidefinitionsrev1":"","api61e68d73c8e44ca9124dcddbrev1":"${{ env.SolrBaseUrl }}","datastorerev1":"${{ env.SolrBaseUrl }}","datastorerev2":"${{ env.SolrBaseUrl }}","datastorerev3":"${{ env.SolrBaseUrl }}","datastorerev4":"${{ env.SolrBaseUrl }}","iativalidatorv2rev1":"","iativalidatorv2rev2":"","iativalidatorv2rev3":"","validatorservicesprivaterev1":""}}}'

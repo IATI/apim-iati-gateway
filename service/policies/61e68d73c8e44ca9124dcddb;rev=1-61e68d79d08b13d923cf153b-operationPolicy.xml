@@ -13,8 +13,21 @@
 <policies>
   <inbound>
     <base />
-    <rate-limit-by-key calls="5" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-    <quota-by-key calls="100" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+    <authentication-basic username="solr" password="{{pw-solr-user}}" />
+    <rewrite-uri template="/solr/{collection}/{responsetype}" />
+    <set-variable name="solrMaxRows" value="{{solrMaxRows}}" />
+    <set-variable name="solrDefaultRows" value="{{solrDefaultRows}}" />
+    <set-query-parameter name="rows" exists-action="override">
+      <value>@{
+                int rows;
+                int solrMaxRows = int.Parse((string) context.Variables["solrMaxRows"]);
+                bool convertible = Int32.TryParse(context.Request.Url.Query.GetValueOrDefault("rows", ""), out rows);
+                if (convertible) {
+                    return (rows > solrMaxRows) ? solrMaxRows.ToString() : rows.ToString();
+                }
+                return (string) context.Variables["solrDefaultRows"];
+                }</value>
+    </set-query-parameter>
   </inbound>
   <backend>
     <base />

@@ -2,9 +2,12 @@
   "sourceApimName": "apim-iati-dev",
   "destinationApimName": "apim-iati-dev",
   "resourceGroup": "rg-apim-dev",
-  "fileFolder": "../../../../../service",
-  "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/",
-  "policyXMLBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/main/service/policies/",
+  "fileFolder": "../../../../service",
+  "linkedTemplatesBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/",
+  "policyXMLBaseUrl": "https://raw.githubusercontent.com/IATI/apim-iati-gateway/develop/service/policies/",
   "splitAPIs": "false",
-  "paramServiceUrl": "true"
+  "paramServiceUrl": "true",
+  "excludeBuildInGroups": "true",
+  "notIncludeNamedValue": "true",
+  "parametersOutputDirectoryName": "notused-parameters"
 }

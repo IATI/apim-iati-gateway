@@ -12,9 +12,18 @@
 -->
 <policies>
   <inbound>
+    <cors>
+      <allowed-origins>
+        <origin>http://localhost:4200/</origin>
+        <origin>https://{{ValidatorSubdomain}}-old.iatistandard.org/</origin>
+        <origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
+      </allowed-origins>
+      <allowed-methods>
+        <method>GET</method>
+        <method>POST</method>
+      </allowed-methods>
+    </cors>
     <base />
-    <rate-limit-by-key calls="5" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-    <quota-by-key calls="100" renewal-period="604800" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
   </inbound>
   <backend>
     <base />
