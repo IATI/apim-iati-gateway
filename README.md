@@ -34,6 +34,7 @@ Update the Extractor Tool
   - Take the previous revision offline.
 - Run the extractor tool bash script
 - You should see changes to a number of the ARM templates and policies in `./service`
+- NOTE: you need to manually remove the object with `"type": "Microsoft.ApiManagement/service/diagnostics"` from the `service/apim-iati-dev-apis.template.json` template, this is covered in the `service/apim-iati-dev-loggers.template.json` template.
 - If there are any changes (new parameters) in `service/apim-iati-dev-parameters.json`, ensure that you update the github actions workflows to pass in the new parameters:
   - `apim-ci.yml`
   - `apim-develop.yml`
