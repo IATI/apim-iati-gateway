@@ -31,7 +31,11 @@ Update the Extractor Tool
   - Update documentation in the API definition (e.g. query params, response bodies, etc.)
   - Make the Revision current by selecting the `...` to the right of the revision row and selecting "Make Current"
   - Check the box to publish the change log, using the same documentation as the "Description" for the revision. Basic markdown formatting is accepted.
-  - Take the previous revision offline.
+  - Leave the previous version (e.g. v3.2.0) online, as when this is deployed to Production the ARM templates cannot change the `online` status
+
+![revision_dev_before](./media/revision_dev_before.png)
+Example of where you should be in `dev` before extracting if you were creating a `v3.3.0` version.
+
 - Run the extractor tool bash script
 - You should see changes to a number of the ARM templates and policies in `./service`
 - NOTE: you need to manually remove the object with `"type": "Microsoft.ApiManagement/service/diagnostics"` from the `service/apim-iati-dev-apis.template.json` template, this is covered in the `service/apim-iati-dev-loggers.template.json` template.
@@ -57,8 +61,28 @@ Update the Extractor Tool
 - Merge the PR
 - Create a Release in GitHub from `main`, increment the tag appropriately with semver standard
 - Publish the Release, the `prod` deployment workflow will run
+- If this is a Public API change (e.g. IATI Validator, IATI Datastore) that requires a new version bump/documentation, you'll have to make the new Revision Current/Online in the Portal after the deployment.
+  - After deploy your Revisions should look like so in production:
+
+![revision_prod_deploy](./media/revision_prod_deploy.png)
+
+- When you are ready to publish the new API you should then click the `...` and make the new version `v3.3.0` in this screenshot "Current".
+- Check the box to publish the change log, using the same documentation as the "Description" for the revision. Basic markdown formatting is accepted.
+- Once that's done it should look like:
+
+![revision_prod_final](./media/revision_prod_final.png)
+
 - Check Portal/test that all your config made it there from `dev`
 - PR from `main` -> `develop` to sync back to dev
+- In Portal in `dev`, take the old version (e.g. v3.2.0) offline
+
+![revision_dev_offline](./media/revision_dev_offline.png)
+
+- Then the final state will be:
+
+![revision_prod_final](./media/revision_prod_final.png)
+
+- You'll then need to run the Extractor again and make a PR to sync that this API is offline now.
 
 ## Developer Portal
 
