@@ -11,19 +11,19 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <base />
-    <set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
-    <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" />
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-    <cache-store duration="600" />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+	<inbound>
+		<base />
+		<set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
+		<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" />
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+		<cache-store duration="600" />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>

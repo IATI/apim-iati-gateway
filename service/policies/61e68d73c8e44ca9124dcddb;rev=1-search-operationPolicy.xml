@@ -11,18 +11,18 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <base />
-    <authentication-basic username="solr" password="{{pw-solr-user}}" />
-    <rewrite-uri template="/solr/{collection}/search" />
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+	<inbound>
+		<base />
+		<authentication-basic username="solr" password="{{pw-solr-user}}" />
+		<rewrite-uri template="/solr/{collection}/search" />
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>

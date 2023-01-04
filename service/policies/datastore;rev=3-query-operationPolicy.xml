@@ -11,13 +11,13 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <base />
-    <rewrite-uri template="/solr/{collection}/{responsetype}" />
-    <set-variable name="solrMaxRows" value="{{solrMaxRows}}" />
-    <set-variable name="solrDefaultRows" value="{{solrDefaultRows}}" />
-    <set-query-parameter name="rows" exists-action="override">
-      <value>@{
+	<inbound>
+		<base />
+		<rewrite-uri template="/solr/{collection}/{responsetype}" />
+		<set-variable name="solrMaxRows" value="{{solrMaxRows}}" />
+		<set-variable name="solrDefaultRows" value="{{solrDefaultRows}}" />
+		<set-query-parameter name="rows" exists-action="override">
+			<value>@{
                 int rows;
                 int solrMaxRows = int.Parse((string) context.Variables["solrMaxRows"]);
                 bool convertible = Int32.TryParse(context.Request.Url.Query.GetValueOrDefault("rows", ""), out rows);
@@ -26,15 +26,15 @@
                 }
                 return (string) context.Variables["solrDefaultRows"];
                 }</value>
-    </set-query-parameter>
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+		</set-query-parameter>
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>

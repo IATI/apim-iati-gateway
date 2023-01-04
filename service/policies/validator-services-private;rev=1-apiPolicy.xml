@@ -11,27 +11,27 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <cors>
-      <allowed-origins>
-        <origin>http://localhost:4200/</origin>
-        <origin>https://{{ValidatorSubdomain}}-old.iatistandard.org/</origin>
-        <origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
-      </allowed-origins>
-      <allowed-methods>
-        <method>GET</method>
-        <method>POST</method>
-      </allowed-methods>
-    </cors>
-    <base />
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+	<inbound>
+		<cors>
+			<allowed-origins>
+				<origin>http://localhost:4200/</origin>
+				<origin>https://{{ValidatorSubdomain}}-old.iatistandard.org/</origin>
+				<origin>https://{{ValidatorSubdomain}}.iatistandard.org/</origin>
+			</allowed-origins>
+			<allowed-methods>
+				<method>GET</method>
+				<method>POST</method>
+			</allowed-methods>
+		</cors>
+		<base />
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>
