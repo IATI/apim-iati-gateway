@@ -18,23 +18,3 @@ for SERVICE in ${SERVICES[@]}; do
     echo 'Restoring apim-iati-dev-'$SERVICE'.json'
     git restore apim-iati-dev-$SERVICE.json
 done
-
-# Temp XML encoding bugifx: https://github.com/Azure/azure-api-management-devops-resource-kit/issues/825
-# Different syntax for sed between MacOS and Linux
-if [[ $OSTYPE == 'darwin'* ]]; then
-    for filename in policies/* ; do
-        echo $filename
-        sed -i '' -e 's/&gt;/>/g' $filename
-        sed -i '' -e 's/&lt;/</g' $filename
-        sed -i '' -e 's/&quot;/"/g' $filename
-        sed -i '' -e 's/amp;//g' $filename
-    done
-else
-    for filename in policies/* ; do
-        echo $filename
-        sed -i -e 's/&gt;/>/g' $filename
-        sed -i -e 's/&lt;/</g' $filename
-        sed -i -e 's/&quot;/"/g' $filename
-        sed -i -e 's/amp;//g' $filename
-    done
-fi

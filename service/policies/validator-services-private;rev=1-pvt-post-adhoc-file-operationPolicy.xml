@@ -11,26 +11,26 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <base />
-    <set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
-    <cors>
-      <allowed-origins>
-        <origin>*</origin>
-      </allowed-origins>
-      <allowed-methods>
-        <method>GET</method>
-        <method>POST</method>
-      </allowed-methods>
-    </cors>
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+	<inbound>
+		<base />
+		<set-backend-service id="apim-generated-policy" backend-id="func-validator-services-{{Environment}}" />
+		<cors>
+			<allowed-origins>
+				<origin>*</origin>
+			</allowed-origins>
+			<allowed-methods>
+				<method>GET</method>
+				<method>POST</method>
+			</allowed-methods>
+		</cors>
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>

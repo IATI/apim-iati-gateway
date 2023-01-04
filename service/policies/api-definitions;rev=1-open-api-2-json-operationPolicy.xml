@@ -11,19 +11,19 @@
     - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
 -->
 <policies>
-  <inbound>
-    <base />
-    <set-header name="Accept" exists-action="override">
-      <value>application/vnd.swagger.doc+json</value>
-    </set-header>
-  </inbound>
-  <backend>
-    <base />
-  </backend>
-  <outbound>
-    <base />
-  </outbound>
-  <on-error>
-    <base />
-  </on-error>
+	<inbound>
+		<base />
+		<set-header name="Accept" exists-action="override">
+			<value>application/vnd.swagger.doc+json</value>
+		</set-header>
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
 </policies>
