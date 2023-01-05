@@ -48,7 +48,7 @@ try {
       }
       return acc;
     }, [])
-    .join();
+    .join(';');
   console.log(emailList);
 } catch (error) {
   console.error(error);

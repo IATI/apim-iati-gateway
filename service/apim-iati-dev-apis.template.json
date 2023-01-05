@@ -134,6 +134,7 @@
           "query": "subscription-key"
         },
         "apiRevision": "3",
+        "isOnline": false,
         "apiRevisionDescription": "[v3.2.0](https://github.com/IATI/datastore-solr-configs/releases/tag/v3.2.0) - Add geospatial point field and query parameters",
         "subscriptionRequired": true,
         "displayName": "IATI Datastore",
