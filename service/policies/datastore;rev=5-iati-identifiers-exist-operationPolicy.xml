@@ -13,8 +13,8 @@
 <policies>
 	<inbound>
 		<base />
-		<rate-limit-by-key calls="5" renewal-period="1" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
-		<quota-by-key calls="10000" renewal-period="86400" counter-key="@(context.Subscription?.Key ?? "anonymous")" increment-condition="@(context.Response.StatusCode >= 200 && context.Response.StatusCode < 400)" />
+		<set-backend-service id="apim-generated-policy" backend-id="func-datastore-services-{{Environment}}" />
+		<rewrite-uri template="/pub/iati-identifiers/exist" />
 	</inbound>
 	<backend>
 		<base />
