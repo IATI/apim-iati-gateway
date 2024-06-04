@@ -53,7 +53,7 @@ Example of where you should be in `dev` before extracting if you were creating a
 
 - If adding a new API definition with a new backend, you'll also need to get the backend configuration and parameterise it
   - Just make sure you don't wipe out the other backend paramterisation with the extractor tool
-- See the `apim-iati-dev-backends.template.json` for and example of how this is done for existing APIs
+- See the `apim-iati-dev-backends.template.json` for an example of how this is done for existing APIs
 
 ## Making a Production Release
 
