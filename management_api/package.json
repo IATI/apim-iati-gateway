@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "emails": "node index.js"
+    "emails": "node index.js",
+    "emails_pending": "node index_pending.js"
   },
   "keywords": [],
   "author": "",
