@@ -25,7 +25,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/api-definitions;rev=1')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -37,7 +37,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/api-definitions;rev=1')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -61,7 +61,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/datastore;rev=1')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -73,7 +73,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/datastore;rev=1')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -97,7 +97,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/datastore;rev=2')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -109,7 +109,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/datastore;rev=2')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -133,7 +133,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/datastore;rev=3')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -145,7 +145,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/datastore;rev=3')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -169,7 +169,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/datastore;rev=4')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -181,7 +181,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/datastore;rev=4')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -205,7 +205,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/datastore;rev=5')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -217,7 +217,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/datastore;rev=5')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -241,7 +241,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/iati-validator-v2;rev=1')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -253,7 +253,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=1')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -277,7 +277,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/iati-validator-v2;rev=2')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -289,7 +289,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=2')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -313,7 +313,7 @@
       "name": "[concat(parameters('apimServiceName'), '/unlimited/iati-validator-v2;rev=3')]",
       "properties": {
         "displayName": "Full Access",
-        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 10,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "IATI Technical Team approval is required. \n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 25,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
@@ -325,7 +325,7 @@
       "name": "[concat(parameters('apimServiceName'), '/temporary-increased-quota/iati-validator-v2;rev=3')]",
       "properties": {
         "displayName": "Temporary Increased Quota",
-        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 10 API requests/1 second\n- Quota: 20,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
+        "description": "Granted by IATI Technical Team manually on a temporary, as-needed basis for application testing and may be revoked at any time to preserve service levels for all users.\n\nSubscribers have full access to all Public IATI APIs with the following limits:\n- Rate Limit: 5 API requests/1 second\n- Quota: 50,000 API requests/1 day\n    - Only successful HTTP response codes (200 - 399) are counted towards the quota.\n\nIf you reach the limit and believe you have a use case for higher limits, please contact support@iatistandard.org",
         "subscriptionRequired": true,
         "approvalRequired": true,
         "state": "published"
