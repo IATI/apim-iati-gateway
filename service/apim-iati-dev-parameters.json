@@ -14,12 +14,12 @@
     "serviceUrl": {
       "value": {
         "apidefinitionsrev1": "",
-        "api61e68d73c8e44ca9124dcddbrev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "api61e68d73c8e44ca9124dcddbrev1": "https://solr-dev1.iatistandard.org",
         "datastorerev1": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "datastorerev2": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "datastorerev3": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
         "datastorerev4": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
-        "datastorerev5": "https://default-iati-dev-solrcloud.solr-dev.iatistandard.org",
+        "datastorerev5": "https://solr-dev1.iatistandard.org",
         "iativalidatorv2rev1": "",
         "iativalidatorv2rev2": "",
         "iativalidatorv2rev3": "",
