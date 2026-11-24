@@ -2,6 +2,7 @@ name: Deploy_To_PROD_APIM_On_Push
 
 # Runs when a Release is published from GitHub UI
 on:
+  workflow_dispatch:
   release:
     types: [published]
 

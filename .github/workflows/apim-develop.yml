@@ -1,6 +1,7 @@
 name: Deploy_To_Dev_APIM_On_Push
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - develop
