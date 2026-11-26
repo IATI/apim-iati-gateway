@@ -31,7 +31,7 @@
         "secret": true,
         "displayName": "[concat(parameters('Environment'), '-func-validator-services-key')]",
         "keyVault": {
-          "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iati-api-management-', parameters('Environment'))]"
+          "secretIdentifier": "[concat('https://', variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iatiapimanagement', parameters('Environment'))]"
         }
       },
       "name": "[concat(parameters('apimServiceName'), '/', parameters('Environment'),'-func-validator-services-key')]",
@@ -44,7 +44,7 @@
         "secret": true,
         "displayName": "[concat('func-iativalidator-', parameters('Environment'), '-key')]",
         "keyVault": {
-          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iati-api-management-', parameters('Environment'))]"
+          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iatiapimanagement', parameters('Environment'))]"
         }
       },
       "name": "[concat(parameters('apimServiceName'), '/func-iativalidator-',parameters('Environment'),'-key')]",
@@ -57,7 +57,7 @@
         "secret": true,
         "displayName": "default-function-key",
         "keyVault": {
-          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iati-api-management-', parameters('Environment'))]"
+          "secretIdentifier": "[concat('https://',variables('KeyVaultName'), '.vault.azure.net/secrets/host--functionKey--iatiapimanagement', parameters('Environment'))]"
         }
       },
       "name": "[concat(parameters('apimServiceName'), '/default-function-key')]",

@@ -10031,11 +10031,7 @@
                   "iatiVersion": {
                     "type": "string",
                     "description": "Version of the IATI Standard of the file",
-                    "examples": [
-                      "2.01",
-                      "2.02",
-                      "2.03"
-                    ]
+                    "example": "2.01"
                   },
                   "rulesetCommitSha": {
                     "type": "string",
@@ -10094,10 +10090,7 @@
                                     "id": {
                                       "type": "string",
                                       "description": "The unique identifier of the error",
-                                      "examples": [
-                                        "9.26.1",
-                                        "9.42.1"
-                                      ]
+                                      "example": "9.26.1"
                                     },
                                     "severity": {
                                       "type": "string",
@@ -10115,11 +10108,7 @@
                                     "codelist": {
                                       "type": "string",
                                       "description": "The codelist that is being validated against (if applicable)",
-                                      "examples": [
-                                        "OrganisationRole",
-                                        "DescriptionType",
-                                        "ActivityDateType"
-                                      ]
+                                      "example": "OrganisationRole"
                                     },
                                     "context": {
                                       "type": "array",
@@ -10129,9 +10118,7 @@
                                           "text": {
                                             "type": "string",
                                             "description": "The context of the error",
-                                            "examples": [
-                                              "\"25\" is not a valid value for attribute @code"
-                                            ]
+                                            "example": "\"25\" is not a valid value for attribute @code"
                                           }
                                         },
                                         "required": [
@@ -10282,11 +10269,7 @@
                       "iatiVersion": {
                         "type": "string",
                         "description": "Version of the IATI Standard of the file",
-                        "examples": [
-                          "2.01",
-                          "2.02",
-                          "2.03"
-                        ]
+                        "example": "2.01"
                       },
                       "rulesetCommitSha": {
                         "type": "string",
@@ -10345,10 +10328,7 @@
                                         "id": {
                                           "type": "string",
                                           "description": "The unique identifier of the error",
-                                          "examples": [
-                                            "9.26.1",
-                                            "9.42.1"
-                                          ]
+                                          "example": "9.26.1"
                                         },
                                         "severity": {
                                           "type": "string",
@@ -10366,11 +10346,7 @@
                                         "codelist": {
                                           "type": "string",
                                           "description": "The codelist that is being validated against (if applicable)",
-                                          "examples": [
-                                            "OrganisationRole",
-                                            "DescriptionType",
-                                            "ActivityDateType"
-                                          ]
+                                          "example": "OrganisationRole"
                                         },
                                         "context": {
                                           "type": "array",
@@ -10380,9 +10356,7 @@
                                               "text": {
                                                 "type": "string",
                                                 "description": "The context of the error",
-                                                "examples": [
-                                                  "\"25\" is not a valid value for attribute @code"
-                                                ]
+                                                "example": "\"25\" is not a valid value for attribute @code"
                                               }
                                             },
                                             "required": [
@@ -10576,11 +10550,7 @@
                   "iatiVersion": {
                     "type": "string",
                     "description": "Version of the IATI Standard of the file",
-                    "examples": [
-                      "2.01",
-                      "2.02",
-                      "2.03"
-                    ]
+                    "example": "2.01"
                   },
                   "rulesetCommitSha": {
                     "type": "string",
@@ -10639,10 +10609,7 @@
                                     "id": {
                                       "type": "string",
                                       "description": "The unique identifier of the error",
-                                      "examples": [
-                                        "9.26.1",
-                                        "9.42.1"
-                                      ]
+                                      "example": "9.26.1"
                                     },
                                     "severity": {
                                       "type": "string",
@@ -10660,11 +10627,7 @@
                                     "codelist": {
                                       "type": "string",
                                       "description": "The codelist that is being validated against (if applicable)",
-                                      "examples": [
-                                        "OrganisationRole",
-                                        "DescriptionType",
-                                        "ActivityDateType"
-                                      ]
+                                      "example": "OrganisationRole"
                                     },
                                     "context": {
                                       "type": "array",
@@ -10674,9 +10637,7 @@
                                           "text": {
                                             "type": "string",
                                             "description": "The context of the error",
-                                            "examples": [
-                                              "\"25\" is not a valid value for attribute @code"
-                                            ]
+                                            "example": "\"25\" is not a valid value for attribute @code"
                                           }
                                         },
                                         "required": [
@@ -10827,11 +10788,7 @@
                       "iatiVersion": {
                         "type": "string",
                         "description": "Version of the IATI Standard of the file",
-                        "examples": [
-                          "2.01",
-                          "2.02",
-                          "2.03"
-                        ]
+                        "example": "2.01"
                       },
                       "rulesetCommitSha": {
                         "type": "string",
@@ -10890,10 +10847,7 @@
                                         "id": {
                                           "type": "string",
                                           "description": "The unique identifier of the error",
-                                          "examples": [
-                                            "9.26.1",
-                                            "9.42.1"
-                                          ]
+                                          "example": "9.26.1"
                                         },
                                         "severity": {
                                           "type": "string",
@@ -10911,11 +10865,7 @@
                                         "codelist": {
                                           "type": "string",
                                           "description": "The codelist that is being validated against (if applicable)",
-                                          "examples": [
-                                            "OrganisationRole",
-                                            "DescriptionType",
-                                            "ActivityDateType"
-                                          ]
+                                          "example": "OrganisationRole"
                                         },
                                         "context": {
                                           "type": "array",
@@ -10925,9 +10875,7 @@
                                               "text": {
                                                 "type": "string",
                                                 "description": "The context of the error",
-                                                "examples": [
-                                                  "\"25\" is not a valid value for attribute @code"
-                                                ]
+                                                "example": "\"25\" is not a valid value for attribute @code"
                                               }
                                             },
                                             "required": [
@@ -11121,11 +11069,7 @@
                   "iatiVersion": {
                     "type": "string",
                     "description": "Version of the IATI Standard of the file",
-                    "examples": [
-                      "2.01",
-                      "2.02",
-                      "2.03"
-                    ]
+                    "example": "2.01"
                   },
                   "rulesetCommitSha": {
                     "type": "string",
@@ -11184,10 +11128,7 @@
                                     "id": {
                                       "type": "string",
                                       "description": "The unique identifier of the error",
-                                      "examples": [
-                                        "9.26.1",
-                                        "9.42.1"
-                                      ]
+                                      "example": "9.26.1"
                                     },
                                     "severity": {
                                       "type": "string",
@@ -11205,11 +11146,7 @@
                                     "codelist": {
                                       "type": "string",
                                       "description": "The codelist that is being validated against (if applicable)",
-                                      "examples": [
-                                        "OrganisationRole",
-                                        "DescriptionType",
-                                        "ActivityDateType"
-                                      ]
+                                      "example": "OrganisationRole"
                                     },
                                     "context": {
                                       "type": "array",
@@ -11219,9 +11156,7 @@
                                           "text": {
                                             "type": "string",
                                             "description": "The context of the error",
-                                            "examples": [
-                                              "\"25\" is not a valid value for attribute @code"
-                                            ]
+                                            "example": "\"25\" is not a valid value for attribute @code"
                                           }
                                         },
                                         "required": [
@@ -11399,11 +11334,7 @@
                       "iatiVersion": {
                         "type": "string",
                         "description": "Version of the IATI Standard of the file",
-                        "examples": [
-                          "2.01",
-                          "2.02",
-                          "2.03"
-                        ]
+                        "example": "2.01"
                       },
                       "rulesetCommitSha": {
                         "type": "string",
@@ -11462,10 +11393,7 @@
                                         "id": {
                                           "type": "string",
                                           "description": "The unique identifier of the error",
-                                          "examples": [
-                                            "9.26.1",
-                                            "9.42.1"
-                                          ]
+                                          "example": "9.26.1"
                                         },
                                         "severity": {
                                           "type": "string",
@@ -11483,11 +11411,7 @@
                                         "codelist": {
                                           "type": "string",
                                           "description": "The codelist that is being validated against (if applicable)",
-                                          "examples": [
-                                            "OrganisationRole",
-                                            "DescriptionType",
-                                            "ActivityDateType"
-                                          ]
+                                          "example": "OrganisationRole"
                                         },
                                         "context": {
                                           "type": "array",
@@ -11497,9 +11421,7 @@
                                               "text": {
                                                 "type": "string",
                                                 "description": "The context of the error",
-                                                "examples": [
-                                                  "\"25\" is not a valid value for attribute @code"
-                                                ]
+                                                "example": "\"25\" is not a valid value for attribute @code"
                                               }
                                             },
                                             "required": [
